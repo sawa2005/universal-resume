@@ -1,9 +1,8 @@
 @import "docs/fira-go.css";
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import "tailwindcss";
+@config "./tailwind.config.mjs";
 
-@screen print {
+@variant print {
   @page {
     margin-top: 0in;
     margin-bottom: 0in;
@@ -13,7 +12,7 @@
 
   body {
     -webkit-print-color-adjust: exact !important;
-    color-adjust: exact !important;
+    print-color-adjust: exact !important;
     color: black !important;
   }
 
@@ -41,13 +40,13 @@ html {
 
 /* For Letter size */
 
-@screen sm {
+@variant sm {
   html {
     font-size: calc( 13.176471px + (16 - 13.176471) * (100vw - 640px) / (833 - 640) );
   }
 }
 
-@screen md {
+@variant md {
   html {
     font-size: calc( 12.288px + (16 - 12.288) * (100vw - 833px) / (1079.5 - 833) );
   }
@@ -55,19 +54,19 @@ html {
 
 /* For A4 size */
 
-/* @screen sm {
+/* @variant sm {
   html {
     font-size: calc( 13.176471px + (16 - 13.176471) * (100vw - 640px) / (811 - 640) );
   }
 }
 
-@screen md {
+@variant md {
   html {
     font-size: calc( 12.288px + (16 - 12.288) * (100vw - 811px) / (1051 - 811) );
   }
 } */
 
-@screen lg {
+@variant lg {
   html {
     font-size: 16px;
   }
