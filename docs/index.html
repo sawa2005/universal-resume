@@ -25,7 +25,7 @@
   <main class="font-firago hyphens-manual">
 
     <!-- Page -->
-    <div class="p-6 mx-auto page max-w-2xl print:max-w-letter md:max-w-letter md:h-letter xsm:p-8 sm:p-9 md:p-16 bg-white">
+    <div class="p-6 mx-auto page max-w-2xl print:max-w-letter md:max-w-letter xsm:p-8 sm:p-9 md:p-16 bg-white">
 
       <!-- Name -->
       <header class="flex items-center mb-8 md:mb-11">
@@ -41,7 +41,7 @@
       <!-- end Name -->
 
       <!-- Column -->
-      <div class="md:col-count-2 print:col-count-2 col-gap-md md:h-letter-col print:h-letter-col col-fill-auto">
+      <div class="md:col-count-2 print:col-count-2 col-gap-md print:h-letter-col col-fill-balance">
 
         <section class="mt-8 first:mt-0">
 
@@ -73,7 +73,7 @@
 
         </section>
 
-        <section class="mt-8 first:mt-0">
+        <section class="mt-8 first:mt-0 break-after-col">
 
           <!-- To keep in the same column -->
           <div class="break-inside-avoid">
@@ -96,6 +96,8 @@
               PROJECTS
             </h2>
 
+            <div id="project-filters" class="mb-4 print:hidden flex flex-wrap gap-2"></div>
+
             <div data-section="projects"></div>
 
           </div>
@@ -113,14 +115,7 @@
 
             <div data-section="skills"></div>
 
-          </div>
-
-        </section>
-
-        <section class="mt-8 first:mt-0">
-
-          <!-- To keep in the same column -->
-          <div class="break-inside-avoid">
+            <div class="mt-8"></div>
 
             <h2 class="mb-4 font-bold tracking-widest text-sm2 text-gray-550 print:font-normal" data-label="contact">
               CONTACT

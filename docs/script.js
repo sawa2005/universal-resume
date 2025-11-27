@@ -1,5 +1,6 @@
 let allData = {};
 let currentLang = 'en';
+let currentProjectFilter = 'All';
 
 // Helper to render lists or paragraphs
 const renderContent = (content, type) => {
@@ -17,6 +18,64 @@ const renderContent = (content, type) => {
   } else {
     return '';
   }
+};
+
+const renderProjects = (projects) => {
+  const container = document.querySelector('[data-section="projects"]');
+  if (!container) return;
+
+  const filteredProjects = currentProjectFilter === 'All'
+    ? projects
+    : projects.filter(p => p.tags && p.tags.includes(currentProjectFilter));
+
+  const projectsHTML = filteredProjects.map(proj => `
+    <section class="mb-4.5 break-inside-avoid">
+      <header>
+        <h3 class="text-lg font-semibold text-gray-700 leading-snugish">
+          ${proj.url ? `
+            <a href="${proj.url}" class="group">
+              ${proj.name}
+              <span class="inline-block text-gray-550 print:text-black font-normal group-hover:text-gray-700 transition duration-100 ease-in">↗</span>
+            </a>
+          ` : proj.name}
+        </h3>
+        <p class="leading-normal text-md text-gray-650">
+          ${proj.period} | ${proj.tags ? proj.tags.join(', ') : proj.tech}
+        </p>
+      </header>
+      <p class="mt-2.1 text-md text-gray-700 leading-normal">
+        ${proj.description}
+      </p>
+    </section>
+  `).join('');
+
+  container.innerHTML = projectsHTML;
+};
+
+const renderProjectFilters = (projects) => {
+  const container = document.getElementById('project-filters');
+  if (!container) return;
+
+  // Extract unique tags
+  const tags = new Set(['All']);
+  projects.forEach(p => {
+    if (p.tags) {
+      p.tags.forEach(tag => tags.add(tag));
+    }
+  });
+
+  container.innerHTML = Array.from(tags).map(tag => `
+    <button class="px-2 py-1 text-xs rounded border transition-colors ${tag === currentProjectFilter ? 'bg-gray-700 text-white border-gray-700' : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'}"
+      onclick="setProjectFilter('${tag}')">
+      ${tag}
+    </button>
+  `).join('');
+};
+
+// Global function for inline onclick
+window.setProjectFilter = (filter) => {
+  currentProjectFilter = filter;
+  render(currentLang); // Re-render to update projects and active button state
 };
 
 const render = (lang) => {
@@ -68,28 +127,9 @@ const render = (lang) => {
   `).join('');
   document.querySelectorAll('[data-section="education"]').forEach(el => el.innerHTML = educationHTML);
 
-  // Render Projects
-  const projectsHTML = data.projects.map(proj => `
-    <section class="mb-4.5 break-inside-avoid">
-      <header>
-        <h3 class="text-lg font-semibold text-gray-700 leading-snugish">
-          ${proj.url ? `
-            <a href="${proj.url}" class="group">
-              ${proj.name}
-              <span class="inline-block text-gray-550 print:text-black font-normal group-hover:text-gray-700 transition duration-100 ease-in">↗</span>
-            </a>
-          ` : proj.name}
-        </h3>
-        <p class="leading-normal text-md text-gray-650">
-          ${proj.period} | ${proj.tech}
-        </p>
-      </header>
-      <p class="mt-2.1 text-md text-gray-700 leading-normal">
-        ${proj.description}
-      </p>
-    </section>
-  `).join('');
-  document.querySelectorAll('[data-section="projects"]').forEach(el => el.innerHTML = projectsHTML);
+  // Render Projects & Filters
+  renderProjectFilters(data.projects);
+  renderProjects(data.projects);
 
   // Render Skills
   const skillsHTML = data.skills.map(skill => `
@@ -160,10 +200,15 @@ fetch('data.json')
     // Event Listeners
     document.getElementById('btn-en').addEventListener('click', () => {
       currentLang = 'en';
+      // Reset filter when switching language? Maybe keep it if tags match.
+      // For safety/simplicity, we can keep it, but if tags differ, it might show nothing.
+      // Let's reset to 'All' for safety.
+      currentProjectFilter = 'All';
       render(currentLang);
     });
     document.getElementById('btn-sv').addEventListener('click', () => {
       currentLang = 'sv';
+      currentProjectFilter = 'All';
       render(currentLang);
     });
   })
