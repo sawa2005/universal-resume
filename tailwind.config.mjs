@@ -15,7 +15,7 @@ export default {
         print: { raw: "print" },
       },
       fontFamily: {
-        firago: ["FiraGO", ...defaultTheme.fontFamily.sans],
+        tiktoksans: ["TikTok Sans", ...defaultTheme.fontFamily.sans],
       },
       fontSize: {
         sm2: "0.9375rem", // 15px label
