@@ -194,6 +194,22 @@ fetch('data.json')
   .then(response => response.json())
   .then(data => {
     allData = data;
+    
+    // Apply Theme
+    const applyTheme = () => {
+      if (!allData.config || !allData.config.theme) return;
+      const themeName = allData.config.theme;
+      const themeValues = allData.config.themes && allData.config.themes[themeName];
+      
+      if (themeValues) {
+        const root = document.documentElement;
+        Object.entries(themeValues).forEach(([key, value]) => {
+          root.style.setProperty(key, value);
+        });
+      }
+    };
+    applyTheme();
+
     // Initial render
     render(currentLang);
 

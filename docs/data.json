@@ -1,308 +1,340 @@
 {
-  "en": {
-    "labels": {
-      "about": "ABOUT ME",
-      "experience": "EXPERIENCE",
-      "education": "EDUCATION",
-      "projects": "PROJECTS",
-      "skills": "SKILLS",
-      "contact": "CONTACT"
+    "config": {
+        "theme": "warm",
+        "themes": {
+            "default": {
+                "--color-gray-150": "hsl(210, 44%, 97%)",
+                "--color-gray-250": "hsl(210, 40%, 93.5%)",
+                "--color-gray-550": "hsl(218, 20%, 63%)",
+                "--color-gray-600": "hsl(217, 19%, 45%)",
+                "--color-gray-650": "hsl(216, 15%, 48%)",
+                "--color-gray-700": "hsl(215, 19%, 35%)",
+                "--color-gray-750": "hsl(214, 17%, 32%)"
+            },
+            "warm": {
+                "--color-gray-150": "hsl(35, 30%, 96%)",
+                "--color-gray-250": "hsl(35, 25%, 92%)",
+                "--color-gray-550": "hsl(30, 15%, 60%)",
+                "--color-gray-600": "hsl(30, 18%, 48%)",
+                "--color-gray-650": "hsl(30, 20%, 45%)",
+                "--color-gray-700": "hsl(30, 22%, 35%)",
+                "--color-gray-750": "hsl(30, 25%, 30%)"
+            },
+            "cold": {
+                "--color-gray-150": "hsl(200, 40%, 96%)",
+                "--color-gray-250": "hsl(200, 35%, 92%)",
+                "--color-gray-550": "hsl(205, 25%, 60%)",
+                "--color-gray-600": "hsl(205, 28%, 48%)",
+                "--color-gray-650": "hsl(205, 30%, 45%)",
+                "--color-gray-700": "hsl(205, 35%, 35%)",
+                "--color-gray-750": "hsl(205, 40%, 30%)"
+            }
+        }
     },
-    "name": "Samuel Ward",
-    "initials": "M",
-    "title": "Aspiring full-stack developer",
-    "about": [
-      {
-        "title": "User Interface Designer",
-        "period": "Since 2010",
-        "description": "Minimal and formal résumé website template for print, mobile, and desktop. The proportions are the same on the screen and paper. Built with amazing <a class=\"hover:bg-gray-150 rounded-lg transition ease-in duration-100\" href=\"https://tailwindcss.com/\">Tailwind CSS&nbsp;°</a>."
-      },
-      {
-        "title": "Front-End Developer",
-        "period": "Since 2013",
-        "description": "<p class=\"mt-2.1 text-md text-gray-700 leading-normal\">\u201cdocs/index.html\u201d is the main content file. By copying HTML: add pages, sec&shy;tions, subsection, and other parts.</p><p class=\"mt-2.1 text-md text-gray-700 leading-normal\"> <span class=\"font-medium text-gray-600 print:text-black\">Important:</span> Too much content on one page will break the page in the form of additional columns."
-      }
-    ],
-    "experience": [
-      {
-        "company": "WebPraktikos Inc.",
-        "role": "Web Developer",
-        "period": "Jun 2018 – Present",
-        "content": "Built doner pork chop &bull; Served salmon, cream soft cheese, and brisket &bull; Acted 55% pork chop &bull; Filled burgdoggen & frankfurter strip steak with 90% burger patties and broth",
-        "type": "paragraph"
-      },
-      {
-        "company": "Mammoth GmbH",
-        "role": "Android Developer",
-        "period": "Feb 2017 – Apr 2018",
-        "content": [
-          "Cooked shrimps for 2 to 3 minutes per side, or until opaque; then, transfered to a serving dish with limon",
-          "Roasted a pig, turning frequently, until meat reached 160°F in the thickest part of the shoulder or thigh"
+    "en": {
+        "labels": {
+            "about": "ABOUT ME",
+            "experience": "EXPERIENCE",
+            "education": "EDUCATION",
+            "projects": "PROJECTS",
+            "skills": "SKILLS",
+            "contact": "CONTACT"
+        },
+        "name": "Samuel Ward",
+        "initials": "M",
+        "title": "Aspiring full-stack developer",
+        "about": [
+            {
+                "title": "User Interface Designer",
+                "period": "Since 2010",
+                "description": "Minimal and formal résumé website template for print, mobile, and desktop. The proportions are the same on the screen and paper. Built with amazing <a class=\"hover:bg-gray-150 rounded-lg transition ease-in duration-100\" href=\"https://tailwindcss.com/\">Tailwind CSS&nbsp;°</a>."
+            },
+            {
+                "title": "Front-End Developer",
+                "period": "Since 2013",
+                "description": "<p class=\"mt-2.1 text-md text-gray-700 leading-normal\">\u201cdocs/index.html\u201d is the main content file. By copying HTML: add pages, sec&shy;tions, subsection, and other parts.</p><p class=\"mt-2.1 text-md text-gray-700 leading-normal\"> <span class=\"font-medium text-gray-600 print:text-black\">Important:</span> Too much content on one page will break the page in the form of additional columns."
+            }
         ],
-        "type": "list"
-      },
-      {
-        "company": "Exquisite Systems d.o.o.",
-        "role": "Software QA Specialist",
-        "period": "May 2015 – Dec 2016",
-        "content": [
-          "Made stockfish, which is unsalted fish, usully cod, dried by cold air and wind on wooden racks on the foreshore",
-          "Preserved meat without salt by removing fat, cutting it into very thin strips and drying it in the sun or by a fire."
+        "experience": [
+            {
+                "company": "WebPraktikos Inc.",
+                "role": "Web Developer",
+                "period": "Jun 2018 – Present",
+                "content": "Built doner pork chop &bull; Served salmon, cream soft cheese, and brisket &bull; Acted 55% pork chop &bull; Filled burgdoggen & frankfurter strip steak with 90% burger patties and broth",
+                "type": "paragraph"
+            },
+            {
+                "company": "Mammoth GmbH",
+                "role": "Android Developer",
+                "period": "Feb 2017 – Apr 2018",
+                "content": [
+                    "Cooked shrimps for 2 to 3 minutes per side, or until opaque; then, transfered to a serving dish with limon",
+                    "Roasted a pig, turning frequently, until meat reached 160°F in the thickest part of the shoulder or thigh"
+                ],
+                "type": "list"
+            },
+            {
+                "company": "Exquisite Systems d.o.o.",
+                "role": "Software QA Specialist",
+                "period": "May 2015 – Dec 2016",
+                "content": [
+                    "Made stockfish, which is unsalted fish, usully cod, dried by cold air and wind on wooden racks on the foreshore",
+                    "Preserved meat without salt by removing fat, cutting it into very thin strips and drying it in the sun or by a fire."
+                ],
+                "type": "list"
+            }
         ],
-        "type": "list"
-      }
-    ],
-    "education": [
-      {
-        "institution": "Graz University of Technology",
-        "degree": "Master's Degree in Chemistry",
-        "period": "2014 – 2015",
-        "content": null
-      },
-      {
-        "institution": "Vienna University of Technology",
-        "degree": "Bachelor’s Degree in Biology",
-        "period": "2010 – 2013",
-        "content": null
-      },
-      {
-        "institution": "Vienna University of Technology",
-        "degree": "Bachelor’s Degree in Chemistry",
-        "period": "2010 – 2013",
-        "content": null
-      }
-    ],
-    "projects": [
-      {
-        "name": "Universal Resume",
-        "url": "https://github.com/WebPraktikos/universal-resume",
-        "period": "Since 2019",
-        "tags": ["HTML", "CSS", "Featured"],
-        "description": "Good design is as little design as possible. Less, but better — because it concentrates on the essential aspects, and the pro&shy;ducts are not burdened with non-essentials."
-      },
-      {
-        "name": "tailwindcss-rich-docs",
-        "url": "https://github.com/WebPraktikos/tailwindcss-rich-docs",
-        "period": "2017",
-        "tags": ["JavaScript", "Featured"],
-        "description": "Good design is long-lasting. It avoids being fashionable and therefore never appears antiquated.<br>Good design is honest. It does not make a product more innovative, powerful or valuable than it really is."
-      },
-      {
-        "name": "Third One",
-        "url": null,
-        "period": "2013 – 2014",
-        "tags": ["Vue", "JavaScript"],
-        "description": "Good design is innovative. Technological development is always offering new opportunities for innovative design."
-      },
-      {
-        "name": "Fantastic Project",
-        "url": null,
-        "period": "2012",
-        "tags": ["JavaScript"],
-        "description": "Strip steak tail capicola alcatra ground round tenderloin ar. Venison tri-tip porchetta, brisket tenderloin pig beef."
-      }
-    ],
-    "skills": [
-      {
-        "name": "JavaScript",
-        "level": "Middle Level",
-        "description": "Good parts: pure function, higher-order functions, factory functions, composition. Bad parts: inheritance, this, new.",
-        "tags": ["ES6", "Vue", "Functional Programming", "Node"]
-      },
-      {
-        "name": "Other",
-        "level": null,
-        "description": null,
-        "tags": [
-          "CSS",
-          "Rust",
-          "Git",
-          "Go",
-          "Linux Server",
-          "UI Design",
-          "Photoshop",
-          "Illustrator",
-          "Figma",
-          "Typography"
+        "education": [
+            {
+                "institution": "Graz University of Technology",
+                "degree": "Master's Degree in Chemistry",
+                "period": "2014 – 2015",
+                "content": null
+            },
+            {
+                "institution": "Vienna University of Technology",
+                "degree": "Bachelor’s Degree in Biology",
+                "period": "2010 – 2013",
+                "content": null
+            },
+            {
+                "institution": "Vienna University of Technology",
+                "degree": "Bachelor’s Degree in Chemistry",
+                "period": "2010 – 2013",
+                "content": null
+            }
+        ],
+        "projects": [
+            {
+                "name": "Universal Resume",
+                "url": "https://github.com/WebPraktikos/universal-resume",
+                "period": "Since 2019",
+                "tags": ["HTML", "CSS", "Featured"],
+                "description": "Good design is as little design as possible. Less, but better — because it concentrates on the essential aspects, and the pro&amp;shy;ducts are not burdened with non-essentials."
+            },
+            {
+                "name": "tailwindcss-rich-docs",
+                "url": "https://github.com/WebPraktikos/tailwindcss-rich-docs",
+                "period": "2017",
+                "tags": ["JavaScript", "Featured"],
+                "description": "Good design is long-lasting. It avoids being fashionable and therefore never appears antiquated.<br>Good design is honest. It does not make a product more innovative, powerful or valuable than it really is."
+            },
+            {
+                "name": "Third One",
+                "url": null,
+                "period": "2013 – 2014",
+                "tags": ["Vue", "JavaScript"],
+                "description": "Good design is innovative. Technological development is always offering new opportunities for innovative design."
+            },
+            {
+                "name": "Fantastic Project",
+                "url": null,
+                "period": "2012",
+                "tags": ["JavaScript"],
+                "description": "Strip steak tail capicola alcatra ground round tenderloin ar. Venison tri-tip porchetta, brisket tenderloin pig beef."
+            }
+        ],
+        "skills": [
+            {
+                "name": "JavaScript",
+                "level": "Middle Level",
+                "description": "Good parts: pure function, higher-order functions, factory functions, composition. Bad parts: inheritance, this, new.",
+                "tags": ["ES6", "Vue", "Functional Programming", "Node"]
+            },
+            {
+                "name": "Other",
+                "level": null,
+                "description": null,
+                "tags": [
+                    "CSS",
+                    "Rust",
+                    "Git",
+                    "Go",
+                    "Linux Server",
+                    "UI Design",
+                    "Photoshop",
+                    "Illustrator",
+                    "Figma",
+                    "Typography"
+                ]
+            }
+        ],
+        "contact": [
+            {
+                "text": "webpraktikos.com",
+                "url": "//webpraktikos.com",
+                "isLink": true
+            },
+            {
+                "text": "twitter.com/webpraktikos",
+                "url": "//twitter.com/webpraktikos",
+                "isLink": true
+            },
+            {
+                "text": "1020 Wien, Austria",
+                "isLink": false
+            },
+            {
+                "text": "hi@webpraktikos.com",
+                "isLink": false
+            },
+            {
+                "text": "(+43) 0699 77 33 77 55",
+                "isLink": false
+            }
         ]
-      }
-    ],
-    "contact": [
-      {
-        "text": "webpraktikos.com",
-        "url": "//webpraktikos.com",
-        "isLink": true
-      },
-      {
-        "text": "twitter.com/webpraktikos",
-        "url": "//twitter.com/webpraktikos",
-        "isLink": true
-      },
-      {
-        "text": "1020 Wien, Austria",
-        "isLink": false
-      },
-      {
-        "text": "hi@webpraktikos.com",
-        "isLink": false
-      },
-      {
-        "text": "(+43) 0699 77 33 77 55",
-        "isLink": false
-      }
-    ]
-  },
-  "sv": {
-    "labels": {
-      "about": "OM MIG",
-      "experience": "ERFARENHET",
-      "education": "UTBILDNING",
-      "projects": "PROJEKT",
-      "skills": "FÄRDIGHETER",
-      "contact": "KONTAKT"
     },
-    "name": "Samuel Ward",
-    "initials": "M",
-    "title": "Aspiring full-stack developer",
-    "about": [
-      {
-        "title": "User Interface Designer",
-        "period": "Since 2010",
-        "description": "Minimal and formal résumé website template for print, mobile, and desktop. The proportions are the same on the screen and paper. Built with amazing <a class=\"hover:bg-gray-150 rounded-lg transition ease-in duration-100\" href=\"https://tailwindcss.com/\">Tailwind CSS&nbsp;°</a>."
-      },
-      {
-        "title": "Front-End Developer",
-        "period": "Since 2013",
-        "description": "<p class=\"mt-2.1 text-md text-gray-700 leading-normal\">\u201cdocs/index.html\u201d is the main content file. By copying HTML: add pages, sec&shy;tions, subsection, and other parts.</p><p class=\"mt-2.1 text-md text-gray-700 leading-normal\"> <span class=\"font-medium text-gray-600 print:text-black\">Important:</span> Too much content on one page will break the page in the form of additional columns."
-      }
-    ],
-    "experience": [
-      {
-        "company": "WebPraktikos Inc.",
-        "role": "Web Developer",
-        "period": "Jun 2018 – Present",
-        "content": "Built doner pork chop &bull; Served salmon, cream soft cheese, and brisket &bull; Acted 55% pork chop &bull; Filled burgdoggen & frankfurter strip steak with 90% burger patties and broth",
-        "type": "paragraph"
-      },
-      {
-        "company": "Mammoth GmbH",
-        "role": "Android Developer",
-        "period": "Feb 2017 – Apr 2018",
-        "content": [
-          "Cooked shrimps for 2 to 3 minutes per side, or until opaque; then, transfered to a serving dish with limon",
-          "Roasted a pig, turning frequently, until meat reached 160°F in the thickest part of the shoulder or thigh"
+    "sv": {
+        "labels": {
+            "about": "OM MIG",
+            "experience": "ERFARENHET",
+            "education": "UTBILDNING",
+            "projects": "PROJEKT",
+            "skills": "FÄRDIGHETER",
+            "contact": "KONTAKT"
+        },
+        "name": "Samuel Ward",
+        "initials": "M",
+        "title": "Aspiring full-stack developer",
+        "about": [
+            {
+                "title": "User Interface Designer",
+                "period": "Since 2010",
+                "description": "Minimal and formal résumé website template for print, mobile, and desktop. The proportions are the same on the screen and paper. Built with amazing <a class=\"hover:bg-gray-150 rounded-lg transition ease-in duration-100\" href=\"https://tailwindcss.com/\">Tailwind CSS&nbsp;°</a>."
+            },
+            {
+                "title": "Front-End Developer",
+                "period": "Since 2013",
+                "description": "<p class=\"mt-2.1 text-md text-gray-700 leading-normal\">\u201cdocs/index.html\u201d is the main content file. By copying HTML: add pages, sec&shy;tions, subsection, and other parts.</p><p class=\"mt-2.1 text-md text-gray-700 leading-normal\"> <span class=\"font-medium text-gray-600 print:text-black\">Important:</span> Too much content on one page will break the page in the form of additional columns."
+            }
         ],
-        "type": "list"
-      },
-      {
-        "company": "Exquisite Systems d.o.o.",
-        "role": "Software QA Specialist",
-        "period": "May 2015 – Dec 2016",
-        "content": [
-          "Made stockfish, which is unsalted fish, usully cod, dried by cold air and wind on wooden racks on the foreshore",
-          "Preserved meat without salt by removing fat, cutting it into very thin strips and drying it in the sun or by a fire."
+        "experience": [
+            {
+                "company": "WebPraktikos Inc.",
+                "role": "Web Developer",
+                "period": "Jun 2018 – Present",
+                "content": "Built doner pork chop &bull; Served salmon, cream soft cheese, and brisket &bull; Acted 55% pork chop &bull; Filled burgdoggen & frankfurter strip steak with 90% burger patties and broth",
+                "type": "paragraph"
+            },
+            {
+                "company": "Mammoth GmbH",
+                "role": "Android Developer",
+                "period": "Feb 2017 – Apr 2018",
+                "content": [
+                    "Cooked shrimps for 2 to 3 minutes per side, or until opaque; then, transfered to a serving dish with limon",
+                    "Roasted a pig, turning frequently, until meat reached 160°F in the thickest part of the shoulder or thigh"
+                ],
+                "type": "list"
+            },
+            {
+                "company": "Exquisite Systems d.o.o.",
+                "role": "Software QA Specialist",
+                "period": "May 2015 – Dec 2016",
+                "content": [
+                    "Made stockfish, which is unsalted fish, usully cod, dried by cold air and wind on wooden racks on the foreshore",
+                    "Preserved meat without salt by removing fat, cutting it into very thin strips and drying it in the sun or by a fire."
+                ],
+                "type": "list"
+            }
         ],
-        "type": "list"
-      }
-    ],
-    "education": [
-      {
-        "institution": "Graz University of Technology",
-        "degree": "Master's Degree in Chemistry",
-        "period": "2014 – 2015",
-        "content": null
-      },
-      {
-        "institution": "Vienna University of Technology",
-        "degree": "Bachelor’s Degree in Biology",
-        "period": "2010 – 2013",
-        "content": null
-      },
-      {
-        "institution": "Vienna University of Technology",
-        "degree": "Bachelor’s Degree in Chemistry",
-        "period": "2010 – 2013",
-        "content": null
-      }
-    ],
-    "projects": [
-      {
-        "name": "Universal Resume",
-        "url": "https://github.com/WebPraktikos/universal-resume",
-        "period": "Since 2019",
-        "tags": ["HTML", "CSS", "Featured"],
-        "description": "Good design is as little design as possible. Less, but better — because it concentrates on the essential aspects, and the pro&shy;ducts are not burdened with non-essentials."
-      },
-      {
-        "name": "tailwindcss-rich-docs",
-        "url": "https://github.com/WebPraktikos/tailwindcss-rich-docs",
-        "period": "2017",
-        "tags": ["JavaScript", "Featured"],
-        "description": "Good design is long-lasting. It avoids being fashionable and therefore never appears antiquated.<br>Good design is honest. It does not make a product more innovative, powerful or valuable than it really is."
-      },
-      {
-        "name": "Third One",
-        "url": null,
-        "period": "2013 – 2014",
-        "tags": ["Vue", "JavaScript"],
-        "description": "Good design is innovative. Technological development is always offering new opportunities for innovative design."
-      },
-      {
-        "name": "Fantastic Project",
-        "url": null,
-        "period": "2012",
-        "tags": ["JavaScript"],
-        "description": "Strip steak tail capicola alcatra ground round tenderloin ar. Venison tri-tip porchetta, brisket tenderloin pig beef."
-      }
-    ],
-    "skills": [
-      {
-        "name": "JavaScript",
-        "level": "Middle Level",
-        "description": "Good parts: pure function, higher-order functions, factory functions, composition. Bad parts: inheritance, this, new.",
-        "tags": ["ES6", "Vue", "Functional Programming", "Node"]
-      },
-      {
-        "name": "Other",
-        "level": null,
-        "description": null,
-        "tags": [
-          "CSS",
-          "Rust",
-          "Git",
-          "Go",
-          "Linux Server",
-          "UI Design",
-          "Photoshop",
-          "Illustrator",
-          "Figma",
-          "Typography"
+        "education": [
+            {
+                "institution": "Graz University of Technology",
+                "degree": "Master's Degree in Chemistry",
+                "period": "2014 – 2015",
+                "content": null
+            },
+            {
+                "institution": "Vienna University of Technology",
+                "degree": "Bachelor’s Degree in Biology",
+                "period": "2010 – 2013",
+                "content": null
+            },
+            {
+                "institution": "Vienna University of Technology",
+                "degree": "Bachelor’s Degree in Chemistry",
+                "period": "2010 – 2013",
+                "content": null
+            }
+        ],
+        "projects": [
+            {
+                "name": "Universal Resume",
+                "url": "https://github.com/WebPraktikos/universal-resume",
+                "period": "Since 2019",
+                "tags": ["HTML", "CSS", "Featured"],
+                "description": "Good design is as little design as possible. Less, but better — because it concentrates on the essential aspects, and the pro&amp;shy;ducts are not burdened with non-essentials."
+            },
+            {
+                "name": "tailwindcss-rich-docs",
+                "url": "https://github.com/WebPraktikos/tailwindcss-rich-docs",
+                "period": "2017",
+                "tags": ["JavaScript", "Featured"],
+                "description": "Good design is long-lasting. It avoids being fashionable and therefore never appears antiquated.<br>Good design is honest. It does not make a product more innovative, powerful or valuable than it really is."
+            },
+            {
+                "name": "Third One",
+                "url": null,
+                "period": "2013 – 2014",
+                "tags": ["Vue", "JavaScript"],
+                "description": "Good design is innovative. Technological development is always offering new opportunities for innovative design."
+            },
+            {
+                "name": "Fantastic Project",
+                "url": null,
+                "period": "2012",
+                "tags": ["JavaScript"],
+                "description": "Strip steak tail capicola alcatra ground round tenderloin ar. Venison tri-tip porchetta, brisket tenderloin pig beef."
+            }
+        ],
+        "skills": [
+            {
+                "name": "JavaScript",
+                "level": "Middle Level",
+                "description": "Good parts: pure function, higher-order functions, factory functions, composition. Bad parts: inheritance, this, new.",
+                "tags": ["ES6", "Vue", "Functional Programming", "Node"]
+            },
+            {
+                "name": "Other",
+                "level": null,
+                "description": null,
+                "tags": [
+                    "CSS",
+                    "Rust",
+                    "Git",
+                    "Go",
+                    "Linux Server",
+                    "UI Design",
+                    "Photoshop",
+                    "Illustrator",
+                    "Figma",
+                    "Typography"
+                ]
+            }
+        ],
+        "contact": [
+            {
+                "text": "webpraktikos.com",
+                "url": "//webpraktikos.com",
+                "isLink": true
+            },
+            {
+                "text": "twitter.com/webpraktikos",
+                "url": "//twitter.com/webpraktikos",
+                "isLink": true
+            },
+            {
+                "text": "1020 Wien, Austria",
+                "isLink": false
+            },
+            {
+                "text": "hi@webpraktikos.com",
+                "isLink": false
+            },
+            {
+                "text": "(+43) 0699 77 33 77 55",
+                "isLink": false
+            }
         ]
-      }
-    ],
-    "contact": [
-      {
-        "text": "webpraktikos.com",
-        "url": "//webpraktikos.com",
-        "isLink": true
-      },
-      {
-        "text": "twitter.com/webpraktikos",
-        "url": "//twitter.com/webpraktikos",
-        "isLink": true
-      },
-      {
-        "text": "1020 Wien, Austria",
-        "isLink": false
-      },
-      {
-        "text": "hi@webpraktikos.com",
-        "isLink": false
-      },
-      {
-        "text": "(+43) 0699 77 33 77 55",
-        "isLink": false
-      }
-    ]
-  }
+    }
 }

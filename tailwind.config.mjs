@@ -51,11 +51,13 @@ export default {
       },
       colors: {
         gray: {
-          "150": "hsl(210, 44%, 97%)",
-          "250": "hsl(210, 40%, 93.5%)",
-          "550": "hsl(218, 20%, 63%)",
-          "650": "hsl(216, 15%, 48%)",
-          "750": "hsl(214, 17%, 32%)",
+          "150": "var(--color-gray-150)",
+          "250": "var(--color-gray-250)",
+          "550": "var(--color-gray-550)",
+          "600": "var(--color-gray-600)",
+          "650": "var(--color-gray-650)",
+          "700": "var(--color-gray-700)",
+          "750": "var(--color-gray-750)",
           ...defaultTheme.colors.gray,
         },
         link: "#fbf3f3",

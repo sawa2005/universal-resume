@@ -2,6 +2,16 @@
 @import "tailwindcss";
 @config "./tailwind.config.mjs";
 
+:root {
+  --color-gray-150: hsl(210, 44%, 97%);
+  --color-gray-250: hsl(210, 40%, 93.5%);
+  --color-gray-550: hsl(218, 20%, 63%);
+  --color-gray-600: hsl(217, 19%, 45%); /* Added gray-600 */
+  --color-gray-650: hsl(216, 15%, 48%);
+  --color-gray-700: hsl(215, 19%, 35%);
+  --color-gray-750: hsl(214, 17%, 32%);
+}
+
 @variant print {
   @page {
     margin-top: 0in;
