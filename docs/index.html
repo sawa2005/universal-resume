@@ -15,11 +15,17 @@
 </head>
 
 <body>
-  <!-- Language Switcher -->
-  <div class="fixed top-4 right-4 print:hidden z-50 bg-white p-2 rounded shadow-md border border-gray-200 flex items-center">
-    <button id="btn-en" class="font-bold text-gray-700 hover:text-black px-2 focus:outline-none">EN</button>
-    <span class="text-gray-400">|</span>
-    <button id="btn-sv" class="text-gray-500 hover:text-black px-2 focus:outline-none">SV</button>
+  <!-- Language & Theme Switcher -->
+  <div class="fixed top-4 right-4 print:hidden z-50 bg-white p-2 rounded shadow-md border border-gray-200 flex items-center gap-3">
+    <div class="flex items-center">
+      <button id="btn-en" class="font-bold text-gray-700 hover:text-black px-2 focus:outline-none">EN</button>
+      <span class="text-gray-400">|</span>
+      <button id="btn-sv" class="text-gray-500 hover:text-black px-2 focus:outline-none">SV</button>
+    </div>
+    <div class="h-4 w-px bg-gray-300"></div>
+    <select id="theme-select" class="text-sm text-gray-700 border-none focus:ring-0 cursor-pointer bg-transparent outline-none">
+      <!-- Options will be populated by script.js -->
+    </select>
   </div>
 
   <main class="font-tiktoksans hyphens-manual">

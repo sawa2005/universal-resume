@@ -196,10 +196,9 @@ fetch('data.json')
     allData = data;
     
     // Apply Theme
-    const applyTheme = () => {
-      if (!allData.config || !allData.config.theme) return;
-      const themeName = allData.config.theme;
-      const themeValues = allData.config.themes && allData.config.themes[themeName];
+    const applyTheme = (themeName) => {
+      const selectedTheme = themeName || allData.config.theme || 'default';
+      const themeValues = allData.config.themes && allData.config.themes[selectedTheme];
       
       if (themeValues) {
         const root = document.documentElement;
@@ -208,7 +207,28 @@ fetch('data.json')
         });
       }
     };
-    applyTheme();
+
+    // Initialize Theme Select
+    const themeSelect = document.getElementById('theme-select');
+    if (allData.config && allData.config.themes) {
+      const themes = Object.keys(allData.config.themes);
+      themeSelect.innerHTML = themes.map(theme => 
+        `<option value="${theme}">${theme.charAt(0).toUpperCase() + theme.slice(1)}</option>`
+      ).join('');
+      
+      // Set initial value
+      const initialTheme = allData.config.theme || 'default';
+      themeSelect.value = initialTheme;
+      applyTheme(initialTheme);
+
+      // Add change listener
+      themeSelect.addEventListener('change', (e) => {
+        applyTheme(e.target.value);
+      });
+    } else {
+      // Hide if no themes config
+      themeSelect.style.display = 'none';
+    }
 
     // Initial render
     render(currentLang);
