@@ -154,6 +154,20 @@ const render = (lang) => {
   `).join('');
   document.querySelectorAll('[data-section="skills"]').forEach(el => el.innerHTML = skillsHTML);
 
+  // Conditional display of skills section
+  const skillsWrapperLeft = document.getElementById('skills-wrapper-left');
+  const skillsWrapperRight = document.getElementById('skills-wrapper-right');
+
+  if (skillsWrapperLeft && skillsWrapperRight) { // Ensure both wrappers exist before manipulating
+    if (currentProjectFilter === 'All') {
+      skillsWrapperLeft.classList.remove('hidden');
+      skillsWrapperRight.classList.add('hidden');
+    } else {
+      skillsWrapperLeft.classList.add('hidden');
+      skillsWrapperRight.classList.remove('hidden');
+    }
+  }
+
   // Render Contact
   const contactHTML = `
     <ul class="list-inside pr-7">

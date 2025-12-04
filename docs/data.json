@@ -45,7 +45,7 @@
         "title": "Aspiring full-stack developer",
         "about": [
             {
-                "title": "User Interface Designer",
+                "title": "Web Designer",
                 "period": "Since 2010",
                 "description": "Minimal and formal résumé website template for print, mobile, and desktop. The proportions are the same on the screen and paper. Built with amazing <a class=\"hover:bg-gray-150 rounded-lg transition ease-in duration-100\" href=\"https://tailwindcss.com/\">Tailwind CSS&nbsp;°</a>."
             },
@@ -210,131 +210,166 @@
         ],
         "experience": [
             {
-                "company": "WebPraktikos Inc.",
-                "role": "Web Developer",
-                "period": "Jun 2018 – Present",
-                "content": "Built doner pork chop &bull; Served salmon, cream soft cheese, and brisket &bull; Acted 55% pork chop &bull; Filled burgdoggen & frankfurter strip steak with 90% burger patties and broth",
-                "type": "paragraph"
-            },
-            {
-                "company": "Mammoth GmbH",
-                "role": "Android Developer",
-                "period": "Feb 2017 – Apr 2018",
+                "company": "Traino AB",
+                "role": "Fullstack-utvecklare (Praktik)",
+                "period": "September 2024 – Januari 2025",
                 "content": [
-                    "Cooked shrimps for 2 to 3 minutes per side, or until opaque; then, transfered to a serving dish with limon",
-                    "Roasted a pig, turning frequently, until meat reached 160°F in the thickest part of the shoulder or thigh"
+                    "Utvecklade en Progressive Web Application (PWA) med Next.js, PHP, JSX, CSS, AWS S3, Stripe, MySQL.",
+                    "Jobbade inom GitHub med merging och fetch requests inom flera brancher.",
+                    "Skapade företagets AWS S3-implementation och skapade samt genomförde en 4-dagars utbildning för att lära teamet hur det används."
                 ],
                 "type": "list"
             },
             {
-                "company": "Exquisite Systems d.o.o.",
-                "role": "Software QA Specialist",
-                "period": "May 2015 – Dec 2016",
+                "company": "Team PGZ",
+                "role": "Webbutvecklare",
+                "period": "Oktober 2022 – Pågående",
                 "content": [
-                    "Made stockfish, which is unsalted fish, usully cod, dried by cold air and wind on wooden racks on the foreshore",
-                    "Preserved meat without salt by removing fat, cutting it into very thin strips and drying it in the sun or by a fire."
+                    "Utvecklade en anpassad webbplats från grunden för ett racing team kallat Team PGZ med syftet att förbättra teamets online-närvaro.",
+                    "Skapade teamets identitet och designstil eftersom detta var deras första webbsida.",
+                    "Presenterar teamet till omkring 1.3-1.5k besökare per månad."
                 ],
                 "type": "list"
             }
         ],
         "education": [
             {
-                "institution": "Graz University of Technology",
-                "degree": "Master's Degree in Chemistry",
-                "period": "2014 – 2015",
+                "institution": "Lexicon Östergötland",
+                "degree": "Fullstack Next.js/React",
+                "period": "Augusti 2025 - Pågående",
                 "content": null
             },
             {
-                "institution": "Vienna University of Technology",
-                "degree": "Bachelor’s Degree in Biology",
-                "period": "2010 – 2013",
+                "institution": "Mittuniversitetet",
+                "degree": "Webbutveckling, 120 hp",
+                "period": " – 2024",
                 "content": null
             },
             {
-                "institution": "Vienna University of Technology",
-                "degree": "Bachelor’s Degree in Chemistry",
-                "period": "2010 – 2013",
+                "institution": "Realgymnasiet Norrköping",
+                "degree": "Teknikprogrammet (Informations- och medieteknik)",
+                "period": " – 2020",
                 "content": null
             }
         ],
         "projects": [
             {
-                "name": "Universal Resume",
-                "url": "https://github.com/WebPraktikos/universal-resume",
-                "period": "Since 2019",
-                "tags": ["HTML", "CSS", "Featured"],
-                "description": "Good design is as little design as possible. Less, but better — because it concentrates on the essential aspects, and the pro&amp;shy;ducts are not burdened with non-essentials."
-            },
-            {
-                "name": "tailwindcss-rich-docs",
-                "url": "https://github.com/WebPraktikos/tailwindcss-rich-docs",
-                "period": "2017",
-                "tags": ["JavaScript", "Featured"],
-                "description": "Good design is long-lasting. It avoids being fashionable and therefore never appears antiquated.<br>Good design is honest. It does not make a product more innovative, powerful or valuable than it really is."
-            },
-            {
-                "name": "Third One",
+                "name": "chat-app – Real-time chatt applikation",
                 "url": null,
-                "period": "2013 – 2014",
-                "tags": ["Vue", "JavaScript"],
-                "description": "Good design is innovative. Technological development is always offering new opportunities for innovative design."
+                "period": "2025",
+                "tags": ["TypeScript", "Next.js", "React"],
+                "description": "Webbtjänst där användare kan spara böcker och citat de gillar. API byggd med ASP.NET Core 8, JWT-autentisering och SQLite databas. Klient byggd med Angular 18, hela applikationen publicerades via Render."
             },
             {
-                "name": "Fantastic Project",
+                "name": "books & quotes – Klientwebbsida & REST API",
                 "url": null,
-                "period": "2012",
-                "tags": ["JavaScript"],
-                "description": "Strip steak tail capicola alcatra ground round tenderloin ar. Venison tri-tip porchetta, brisket tenderloin pig beef."
+                "period": "2025",
+                "tags": ["ASP.NET", "REST API", "SQLite"],
+                "description": "Webbtjänst där användare kan spara böcker och citat de gillar. API byggd med ASP.NET Core 8, JWT-autentisering och SQLite databas. Klient byggd med Angular 18, hela applikationen publicerades via Render."
+            },
+            {
+                "name": "Devpendent – Frilansplattform för utvecklare",
+                "url": null,
+                "period": "2024",
+                "tags": ["C#", "ASP.NET"],
+                "description": "Webbapplikation där utvecklare kan annonsera sina frilanstjänster. Byggd med ASP.NET MVC, SQL Server och Azure-publicering. CSHTML, Sass, C# och JS/jQuery."
+            },
+            {
+                "name": "mpthree – Klientwebbsida & REST API",
+                "url": null,
+                "period": "2024",
+                "tags": ["React", "REST API", "HTML", "CSS"],
+                "description": "Webbtjänst för uppladdning av .mp3 filer. API byggd med Node.js, MongoDB med Mongoose-scheman som databas. Klient byggd med React, HTML, CSS och JS/JSX."
+            },
+            {
+                "name": "Team PGZ - Webbplats",
+                "url": null,
+                "period": "2023",
+                "tags": ["HTML", "CSS"],
+                "description": "Webbplats skapad under frilansarbete som presenterar Team PGZ. Byggd med HTML, CSS och JavaScript. Fokuset var att skapa en simpel ”single page” webbsida som ser modern ut."
+            },
+            {
+                "name": "Min portfoliowebbsida",
+                "url": null,
+                "period": "2023",
+                "tags": ["REST API", "TypeScript", "PHP", "HTML"],
+                "description": "Portfoliowebbsida som presenterar min utbildning, tidigare projekt och designstil. Informationen som visas hämtas från ett REST API som skapades med PHP. Byggd med HTML, TypeScript, Sass och Gulp för automatiserat arbetsflöde."
+            },
+            {
+                "name": "Setup shop – Webbaffärskoncept",
+                "url": null,
+                "period": "2023",
+                "tags": ["ASP.NET", "SQLite", "C#", "HTML", "CSS"],
+                "description": "Webbaffärskoncept byggt med ASP.NET MVC. ASP.NET Identity för användarkonton och SQLite som databas. C# för backend och HTML, CSS, JS/jQuery för frontend."
+            },
+            {
+                "name": "Gotlands Vandrarhem – WordPress webbsida & tema",
+                "url": null,
+                "period": "2022",
+                "tags": ["HTML", "CSS", "PHP"],
+                "description": "Webbsida byggd med WordPress CMS som presenterar ett fiktivt vandrarhem. Baserat på ett eget skapat tema specifikt för webbsidan. HTML, CSS, JS och PHP."
+            },
+            {
+                "name": "Song API – Webb-API",
+                "url": null,
+                "period": "2022",
+                "tags": ["ASP.NET", "SQLite", "C#"],
+                "description": "ASP.NET Core API som hanterar låtar med olika egenskaper. Lagrar dessa låtar i en SQLite-databas med Entity Framework. Byggd helt inom C#."
+            },
+            {
+                "name": "PostHouse – Simpel bloggtjänst",
+                "url": null,
+                "period": "2021",
+                "tags": ["PHP", "HTML", "CSS"],
+                "description": "Blogg/social mediatjänst liknande till Twitter/X. Byggt helt inom PHP med en MySQL-databas för lagring av poster och användarkonton. HTML, CSS, JS för frontend."
             }
         ],
         "skills": [
             {
-                "name": "JavaScript",
-                "level": "Middle Level",
-                "description": "Good parts: pure function, higher-order functions, factory functions, composition. Bad parts: inheritance, this, new.",
-                "tags": ["ES6", "Vue", "Functional Programming", "Node"]
+                "name": "Programmeringsspråk",
+                "level": null,
+                "description": null,
+                "tags": ["HTML5", "CSS & SCSS", "JavaScript & TypeScript", "PHP", "C#", "SQL"]
             },
             {
-                "name": "Other",
+                "name": "Teknologier",
+                "level": null,
+                "description": null,
+                "tags": ["Node.js", "ASP.NET", "Git", "React", "Angular", "Next.js", "MySQL", "PostgreSQL"]
+            },
+            {
+                "name": "Verktyg",
                 "level": null,
                 "description": null,
                 "tags": [
-                    "CSS",
-                    "Rust",
-                    "Git",
-                    "Go",
-                    "Linux Server",
-                    "UI Design",
-                    "Photoshop",
-                    "Illustrator",
+                    "Visual Studio & VSCode",
+                    "Adobe Xd",
                     "Figma",
-                    "Typography"
+                    "GitHub",
+                    "Azure",
+                    "AWS S3",
+                    "Supabase",
+                    "Tailwind"
                 ]
+            },
+            {
+                "name": "Språk",
+                "level": null,
+                "description": null,
+                "tags": ["Svenska (modersmål)", "Engelska (modersmål)"]
+            },
+            {
+                "name": "Körkort",
+                "level": null,
+                "description": null,
+                "tags": ["B-körkort"]
             }
         ],
         "contact": [
-            {
-                "text": "webpraktikos.com",
-                "url": "//webpraktikos.com",
-                "isLink": true
-            },
-            {
-                "text": "twitter.com/webpraktikos",
-                "url": "//twitter.com/webpraktikos",
-                "isLink": true
-            },
-            {
-                "text": "1020 Wien, Austria",
-                "isLink": false
-            },
-            {
-                "text": "hi@webpraktikos.com",
-                "isLink": false
-            },
-            {
-                "text": "(+43) 0699 77 33 77 55",
-                "isLink": false
-            }
+            { "text": "contact@slw.one", "isLink": false },
+            { "text": "072-868 28 43", "isLink": false },
+            { "text": "github.com/sawa2005", "url": "https://github.com/sawa2005", "isLink": true },
+            { "text": "Norrköping, Sverige", "isLink": false }
         ]
     }
 }
