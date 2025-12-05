@@ -29,8 +29,8 @@ const renderProjects = (projects) => {
     : projects.filter(p => p.tags && p.tags.includes(currentProjectFilter));
 
   const projectsHTML = filteredProjects.map(proj => `
-    <section class="mb-4.5 break-inside-avoid">
-      <header>
+    <section class="mb-4.5">
+      <header class="break-after-avoid">
         <h3 class="text-lg font-semibold text-gray-700 leading-snugish">
           ${proj.url ? `
             <a href="${proj.url}" class="group">
@@ -97,8 +97,8 @@ const render = (lang) => {
 
   // Render Experience
   const experienceHTML = data.experience.map(exp => `
-    <section class="mb-4.5 break-inside-avoid">
-      <header>
+    <section class="mb-4.5">
+      <header class="break-after-avoid">
         <h3 class="text-lg font-semibold text-gray-700 leading-snugish">
           ${exp.company}
         </h3>
@@ -113,8 +113,8 @@ const render = (lang) => {
 
   // Render Education
   const educationHTML = data.education.map(edu => `
-    <section class="mb-4.5 break-inside-avoid">
-      <header>
+    <section class="mb-4.5">
+      <header class="break-after-avoid">
         <h3 class="text-lg font-semibold text-gray-700 leading-snugish">
           ${edu.institution}
         </h3>
@@ -133,8 +133,8 @@ const render = (lang) => {
 
   // Render Skills
   const skillsHTML = data.skills.map(skill => `
-    <section class="mb-4.5 break-inside-avoid">
-      <header>
+    <section class="mb-4.5">
+      <header class="break-after-avoid">
         <h3 class="text-lg font-semibold text-gray-700 leading-snugish">
           ${skill.name}
         </h3>
@@ -187,7 +187,7 @@ const render = (lang) => {
 
   // Render About
   const aboutHTML = data.about.map(item => `
-    <section class="mb-4.5 break-inside-avoid">
+    <section class="mb-4.5">
       <header>
         <h3 class="text-lg font-semibold text-gray-700 leading-snugish">
           ${item.title}
