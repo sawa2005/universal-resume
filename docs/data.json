@@ -3,6 +3,7 @@
         "theme": "default",
         "themes": {
             "default": {
+                "--color-page-background": "#ffffff",
                 "--color-gray-150": "hsl(0, 5%, 97%)",
                 "--color-gray-250": "hsl(0, 5%, 93.5%)",
                 "--color-gray-550": "hsl(0, 5%, 63%)",
@@ -12,6 +13,7 @@
                 "--color-gray-750": "hsl(0, 5%, 32%)"
             },
             "warm": {
+                "--color-page-background": "#ffffff",
                 "--color-gray-150": "hsl(35, 30%, 96%)",
                 "--color-gray-250": "hsl(35, 25%, 92%)",
                 "--color-gray-550": "hsl(30, 15%, 60%)",
@@ -21,6 +23,7 @@
                 "--color-gray-750": "hsl(30, 25%, 30%)"
             },
             "cold": {
+                "--color-page-background": "#ffffff",
                 "--color-gray-150": "hsl(200, 40%, 96%)",
                 "--color-gray-250": "hsl(200, 35%, 92%)",
                 "--color-gray-550": "hsl(205, 25%, 60%)",
@@ -28,6 +31,16 @@
                 "--color-gray-650": "hsl(205, 30%, 45%)",
                 "--color-gray-700": "hsl(205, 35%, 35%)",
                 "--color-gray-750": "hsl(205, 40%, 30%)"
+            },
+            "dark": {
+                "--color-page-background": "hsl(215, 15%, 15%)",
+                "--color-gray-150": "hsl(215, 15%, 22%)",
+                "--color-gray-250": "hsl(215, 15%, 25%)",
+                "--color-gray-550": "hsl(215, 10%, 65%)",
+                "--color-gray-600": "hsl(215, 10%, 75%)",
+                "--color-gray-650": "hsl(215, 10%, 80%)",
+                "--color-gray-700": "hsl(215, 10%, 90%)",
+                "--color-gray-750": "hsl(215, 10%, 95%)"
             }
         }
     },

@@ -96,3 +96,14 @@ body .icon-parent::before {
 .break-after-avoid {
   break-after: avoid;
 }
+
+/* Custom styles for select options in dark mode */
+select#theme-select {
+  background-color: var(--color-gray-250);
+  color: var(--color-gray-700);
+}
+
+select#theme-select option {
+  background-color: var(--color-gray-250);
+  color: var(--color-gray-700);
+}

@@ -66,8 +66,8 @@ const renderProjectFilters = (projects) => {
 
   container.innerHTML = Array.from(tags).map(tag => {
     const isActive = currentProjectFilter.has(tag);
-    const activeClass = 'bg-gray-700 text-white border-gray-700';
-    const inactiveClass = 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100';
+    const activeClass = 'bg-gray-700 text-gray-150 border-gray-700';
+    const inactiveClass = 'bg-gray-250 text-gray-750 border-gray-250 hover:bg-gray-550 hover:text-white'; // Updated for better theme support
     return `
     <button class="px-2 py-1 text-xs rounded border transition-colors ${isActive ? activeClass : inactiveClass}"
       onclick="setProjectFilter('${tag}')">
@@ -104,8 +104,8 @@ const render = (lang) => {
   if (!data) return;
 
   // Update Buttons
-  document.getElementById('btn-en').className = lang === 'en' ? 'font-bold text-gray-700 hover:text-black px-2 focus:outline-none' : 'text-gray-500 hover:text-black px-2 focus:outline-none';
-  document.getElementById('btn-sv').className = lang === 'sv' ? 'font-bold text-gray-700 hover:text-black px-2 focus:outline-none' : 'text-gray-500 hover:text-black px-2 focus:outline-none';
+  document.getElementById('btn-en').className = lang === 'en' ? 'font-bold text-gray-750 hover:text-gray-750 px-2 focus:outline-none' : 'text-gray-550 hover:text-gray-750 px-2 focus:outline-none';
+  document.getElementById('btn-sv').className = lang === 'sv' ? 'font-bold text-gray-750 hover:text-gray-750 px-2 focus:outline-none' : 'text-gray-550 hover:text-gray-750 px-2 focus:outline-none';
 
   // Update Labels
   Object.keys(data.labels).forEach(key => {
@@ -250,6 +250,12 @@ fetch('data.json')
         Object.entries(themeValues).forEach(([key, value]) => {
           root.style.setProperty(key, value);
         });
+        // Also set body background color to match the theme's page background
+        if (themeValues['--color-page-background']) {
+             document.body.style.backgroundColor = themeValues['--color-page-background'];
+        } else {
+             document.body.style.backgroundColor = ''; // Reset if not defined
+        }
       }
     };
 
