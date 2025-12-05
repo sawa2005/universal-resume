@@ -1,6 +1,6 @@
 {
     "config": {
-        "theme": "warm",
+        "theme": "default",
         "themes": {
             "default": {
                 "--color-gray-150": "hsl(0, 5%, 97%)",
@@ -38,7 +38,8 @@
             "education": "EDUCATION",
             "projects": "PROJECTS",
             "skills": "SKILLS",
-            "contact": "CONTACT"
+            "contact": "CONTACT",
+            "relevantProjects": "RELEVANT PROJECTS"
         },
         "name": "Samuel Ward",
         "initials": "SW",
@@ -191,7 +192,8 @@
             "education": "UTBILDNING",
             "projects": "PROJEKT",
             "skills": "FÄRDIGHETER",
-            "contact": "KONTAKT"
+            "contact": "KONTAKT",
+            "relevantProjects": "RELEVANTA PROJEKT"
         },
         "name": "Samuel Ward",
         "initials": "SW",

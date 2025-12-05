@@ -14,10 +14,10 @@
 
 @variant print {
   @page {
-    margin-top: 0in;
-    margin-bottom: 0in;
-    margin-left: 0in;
-    margin-right: 0in;
+    margin-top: 0.5in;
+    margin-bottom: 0.5in;
+    margin-left: 0.5in;
+    margin-right: 0.5in;
   }
 
   body {
@@ -27,7 +27,7 @@
   }
 
   .page {
-    padding: theme(spacing.16) theme(spacing.16) !important;
+    padding: 0 !important;
   }
 
   .initial {
