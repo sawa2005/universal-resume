@@ -228,7 +228,7 @@ const render = (lang) => {
         </p>
       </header>
       <div class="mt-2.1 text-md text-gray-700 leading-normal">
-        ${item.description}
+        <p>${item.description}</p>
       </div>
     </section>
   `).join('');

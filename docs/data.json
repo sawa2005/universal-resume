@@ -46,14 +46,9 @@
         "title": "Aspiring full-stack developer",
         "about": [
             {
-                "title": "Web Designer",
-                "period": "Since 2010",
+                "title": "",
+                "period": "",
                 "description": "Minimal and formal résumé website template for print, mobile, and desktop. The proportions are the same on the screen and paper. Built with amazing <a class=\"hover:bg-gray-150 rounded-lg transition ease-in duration-100\" href=\"https://tailwindcss.com/\">Tailwind CSS&nbsp;°</a>."
-            },
-            {
-                "title": "Front-End Developer",
-                "period": "Since 2013",
-                "description": "<p class=\"mt-2.1 text-md text-gray-700 leading-normal\">\u201cdocs/index.html\u201d is the main content file. By copying HTML: add pages, sec&shy;tions, subsection, and other parts.</p><p class=\"mt-2.1 text-md text-gray-700 leading-normal\"> <span class=\"font-medium text-gray-600 print:text-black\">Important:</span> Too much content on one page will break the page in the form of additional columns."
             }
         ],
         "experience": [
@@ -200,14 +195,9 @@
         "title": "Aspiring full-stack developer",
         "about": [
             {
-                "title": "User Interface Designer",
-                "period": "Since 2010",
-                "description": "Minimal and formal résumé website template for print, mobile, and desktop. The proportions are the same on the screen and paper. Built with amazing <a class=\"hover:bg-gray-150 rounded-lg transition ease-in duration-100\" href=\"https://tailwindcss.com/\">Tailwind CSS&nbsp;°</a>."
-            },
-            {
-                "title": "Front-End Developer",
-                "period": "Since 2013",
-                "description": "<p class=\"mt-2.1 text-md text-gray-700 leading-normal\">\u201cdocs/index.html\u201d is the main content file. By copying HTML: add pages, sec&shy;tions, subsection, and other parts.</p><p class=\"mt-2.1 text-md text-gray-700 leading-normal\"> <span class=\"font-medium text-gray-600 print:text-black\">Important:</span> Too much content on one page will break the page in the form of additional columns."
+                "title": "",
+                "period": "",
+                "description": "Hej! Jag är en fullstack-webbutvecklare med erfarenhet inom många olika teknologier och ramverk från både mina egna projekt, praktik och utbildning. <br /><br /> På senare tid har jag fokuserat mycket på TypeScript och specifikt Next.js/React genom min kurs på Lexicon och jag ser fram emot att fortsätta utvecklas som utvecklare inom detta och andra områden."
             }
         ],
         "experience": [
