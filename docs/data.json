@@ -48,136 +48,171 @@
             {
                 "title": "",
                 "period": "",
-                "description": "Minimal and formal résumé website template for print, mobile, and desktop. The proportions are the same on the screen and paper. Built with amazing <a class=\"hover:bg-gray-150 rounded-lg transition ease-in duration-100\" href=\"https://tailwindcss.com/\">Tailwind CSS&nbsp;°</a>."
+                "description": "Hello! I am a full-stack web developer with experience in many different technologies and frameworks from my own projects, internships, and education. <br /><br /> Recently, I have focused heavily on TypeScript and specifically Next.js/React through my course at Lexicon, and I look forward to continuing to grow as a developer in this and other areas."
             }
         ],
         "experience": [
             {
-                "company": "WebPraktikos Inc.",
-                "role": "Web Developer",
-                "period": "Jun 2018 – Present",
-                "content": "Built doner pork chop &bull; Served salmon, cream soft cheese, and brisket &bull; Acted 55% pork chop &bull; Filled burgdoggen & frankfurter strip steak with 90% burger patties and broth",
-                "type": "paragraph"
-            },
-            {
-                "company": "Mammoth GmbH",
-                "role": "Android Developer",
-                "period": "Feb 2017 – Apr 2018",
+                "company": "Traino AB",
+                "role": "Fullstack Developer (Internship)",
+                "period": "September 2024 – January 2025",
                 "content": [
-                    "Cooked shrimps for 2 to 3 minutes per side, or until opaque; then, transfered to a serving dish with limon",
-                    "Roasted a pig, turning frequently, until meat reached 160°F in the thickest part of the shoulder or thigh"
+                    "Developed a Progressive Web Application (PWA) using Next.js, PHP, JSX, CSS, AWS S3, Stripe, MySQL.",
+                    "Worked within GitHub managing merging and fetch requests across multiple branches.",
+                    "Created the company's AWS S3 implementation and designed as well as conducted a 4-day training session to teach the team how to use it."
                 ],
                 "type": "list"
             },
             {
-                "company": "Exquisite Systems d.o.o.",
-                "role": "Software QA Specialist",
-                "period": "May 2015 – Dec 2016",
+                "company": "Team PGZ",
+                "role": "Web Developer",
+                "period": "October 2022 – Present",
                 "content": [
-                    "Made stockfish, which is unsalted fish, usully cod, dried by cold air and wind on wooden racks on the foreshore",
-                    "Preserved meat without salt by removing fat, cutting it into very thin strips and drying it in the sun or by a fire."
+                    "Developed a custom website from scratch for a racing team called Team PGZ with the aim of improving the team's online presence.",
+                    "Created the team's identity and design style as this was their first website.",
+                    "Presenting the team to around 1.3-1.5k visitors per month."
                 ],
                 "type": "list"
             }
         ],
         "education": [
             {
-                "institution": "Graz University of Technology",
-                "degree": "Master's Degree in Chemistry",
-                "period": "2014 – 2015",
+                "institution": "Lexicon Östergötland",
+                "degree": "Fullstack Next.js/React",
+                "period": "August 2025 - Present",
                 "content": null
             },
             {
-                "institution": "Vienna University of Technology",
-                "degree": "Bachelor’s Degree in Biology",
-                "period": "2010 – 2013",
+                "institution": "Mid Sweden University",
+                "degree": "Web Development",
+                "period": "2020 – 2024",
                 "content": null
             },
             {
-                "institution": "Vienna University of Technology",
-                "degree": "Bachelor’s Degree in Chemistry",
-                "period": "2010 – 2013",
+                "institution": "Realgymnasiet Norrköping",
+                "degree": "Technology Program (Information and Media Technology)",
+                "period": "2017 – 2020",
                 "content": null
             }
         ],
         "projects": [
             {
-                "name": "Universal Resume",
-                "url": "https://github.com/WebPraktikos/universal-resume",
-                "period": "Since 2019",
-                "tags": ["HTML", "CSS", "Featured"],
-                "description": "Good design is as little design as possible. Less, but better — because it concentrates on the essential aspects, and the pro&amp;shy;ducts are not burdened with non-essentials."
+                "name": "chat-app – Real-time chat application",
+                "url": "https://github.com/sawa2005/chat-app",
+                "period": "2025",
+                "tags": ["TypeScript", "Next.js", "React"],
+                "description": "Modern chat app with many features: GIF, emoji, image upload, group conversations, user authentication etc. Written in TypeScript with Next.js, Supabase, Prisma, shadcn/ui & TailwindCSS."
             },
             {
-                "name": "tailwindcss-rich-docs",
-                "url": "https://github.com/WebPraktikos/tailwindcss-rich-docs",
-                "period": "2017",
-                "tags": ["JavaScript", "Featured"],
-                "description": "Good design is long-lasting. It avoids being fashionable and therefore never appears antiquated.<br>Good design is honest. It does not make a product more innovative, powerful or valuable than it really is."
+                "name": "books & quotes – Client Website & REST API",
+                "url": "https://bookquotes.onrender.com/",
+                "period": "2025",
+                "tags": ["ASP.NET", "REST API", "SQLite"],
+                "description": "Web service where users can save books and quotes they like. API built with ASP.NET Core 8, JWT authentication and SQLite database. Client built with Angular 18, the entire application published via Render."
             },
             {
-                "name": "Third One",
-                "url": null,
-                "period": "2013 – 2014",
-                "tags": ["Vue", "JavaScript"],
-                "description": "Good design is innovative. Technological development is always offering new opportunities for innovative design."
+                "name": "Devpendent – Freelance Platform for Developers",
+                "url": "https://github.com/sawa2005/Devpendent",
+                "period": "2024",
+                "tags": ["C#", "ASP.NET"],
+                "description": "Web application where developers can advertise their freelance services. Built with ASP.NET MVC, SQL Server and Azure publishing. CSHTML, Sass, C# and JS/jQuery."
             },
             {
-                "name": "Fantastic Project",
-                "url": null,
-                "period": "2012",
-                "tags": ["JavaScript"],
-                "description": "Strip steak tail capicola alcatra ground round tenderloin ar. Venison tri-tip porchetta, brisket tenderloin pig beef."
+                "name": "mpthree – Client Website & REST API",
+                "url": "https://slw-mpthree.netlify.app/",
+                "period": "2024",
+                "tags": ["React", "REST API", "HTML", "CSS"],
+                "description": "Web service for uploading .mp3 files. API built with Node.js, MongoDB with Mongoose schemas as database. Client built with React, HTML, CSS and JS/JSX."
+            },
+            {
+                "name": "Team PGZ - Website",
+                "url": "https://teampgz.com/",
+                "period": "2023",
+                "tags": ["HTML", "CSS"],
+                "description": "Website created during freelance work presenting Team PGZ. Built with HTML, CSS and JavaScript. The focus was to create a simple 'single page' website that looks modern."
+            },
+            {
+                "name": "My Portfolio Website",
+                "url": "https://slw.one/",
+                "period": "2023",
+                "tags": ["REST API", "TypeScript", "PHP", "HTML"],
+                "description": "Portfolio website presenting my education, previous projects and design style. The information shown is fetched from a REST API created with PHP. Built with HTML, TypeScript, Sass and Gulp for automated workflow."
+            },
+            {
+                "name": "Setup shop – Web Business Concept",
+                "url": "https://github.com/sawa2005/setup-shop",
+                "period": "2023",
+                "tags": ["ASP.NET", "SQLite", "C#", "HTML", "CSS"],
+                "description": "Web business concept built with ASP.NET MVC. ASP.NET Identity for user accounts and SQLite as database. C# for backend and HTML, CSS, JS/jQuery for frontend."
+            },
+            {
+                "name": "Gotlands Vandrarhem – WordPress Website & Theme",
+                "url": "https://samuelwarduppgifter.one/gotland/",
+                "period": "2022",
+                "tags": ["HTML", "CSS", "PHP"],
+                "description": "Website built with WordPress CMS presenting a fictional hostel. Based on a custom created theme specific for the website. HTML, CSS, JS and PHP."
+            },
+            {
+                "name": "Song API – Web API",
+                "url": "https://github.com/sawa2005/song-api",
+                "period": "2022",
+                "tags": ["ASP.NET", "SQLite", "C#"],
+                "description": "ASP.NET Core API handling songs with different properties. Stores these songs in a SQLite database with Entity Framework. Built entirely within C#."
+            },
+            {
+                "name": "PostHouse – Simple Blog Service",
+                "url": "https://posthouse.one/",
+                "period": "2021",
+                "tags": ["PHP", "HTML", "CSS"],
+                "description": "Blog/social media service similar to Twitter/X. Built entirely within PHP with a MySQL database for storing posts and user accounts. HTML, CSS, JS for frontend."
             }
         ],
         "skills": [
             {
-                "name": "JavaScript",
-                "level": "Middle Level",
-                "description": "Good parts: pure function, higher-order functions, factory functions, composition. Bad parts: inheritance, this, new.",
-                "tags": ["ES6", "Vue", "Functional Programming", "Node"]
+                "name": "Programming Languages",
+                "level": null,
+                "description": null,
+                "tags": ["HTML5", "CSS & SCSS", "JavaScript & TypeScript", "PHP", "C#", "SQL"]
             },
             {
-                "name": "Other",
+                "name": "Technologies",
+                "level": null,
+                "description": null,
+                "tags": ["Node.js", "ASP.NET", "Git", "React", "Angular", "Next.js", "MySQL", "PostgreSQL"]
+            },
+            {
+                "name": "Tools",
                 "level": null,
                 "description": null,
                 "tags": [
-                    "CSS",
-                    "Rust",
-                    "Git",
-                    "Go",
-                    "Linux Server",
-                    "UI Design",
-                    "Photoshop",
-                    "Illustrator",
+                    "Visual Studio & VSCode",
+                    "Adobe Xd",
                     "Figma",
-                    "Typography"
+                    "GitHub",
+                    "Azure",
+                    "AWS S3",
+                    "Supabase",
+                    "Tailwind"
                 ]
+            },
+            {
+                "name": "Languages",
+                "level": null,
+                "description": null,
+                "tags": ["Swedish (Native)", "English (Native)"]
+            },
+            {
+                "name": "Driving License",
+                "level": null,
+                "description": null,
+                "tags": ["Category B License"]
             }
         ],
         "contact": [
-            {
-                "text": "webpraktikos.com",
-                "url": "//webpraktikos.com",
-                "isLink": true
-            },
-            {
-                "text": "twitter.com/webpraktikos",
-                "url": "//twitter.com/webpraktikos",
-                "isLink": true
-            },
-            {
-                "text": "1020 Wien, Austria",
-                "isLink": false
-            },
-            {
-                "text": "hi@webpraktikos.com",
-                "isLink": false
-            },
-            {
-                "text": "(+43) 0699 77 33 77 55",
-                "isLink": false
-            }
+            { "text": "contact@slw.one", "isLink": false },
+            { "text": "072-868 28 43", "isLink": false },
+            { "text": "github.com/sawa2005", "url": "https://github.com/sawa2005", "isLink": true },
+            { "text": "Norrköping, Sweden", "isLink": false }
         ]
     },
     "sv": {
@@ -233,84 +268,84 @@
             },
             {
                 "institution": "Mittuniversitetet",
-                "degree": "Webbutveckling, 120 hp",
-                "period": " – 2024",
+                "degree": "Webbutveckling",
+                "period": "2020 – 2024",
                 "content": null
             },
             {
                 "institution": "Realgymnasiet Norrköping",
                 "degree": "Teknikprogrammet (Informations- och medieteknik)",
-                "period": " – 2020",
+                "period": "2017 – 2020",
                 "content": null
             }
         ],
         "projects": [
             {
                 "name": "chat-app – Real-time chatt applikation",
-                "url": null,
+                "url": "https://github.com/sawa2005/chat-app",
                 "period": "2025",
                 "tags": ["TypeScript", "Next.js", "React"],
-                "description": "Webbtjänst där användare kan spara böcker och citat de gillar. API byggd med ASP.NET Core 8, JWT-autentisering och SQLite databas. Klient byggd med Angular 18, hela applikationen publicerades via Render."
+                "description": "Modern chatt app med många funktioner: GIF, emoji, bild-uppladdning, gruppkonversationer, användarautentisering etc. Skriven i TypeScript med Next.js, Supabase, Prisma, shadcn/ui & TailwindCSS."
             },
             {
                 "name": "books & quotes – Klientwebbsida & REST API",
-                "url": null,
+                "url": "https://bookquotes.onrender.com/",
                 "period": "2025",
                 "tags": ["ASP.NET", "REST API", "SQLite"],
                 "description": "Webbtjänst där användare kan spara böcker och citat de gillar. API byggd med ASP.NET Core 8, JWT-autentisering och SQLite databas. Klient byggd med Angular 18, hela applikationen publicerades via Render."
             },
             {
                 "name": "Devpendent – Frilansplattform för utvecklare",
-                "url": null,
+                "url": "https://github.com/sawa2005/Devpendent",
                 "period": "2024",
                 "tags": ["C#", "ASP.NET"],
                 "description": "Webbapplikation där utvecklare kan annonsera sina frilanstjänster. Byggd med ASP.NET MVC, SQL Server och Azure-publicering. CSHTML, Sass, C# och JS/jQuery."
             },
             {
                 "name": "mpthree – Klientwebbsida & REST API",
-                "url": null,
+                "url": "https://slw-mpthree.netlify.app/",
                 "period": "2024",
                 "tags": ["React", "REST API", "HTML", "CSS"],
                 "description": "Webbtjänst för uppladdning av .mp3 filer. API byggd med Node.js, MongoDB med Mongoose-scheman som databas. Klient byggd med React, HTML, CSS och JS/JSX."
             },
             {
                 "name": "Team PGZ - Webbplats",
-                "url": null,
+                "url": "https://teampgz.com/",
                 "period": "2023",
                 "tags": ["HTML", "CSS"],
                 "description": "Webbplats skapad under frilansarbete som presenterar Team PGZ. Byggd med HTML, CSS och JavaScript. Fokuset var att skapa en simpel ”single page” webbsida som ser modern ut."
             },
             {
                 "name": "Min portfoliowebbsida",
-                "url": null,
+                "url": "https://slw.one/",
                 "period": "2023",
                 "tags": ["REST API", "TypeScript", "PHP", "HTML"],
                 "description": "Portfoliowebbsida som presenterar min utbildning, tidigare projekt och designstil. Informationen som visas hämtas från ett REST API som skapades med PHP. Byggd med HTML, TypeScript, Sass och Gulp för automatiserat arbetsflöde."
             },
             {
                 "name": "Setup shop – Webbaffärskoncept",
-                "url": null,
+                "url": "https://github.com/sawa2005/setup-shop",
                 "period": "2023",
                 "tags": ["ASP.NET", "SQLite", "C#", "HTML", "CSS"],
                 "description": "Webbaffärskoncept byggt med ASP.NET MVC. ASP.NET Identity för användarkonton och SQLite som databas. C# för backend och HTML, CSS, JS/jQuery för frontend."
             },
             {
                 "name": "Gotlands Vandrarhem – WordPress webbsida & tema",
-                "url": null,
+                "url": "https://samuelwarduppgifter.one/gotland/",
                 "period": "2022",
                 "tags": ["HTML", "CSS", "PHP"],
                 "description": "Webbsida byggd med WordPress CMS som presenterar ett fiktivt vandrarhem. Baserat på ett eget skapat tema specifikt för webbsidan. HTML, CSS, JS och PHP."
             },
             {
                 "name": "Song API – Webb-API",
-                "url": null,
+                "url": "https://github.com/sawa2005/song-api",
                 "period": "2022",
                 "tags": ["ASP.NET", "SQLite", "C#"],
                 "description": "ASP.NET Core API som hanterar låtar med olika egenskaper. Lagrar dessa låtar i en SQLite-databas med Entity Framework. Byggd helt inom C#."
             },
             {
                 "name": "PostHouse – Simpel bloggtjänst",
-                "url": null,
+                "url": "https://posthouse.one/",
                 "period": "2021",
                 "tags": ["PHP", "HTML", "CSS"],
                 "description": "Blogg/social mediatjänst liknande till Twitter/X. Byggt helt inom PHP med en MySQL-databas för lagring av poster och användarkonton. HTML, CSS, JS för frontend."
