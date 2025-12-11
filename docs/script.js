@@ -21,8 +21,8 @@ const renderContent = (content, type) => {
 };
 
 const renderProjects = (projects) => {
-  const container = document.querySelector('[data-section="projects"]');
-  if (!container) return;
+  const containers = document.querySelectorAll('[data-section="projects"]');
+  if (containers.length === 0) return;
 
   const filteredProjects = currentProjectFilter.has('All')
     ? projects
@@ -49,12 +49,12 @@ const renderProjects = (projects) => {
     </section>
   `).join('');
 
-  container.innerHTML = projectsHTML;
+  containers.forEach(container => container.innerHTML = projectsHTML);
 };
 
 const renderProjectFilters = (projects) => {
-  const container = document.getElementById('project-filters');
-  if (!container) return;
+  const containers = document.querySelectorAll('.project-filters');
+  if (containers.length === 0) return;
 
   // Extract unique tags
   const tags = new Set(['All']);
@@ -64,7 +64,7 @@ const renderProjectFilters = (projects) => {
     }
   });
 
-  container.innerHTML = Array.from(tags).map(tag => {
+  const html = Array.from(tags).map(tag => {
     const isActive = currentProjectFilter.has(tag);
     const activeClass = 'bg-gray-700 text-gray-150 border-gray-700';
     const inactiveClass = 'bg-gray-250 text-gray-750 border-gray-250 hover:bg-gray-550 hover:text-white'; // Updated for better theme support
@@ -74,6 +74,8 @@ const renderProjectFilters = (projects) => {
       ${tag}
     </button>
   `}).join('');
+  
+  containers.forEach(container => container.innerHTML = html);
 };
 
 // Global function for inline onclick
@@ -113,14 +115,15 @@ const render = (lang) => {
   });
 
   // New logic for projects heading: Change to "Relevant Projects" if specific tags are selected
-  const projectsHeadingElement = document.querySelector('[data-label="projects"]');
-  if (projectsHeadingElement) {
-    if (currentProjectFilter.size > 1 || (currentProjectFilter.size === 1 && !currentProjectFilter.has('All'))) {
-      projectsHeadingElement.textContent = data.labels.relevantProjects;
-    } else {
-      projectsHeadingElement.textContent = data.labels.projects;
-    }
-  }
+  const projectsHeadingElements = document.querySelectorAll('[data-label="projects"]');
+  projectsHeadingElements.forEach(projectsHeadingElement => {
+      if (currentProjectFilter.size > 1 || (currentProjectFilter.size === 1 && !currentProjectFilter.has('All'))) {
+        projectsHeadingElement.textContent = data.labels.relevantProjects;
+      } else {
+        projectsHeadingElement.textContent = data.labels.projects;
+      }
+  });
+
 
   // Update Name and Initials
   document.querySelectorAll('[data-field="name"]').forEach(el => el.textContent = data.name);
@@ -185,17 +188,31 @@ const render = (lang) => {
   `).join('');
   document.querySelectorAll('[data-section="skills"]').forEach(el => el.innerHTML = skillsHTML);
 
-  // Conditional display of skills section
-  const skillsWrapperLeft = document.getElementById('skills-wrapper-left');
-  const skillsWrapperRight = document.getElementById('skills-wrapper-right');
+  // Layout Management based on Project Filter
+  const projectsSideWrapper = document.getElementById('projects-side-wrapper');
+  const projectsBottomWrapper = document.getElementById('projects-bottom-wrapper');
+  const educationLeftWrapper = document.getElementById('education-left-wrapper');
+  const educationRightWrapper = document.getElementById('education-right-wrapper');
 
-  if (skillsWrapperLeft && skillsWrapperRight) { // Ensure both wrappers exist before manipulating
+  if (projectsSideWrapper && projectsBottomWrapper && educationLeftWrapper && educationRightWrapper) {
     if (currentProjectFilter.has('All')) {
-      skillsWrapperLeft.classList.remove('hidden');
-      skillsWrapperRight.classList.add('hidden');
+      // 'All' selected: 
+      // - Move Projects to Bottom
+      // - Move Education to Right Column
+      projectsSideWrapper.classList.add('hidden');
+      projectsBottomWrapper.classList.remove('hidden');
+      
+      educationLeftWrapper.classList.add('hidden');
+      educationRightWrapper.classList.remove('hidden');
     } else {
-      skillsWrapperLeft.classList.add('hidden');
-      skillsWrapperRight.classList.remove('hidden');
+      // Specific tag selected: Default Layout
+      // - Projects in Side Column
+      // - Education in Left Column
+      projectsSideWrapper.classList.remove('hidden');
+      projectsBottomWrapper.classList.add('hidden');
+      
+      educationLeftWrapper.classList.remove('hidden');
+      educationRightWrapper.classList.add('hidden');
     }
   }
 
