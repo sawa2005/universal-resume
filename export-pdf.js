@@ -12,7 +12,26 @@ async function main() {
   const lang = langArg ? langArg.split('=')[1] : 'en';
   const tags = tagsArg ? tagsArg.split('=')[1].split(',') : [];
   const theme = themeArg ? themeArg.split('=')[1] : 'default';
-  const outputPath = outputArg ? outputArg.split('=')[1] : 'resume.pdf';
+
+  // Determine output path
+  let outputPath;
+  if (outputArg) {
+    outputPath = outputArg.split('=')[1];
+  } else {
+    // Generate automatic filename
+    const date = new Date().toISOString().split('T')[0];
+    const tagsStr = tags.length ? `-${tags.join('_')}` : '-All';
+    const themeStr = theme !== 'default' ? `-${theme}` : '';
+    const filename = `resume-${date}-${lang}${tagsStr}${themeStr}.pdf`;
+    
+    // Ensure exports directory exists
+    const exportsDir = path.join(process.cwd(), 'exports');
+    if (!fs.existsSync(exportsDir)) {
+      fs.mkdirSync(exportsDir);
+    }
+    
+    outputPath = path.join(exportsDir, filename);
+  }
 
   console.log(`Generating PDF with:
     Language: ${lang}
