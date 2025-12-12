@@ -1,9 +1,9 @@
-import fs from 'fs';
-import path from 'path';
-import puppeteer from 'puppeteer';
-import { GoogleGenerativeAI } from '@google/generative-ai';
-import dotenv from 'dotenv';
-import { fileURLToPath } from 'url';
+import fs from "fs";
+import path from "path";
+import puppeteer from "puppeteer";
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import dotenv from "dotenv";
+import { fileURLToPath } from "url";
 
 dotenv.config();
 
@@ -13,8 +13,8 @@ const __dirname = path.dirname(__filename);
 const API_KEY = process.env.GEMINI_API_KEY;
 
 if (!API_KEY) {
-  console.error('Error: GEMINI_API_KEY environment variable not found. Please add it to your .env file.');
-  process.exit(1);
+    console.error("Error: GEMINI_API_KEY environment variable not found. Please add it to your .env file.");
+    process.exit(1);
 }
 
 const genAI = new GoogleGenerativeAI(API_KEY);
@@ -22,27 +22,29 @@ const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
 async function main() {
     const args = process.argv.slice(2);
-    const promptArg = args.find(arg => arg.startsWith('--prompt='));
-    const langArg = args.find(arg => arg.startsWith('--lang='));
-    const themeArg = args.find(arg => arg.startsWith('--theme='));
-    const outputArg = args.find(arg => arg.startsWith('--output='));
+    const promptArg = args.find((arg) => arg.startsWith("--prompt="));
+    const langArg = args.find((arg) => arg.startsWith("--lang="));
+    const themeArg = args.find((arg) => arg.startsWith("--theme="));
+    const outputArg = args.find((arg) => arg.startsWith("--output="));
 
     if (!promptArg) {
-        console.error('Error: --prompt flag is required. Usage: npm run export:cover-letter -- --prompt="Job description..."');
+        console.error(
+            'Error: --prompt flag is required. Usage: npm run export:cover-letter -- --prompt="Job description..."'
+        );
         process.exit(1);
     }
 
-    const promptText = promptArg.split('=')[1];
-    const lang = langArg ? langArg.split('=')[1] : 'en';
-    const theme = themeArg ? themeArg.split('=')[1] : 'default';
+    const promptText = promptArg.split("=")[1];
+    const lang = langArg ? langArg.split("=")[1] : "en";
+    const theme = themeArg ? themeArg.split("=")[1] : "default";
 
     // Read Data
-    const dataPath = path.join(process.cwd(), 'docs', 'data.json');
+    const dataPath = path.join(process.cwd(), "docs", "data.json");
     if (!fs.existsSync(dataPath)) {
-        console.error('Error: docs/data.json not found.');
+        console.error("Error: docs/data.json not found.");
         process.exit(1);
     }
-    const resumeData = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+    const resumeData = JSON.parse(fs.readFileSync(dataPath, "utf8"));
     const langData = resumeData[lang];
 
     if (!langData) {
@@ -56,7 +58,7 @@ async function main() {
     const cvContext = JSON.stringify(langData);
     const fullPrompt = `
         You are writing a professional cover letter for ${langData.name}.
-        Language: ${lang === 'sv' ? 'Swedish' : 'English'}. 
+        Language: ${lang === "sv" ? "Swedish" : "English"}. 
         
         Resume Data:
         ${cvContext}
@@ -66,10 +68,10 @@ async function main() {
         
         Instructions:
         - Write a professional and engaging cover letter tailored to the job description/request.
+        - The content should be less than 250 words, fitting on a single A4 page.
         - Use HTML format for the body content (use <p> for paragraphs, <br> for line breaks).
         - Do NOT include the header (Name, Address) or closing signature block (Sincerely, Name) as these will be added by the template.
         - Focus on the body paragraphs.
-        - Keep it concise (under 1 page).
         - Do NOT wrap the output in markdown code blocks (e.g. \`\`\`html). 
     `;
 
@@ -77,19 +79,19 @@ async function main() {
     try {
         const result = await model.generateContent(fullPrompt);
         const generatedContent = result.response.text();
-        cleanContent = generatedContent.replace(/```html/g, '').replace(/```/g, '');
+        cleanContent = generatedContent.replace(/```html/g, "").replace(/```/g, "");
     } catch (error) {
-        console.error('Error generating content with Gemini:', error);
+        console.error("Error generating content with Gemini:", error);
         process.exit(1);
     }
 
     // Prepare HTML
-    const templatePath = path.join(process.cwd(), 'docs', 'cover_letter_template.html');
+    const templatePath = path.join(process.cwd(), "docs", "cover_letter_template.html");
     if (!fs.existsSync(templatePath)) {
-        console.error('Error: docs/cover_letter_template.html not found.');
+        console.error("Error: docs/cover_letter_template.html not found.");
         process.exit(1);
     }
-    let templateHtml = fs.readFileSync(templatePath, 'utf8');
+    let templateHtml = fs.readFileSync(templatePath, "utf8");
 
     // Replicate Header from Resume (Tailwind styles)
     const headerHtml = `
@@ -100,42 +102,48 @@ async function main() {
             <h1 class="text-2xl font-semibold text-gray-750 pb-px">${langData.name}</h1>
         </header>
         <div class="mb-8 space-y-1">
-            ${langData.contact.map(c => `<div class="text-gray-600 text-sm">${c.text}</div>`).join('')}
+            ${langData.contact.map((c) => `<div class="text-gray-600 text-sm">${c.text}</div>`).join("")}
         </div>
         <hr class="mb-8 border-gray-200" />
     `;
 
     const finalHtml = templateHtml.replace(
-        '<!-- Content will be injected here by the script -->',
+        "<!-- Content will be injected here by the script -->",
         `${headerHtml}<div class="text-gray-700 leading-relaxed space-y-4">${cleanContent}</div>`
     );
 
-    const tempHtmlPath = path.join(process.cwd(), 'docs', 'temp_cover_letter.html');
+    const tempHtmlPath = path.join(process.cwd(), "docs", "temp_cover_letter.html");
     fs.writeFileSync(tempHtmlPath, finalHtml);
 
     // Generate PDF
-    console.log('Generating PDF...');
-    
+    console.log("Generating PDF...");
+
     let outputPath;
     if (outputArg) {
-        outputPath = outputArg.split('=')[1];
+        outputPath = outputArg.split("=")[1];
     } else {
-        const date = new Date().toISOString().split('T')[0];
-        outputPath = path.join(process.cwd(), 'exports', `cover-letter-${date}-${lang}.pdf`);
+        const date = new Date().toISOString().split("T")[0];
+        // Create a readable slug from the prompt
+        const promptSlug = promptText
+            .replace(/[^a-zA-Z0-9 ]/g, "") // Remove non-alphanumeric chars except spaces
+            .trim()
+            .replace(/\s+/g, "_") // Replace spaces with underscores
+            .substring(0, 30); // Truncate to 30 chars
+        outputPath = path.join(process.cwd(), "exports", `cover-letter-${date}-${lang}-${promptSlug}.pdf`);
     }
-    
-    const exportsDir = path.join(process.cwd(), 'exports');
+
+    const exportsDir = path.join(process.cwd(), "exports");
     if (!fs.existsSync(exportsDir)) {
-      fs.mkdirSync(exportsDir);
+        fs.mkdirSync(exportsDir);
     }
 
     // Delete existing file if it exists (overwrite)
     if (fs.existsSync(outputPath)) {
         try {
-        fs.unlinkSync(outputPath);
-        console.log(`Overwriting existing file: ${outputPath}`);
+            fs.unlinkSync(outputPath);
+            console.log(`Overwriting existing file: ${outputPath}`);
         } catch (err) {
-        console.error(`Error deleting existing file: ${err.message}`);
+            console.error(`Error deleting existing file: ${err.message}`);
         }
     }
 
@@ -143,13 +151,13 @@ async function main() {
     const page = await browser.newPage();
 
     await page.setRequestInterception(true);
-    page.on('request', request => {
+    page.on("request", (request) => {
         const url = request.url();
-         if (url.match(/\.(woff2?|ttf|otf)$/)) {
+        if (url.match(/\.(woff2?|ttf|otf)$/)) {
             const filename = path.basename(url);
-            let fontPath = path.join(process.cwd(), 'docs', 'fonts', filename);
+            let fontPath = path.join(process.cwd(), "docs", "fonts", filename);
             if (!fs.existsSync(fontPath)) {
-                const originalFontPath = path.join(process.cwd(), 'docs', 'fonts', 'original', filename);
+                const originalFontPath = path.join(process.cwd(), "docs", "fonts", "original", filename);
                 if (fs.existsSync(originalFontPath)) {
                     fontPath = originalFontPath;
                 }
@@ -164,8 +172,8 @@ async function main() {
         }
     });
 
-    await page.goto(`file://${tempHtmlPath}`, { waitUntil: 'networkidle0' });
-    
+    await page.goto(`file://${tempHtmlPath}`, { waitUntil: "networkidle0" });
+
     // Apply Theme
     if (resumeData.config && resumeData.config.themes) {
         const themeConfig = resumeData.config.themes[theme] || resumeData.config.themes.default;
@@ -176,8 +184,8 @@ async function main() {
                     root.style.setProperty(key, value);
                 }
                 // Ensure body bg matches page bg if defined
-                if (config['--color-page-background']) {
-                     document.body.style.backgroundColor = config['--color-page-background'];
+                if (config["--color-page-background"]) {
+                    document.body.style.backgroundColor = config["--color-page-background"];
                 }
             }, themeConfig);
         }
@@ -185,18 +193,18 @@ async function main() {
 
     await page.pdf({
         path: outputPath,
-        format: 'A4',
+        format: "A4",
         printBackground: true,
-        margin: { top: '0px', right: '0px', bottom: '0px', left: '0px' }
+        margin: { top: "0px", right: "0px", bottom: "0px", left: "0px" },
     });
 
     await browser.close();
     fs.unlinkSync(tempHtmlPath);
-    
+
     console.log(`Cover letter generated successfully: ${outputPath}`);
 }
 
-main().catch(error => {
-  console.error('Error:', error);
-  process.exit(1);
+main().catch((error) => {
+    console.error("Error:", error);
+    process.exit(1);
 });
