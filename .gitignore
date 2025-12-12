@@ -5,3 +5,4 @@ package-lock.json
 /docs/build.css
 /tmp/
 /exports/
+.env

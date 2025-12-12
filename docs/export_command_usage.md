@@ -73,3 +73,52 @@ You can use the following flags to customize the generated PDF:
 ## Output Location
 
 By default, all generated PDFs are saved in the `exports/` directory at the root of the project. If the `exports/` directory does not exist, it will be created automatically. You can change this behavior using the `--output` flag.
+
+## Cover Letter Generation
+
+You can also generate a personalized cover letter using AI (Gemini) based on your resume data.
+
+### Command
+
+```bash
+npm run export:cover-letter -- --prompt="<Job Description/Instructions>" [options]
+```
+
+**Note:** You must create a `.env` file in the project root with your Gemini API key:
+```
+GEMINI_API_KEY=your_api_key_here
+```
+
+### Options
+
+*   **`--prompt=<text>`** (Required)
+    *   The job description or specific instructions for the cover letter. Enclose in quotes.
+    *   **Example:** `--prompt="Software Engineer at Google, focusing on cloud infrastructure."`
+
+*   **`--lang=<language>`**
+    *   Specifies the language of the cover letter.
+    *   **Accepted values:** `en` (English), `sv` (Swedish).
+    *   **Default:** `en`
+    *   **Example:** `--lang=sv`
+
+*   **`--theme=<theme_name>`**
+    *   Applies a specific theme (colors/fonts) to match your resume.
+    *   **Accepted values:** `default`, `warm`, `cold`, `dark`.
+    *   **Default:** `default`
+    *   **Example:** `--theme=dark`
+
+*   **`--output=<filename.pdf>`**
+    *   Specifies the output filename.
+    *   **Default:** `exports/cover-letter-<date>-<lang>.pdf`
+
+### Examples
+
+*   **Generate a standard English cover letter:**
+    ```bash
+    npm run export:cover-letter -- --prompt="Front-end developer role at startup X. Focus on React experience."
+    ```
+
+*   **Generate a Swedish cover letter with the 'dark' theme:**
+    ```bash
+    npm run export:cover-letter -- --lang=sv --theme=dark --prompt="Fullstack-utvecklare på Ericsson. Betona erfarenhet av .NET och Azure."
+    ```

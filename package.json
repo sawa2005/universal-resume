@@ -16,15 +16,18 @@
   "scripts": {
     "serve": "concurrently \"postcss ./tailwind.css -o docs/build.css --watch\"  \"live-server ./docs \"",
     "build": "cross-env NODE_ENV=build postcss ./tailwind.css -o ./docs/build.css",
-    "export": "node export-pdf.js"
+    "export": "node export-pdf.js",
+    "export:cover-letter": "node export-cover-letter.js"
   },
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^7.0.2",
+    "@google/generative-ai": "^0.24.1",
     "@tailwindcss/postcss": "^4.1.17",
     "autoprefixer": "^10.4.22",
     "concurrently": "^5.1.0",
     "cross-env": "^7.0.0",
     "cssnano": "^7.1.2",
+    "dotenv": "^17.2.3",
     "live-server": "^1.2.0",
     "postcss-cli": "^11.0.1",
     "postcss-import": "^16.1.1",

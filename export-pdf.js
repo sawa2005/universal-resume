@@ -33,6 +33,17 @@ async function main() {
     outputPath = path.join(exportsDir, filename);
   }
 
+  // Delete existing file if it exists (overwrite)
+  if (fs.existsSync(outputPath)) {
+    try {
+      fs.unlinkSync(outputPath);
+      console.log(`Overwriting existing file: ${outputPath}`);
+    } catch (err) {
+      console.error(`Error deleting existing file: ${err.message}`);
+      // Proceeding might fail if the file is locked, but we can try.
+    }
+  }
+
   console.log(`Generating PDF with:
     Language: ${lang}
     Tags: ${tags.length ? tags.join(', ') : 'All'}
