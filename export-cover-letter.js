@@ -13,50 +13,80 @@ const __dirname = path.dirname(__filename);
 const API_KEY = process.env.GEMINI_API_KEY;
 
 if (!API_KEY) {
-    console.error("Error: GEMINI_API_KEY environment variable not found. Please add it to your .env file.");
-    process.exit(1);
+  console.error("Error: GEMINI_API_KEY environment variable not found. Please add it to your .env file.");
+  process.exit(1);
 }
 
 const genAI = new GoogleGenerativeAI(API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
 async function main() {
-    const args = process.argv.slice(2);
-    const promptArg = args.find((arg) => arg.startsWith("--prompt="));
-    const langArg = args.find((arg) => arg.startsWith("--lang="));
-    const themeArg = args.find((arg) => arg.startsWith("--theme="));
-    const outputArg = args.find((arg) => arg.startsWith("--output="));
+  const args = process.argv.slice(2);
+  const promptArg = args.find((arg) => arg.startsWith("--prompt="));
+  const langArg = args.find((arg) => arg.startsWith("--lang="));
+  const themeArg = args.find((arg) => arg.startsWith("--theme="));
+  const outputArg = args.find((arg) => arg.startsWith("--output="));
 
-    if (!promptArg) {
-        console.error(
-            'Error: --prompt flag is required. Usage: npm run export:cover-letter -- --prompt="Job description..."'
-        );
-        process.exit(1);
-    }
+  if (!promptArg) {
+    console.error(
+      'Error: --prompt flag is required. Usage: npm run export:cover-letter -- --prompt="Job description..."'
+    );
+    process.exit(1);
+  }
 
-    const promptText = promptArg.split("=")[1];
-    const lang = langArg ? langArg.split("=")[1] : "en";
-    const theme = themeArg ? themeArg.split("=")[1] : "default";
+  const promptText = promptArg.split("=")[1];
+  const lang = langArg ? langArg.split("=")[1] : "en";
+  const theme = themeArg ? themeArg.split("=")[1] : "default";
 
-    // Read Data
-    const dataPath = path.join(process.cwd(), "docs", "data.json");
-    if (!fs.existsSync(dataPath)) {
-        console.error("Error: docs/data.json not found.");
-        process.exit(1);
-    }
-    const resumeData = JSON.parse(fs.readFileSync(dataPath, "utf8"));
-    const langData = resumeData[lang];
+  // Read Data
+  const dataPath = path.join(process.cwd(), "docs", "data.json");
+  if (!fs.existsSync(dataPath)) {
+    console.error("Error: docs/data.json not found.");
+    process.exit(1);
+  }
+  const resumeData = JSON.parse(fs.readFileSync(dataPath, "utf8"));
+  const langData = resumeData[lang];
 
-    if (!langData) {
-        console.error(`Error: Language '${lang}' not found in data.json.`);
-        process.exit(1);
-    }
+  // Enter a reference letter (preferably written by you) as a reference for writing style
+  const referenceLetter = `
+    Hello!
 
-    // Generate Content
-    console.log(`Generating cover letter for ${langData.name} (${lang})...
+    It is with great excitement that I am now applying for the 2025 summer internship
+    program at Opera. When I saw the position and read through the ad, I thought to myself
+    that this was something I just had to apply for!
+
+    The position appeals to me primarily because I recently finished an internship at a smaller
+    startup and am looking for a place where I can both further develop and demonstrate my
+    skills. I am very confident in my abilities within HTML, CSS and JS/TypeScript as well as
+    designing good looking and modern web applications. I am also very well versed in React
+    as I’ve been interning at a company building a React web application for the past few
+    months as a fullstack-developer. I also have experience in C# and .NET through my
+    education so all in all I have a broad range of expertise within web development.
+    
+    As a person, I am diplomatic and non-confrontational, so I have never had difficulty
+    working in groups. I am also half-american and speak both English and Swedish fluently.
+    Since I’ve been studying remote for a while now I can work effectively from home and
+    enjoy that way of working. With that being said I am also really looking forward to
+    integrating within a team and getting some new experiences while also learning and
+    developing further as a developer.
+
+    I am sure that my experiences from my education and projects I have done will be able to
+    be used in this internship and I sincerely hope that I will get to hear from you soon!
+    
+    Sincerely,
+    Samuel Ward
+  `;
+
+  if (!langData) {
+    console.error(`Error: Language '${lang}' not found in data.json.`);
+    process.exit(1);
+  }
+
+  // Generate Content
+  console.log(`Generating cover letter for ${langData.name} (${lang})...
 `);
-    const cvContext = JSON.stringify(langData);
-    const fullPrompt = `
+  const cvContext = JSON.stringify(langData);
+  const fullPrompt = `
         You are writing a professional cover letter for ${langData.name}.
         Language: ${lang === "sv" ? "Swedish" : "English"}. 
         
@@ -72,29 +102,32 @@ async function main() {
         - Use HTML format for the body content (use <p> for paragraphs, <br> for line breaks).
         - Do NOT include the header (Name, Address) or closing signature block (Sincerely, Name) as these will be added by the template.
         - Focus on the body paragraphs.
-        - Do NOT wrap the output in markdown code blocks (e.g. \`\`\`html). 
+        - Do NOT wrap the output in markdown code blocks (e.g. \`\`\`html).
+        
+        When writing the cover letter, you can use this as a reference for writing style (do NOT copy content, only style):
+        ${referenceLetter}
     `;
 
-    let cleanContent;
-    try {
-        const result = await model.generateContent(fullPrompt);
-        const generatedContent = result.response.text();
-        cleanContent = generatedContent.replace(/```html/g, "").replace(/```/g, "");
-    } catch (error) {
-        console.error("Error generating content with Gemini:", error);
-        process.exit(1);
-    }
+  let cleanContent;
+  try {
+    const result = await model.generateContent(fullPrompt);
+    const generatedContent = result.response.text();
+    cleanContent = generatedContent.replace(/```html/g, "").replace(/```/g, "");
+  } catch (error) {
+    console.error("Error generating content with Gemini:", error);
+    process.exit(1);
+  }
 
-    // Prepare HTML
-    const templatePath = path.join(process.cwd(), "docs", "cover_letter_template.html");
-    if (!fs.existsSync(templatePath)) {
-        console.error("Error: docs/cover_letter_template.html not found.");
-        process.exit(1);
-    }
-    let templateHtml = fs.readFileSync(templatePath, "utf8");
+  // Prepare HTML
+  const templatePath = path.join(process.cwd(), "docs", "cover_letter_template.html");
+  if (!fs.existsSync(templatePath)) {
+    console.error("Error: docs/cover_letter_template.html not found.");
+    process.exit(1);
+  }
+  let templateHtml = fs.readFileSync(templatePath, "utf8");
 
-    // Replicate Header from Resume (Tailwind styles)
-    const headerHtml = `
+  // Replicate Header from Resume (Tailwind styles)
+  const headerHtml = `
         <header class="flex items-center mb-8 md:mb-11">
             <div class="initials-container mr-5 w-12 h-12 flex items-center justify-center text-xl leading-none text-gray-700 bg-gray-250 font-mono font-light shadow-inner rounded-lg print:bg-transparent print:border print:border-gray-300">
                 <div class="text-center">${langData.initials}</div>
@@ -107,104 +140,104 @@ async function main() {
         <hr class="mb-8 border-gray-200" />
     `;
 
-    const finalHtml = templateHtml.replace(
-        "<!-- Content will be injected here by the script -->",
-        `${headerHtml}<div class="text-gray-700 leading-relaxed space-y-4">${cleanContent}</div>`
-    );
+  const finalHtml = templateHtml.replace(
+    "<!-- Content will be injected here by the script -->",
+    `${headerHtml}<div class="text-gray-700 leading-relaxed space-y-4">${cleanContent}</div>`
+  );
 
-    const tempHtmlPath = path.join(process.cwd(), "docs", "temp_cover_letter.html");
-    fs.writeFileSync(tempHtmlPath, finalHtml);
+  const tempHtmlPath = path.join(process.cwd(), "docs", "temp_cover_letter.html");
+  fs.writeFileSync(tempHtmlPath, finalHtml);
 
-    // Generate PDF
-    console.log("Generating PDF...");
+  // Generate PDF
+  console.log("Generating PDF...");
 
-    let outputPath;
-    if (outputArg) {
-        outputPath = outputArg.split("=")[1];
+  let outputPath;
+  if (outputArg) {
+    outputPath = outputArg.split("=")[1];
+  } else {
+    const date = new Date().toISOString().split("T")[0];
+    // Create a readable slug from the prompt
+    const promptSlug = promptText
+      .replace(/[^a-zA-Z0-9 ]/g, "") // Remove non-alphanumeric chars except spaces
+      .trim()
+      .replace(/\s+/g, "_") // Replace spaces with underscores
+      .substring(0, 30); // Truncate to 30 chars
+    outputPath = path.join(process.cwd(), "exports", `cover-letter-${date}-${lang}-${promptSlug}.pdf`);
+  }
+
+  const exportsDir = path.join(process.cwd(), "exports");
+  if (!fs.existsSync(exportsDir)) {
+    fs.mkdirSync(exportsDir);
+  }
+
+  // Delete existing file if it exists (overwrite)
+  if (fs.existsSync(outputPath)) {
+    try {
+      fs.unlinkSync(outputPath);
+      console.log(`Overwriting existing file: ${outputPath}`);
+    } catch (err) {
+      console.error(`Error deleting existing file: ${err.message}`);
+    }
+  }
+
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+
+  await page.setRequestInterception(true);
+  page.on("request", (request) => {
+    const url = request.url();
+    if (url.match(/\.(woff2?|ttf|otf)$/)) {
+      const filename = path.basename(url);
+      let fontPath = path.join(process.cwd(), "docs", "fonts", filename);
+      if (!fs.existsSync(fontPath)) {
+        const originalFontPath = path.join(process.cwd(), "docs", "fonts", "original", filename);
+        if (fs.existsSync(originalFontPath)) {
+          fontPath = originalFontPath;
+        }
+      }
+      if (fs.existsSync(fontPath)) {
+        request.respond({ status: 200, body: fs.readFileSync(fontPath) });
+      } else {
+        request.continue();
+      }
     } else {
-        const date = new Date().toISOString().split("T")[0];
-        // Create a readable slug from the prompt
-        const promptSlug = promptText
-            .replace(/[^a-zA-Z0-9 ]/g, "") // Remove non-alphanumeric chars except spaces
-            .trim()
-            .replace(/\s+/g, "_") // Replace spaces with underscores
-            .substring(0, 30); // Truncate to 30 chars
-        outputPath = path.join(process.cwd(), "exports", `cover-letter-${date}-${lang}-${promptSlug}.pdf`);
+      request.continue();
     }
+  });
 
-    const exportsDir = path.join(process.cwd(), "exports");
-    if (!fs.existsSync(exportsDir)) {
-        fs.mkdirSync(exportsDir);
-    }
+  await page.goto(`file://${tempHtmlPath}`, { waitUntil: "networkidle0" });
 
-    // Delete existing file if it exists (overwrite)
-    if (fs.existsSync(outputPath)) {
-        try {
-            fs.unlinkSync(outputPath);
-            console.log(`Overwriting existing file: ${outputPath}`);
-        } catch (err) {
-            console.error(`Error deleting existing file: ${err.message}`);
+  // Apply Theme
+  if (resumeData.config && resumeData.config.themes) {
+    const themeConfig = resumeData.config.themes[theme] || resumeData.config.themes.default;
+    if (themeConfig) {
+      await page.evaluate((config) => {
+        const root = document.documentElement;
+        for (const [key, value] of Object.entries(config)) {
+          root.style.setProperty(key, value);
         }
-    }
-
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-
-    await page.setRequestInterception(true);
-    page.on("request", (request) => {
-        const url = request.url();
-        if (url.match(/\.(woff2?|ttf|otf)$/)) {
-            const filename = path.basename(url);
-            let fontPath = path.join(process.cwd(), "docs", "fonts", filename);
-            if (!fs.existsSync(fontPath)) {
-                const originalFontPath = path.join(process.cwd(), "docs", "fonts", "original", filename);
-                if (fs.existsSync(originalFontPath)) {
-                    fontPath = originalFontPath;
-                }
-            }
-            if (fs.existsSync(fontPath)) {
-                request.respond({ status: 200, body: fs.readFileSync(fontPath) });
-            } else {
-                request.continue();
-            }
-        } else {
-            request.continue();
+        // Ensure body bg matches page bg if defined
+        if (config["--color-page-background"]) {
+          document.body.style.backgroundColor = config["--color-page-background"];
         }
-    });
-
-    await page.goto(`file://${tempHtmlPath}`, { waitUntil: "networkidle0" });
-
-    // Apply Theme
-    if (resumeData.config && resumeData.config.themes) {
-        const themeConfig = resumeData.config.themes[theme] || resumeData.config.themes.default;
-        if (themeConfig) {
-            await page.evaluate((config) => {
-                const root = document.documentElement;
-                for (const [key, value] of Object.entries(config)) {
-                    root.style.setProperty(key, value);
-                }
-                // Ensure body bg matches page bg if defined
-                if (config["--color-page-background"]) {
-                    document.body.style.backgroundColor = config["--color-page-background"];
-                }
-            }, themeConfig);
-        }
+      }, themeConfig);
     }
+  }
 
-    await page.pdf({
-        path: outputPath,
-        format: "A4",
-        printBackground: true,
-        margin: { top: "0px", right: "0px", bottom: "0px", left: "0px" },
-    });
+  await page.pdf({
+    path: outputPath,
+    format: "A4",
+    printBackground: true,
+    margin: { top: "0px", right: "0px", bottom: "0px", left: "0px" },
+  });
 
-    await browser.close();
-    fs.unlinkSync(tempHtmlPath);
+  await browser.close();
+  fs.unlinkSync(tempHtmlPath);
 
-    console.log(`Cover letter generated successfully: ${outputPath}`);
+  console.log(`Cover letter generated successfully: ${outputPath}`);
 }
 
 main().catch((error) => {
-    console.error("Error:", error);
-    process.exit(1);
+  console.error("Error:", error);
+  process.exit(1);
 });
