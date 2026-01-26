@@ -18,23 +18,56 @@ if (!API_KEY) {
 }
 
 const genAI = new GoogleGenerativeAI(API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+const model = genAI.getGenerativeModel({
+  model: "gemini-2.5-flash",
+  generationConfig: { responseMimeType: "application/json" },
+});
 
 async function main() {
   const args = process.argv.slice(2);
   const promptArg = args.find((arg) => arg.startsWith("--prompt="));
+  const urlArg = args.find((arg) => arg.startsWith("--url="));
   const langArg = args.find((arg) => arg.startsWith("--lang="));
   const themeArg = args.find((arg) => arg.startsWith("--theme="));
   const outputArg = args.find((arg) => arg.startsWith("--output="));
 
-  if (!promptArg) {
+  if (!promptArg && !urlArg) {
     console.error(
-      'Error: --prompt flag is required. Usage: npm run export:cover-letter -- --prompt="Job description..."'
+      'Error: Either --prompt or --url flag is required. Usage: npm run export:cover-letter -- --prompt="Job description..." --url="https://..."',
     );
     process.exit(1);
   }
 
-  const promptText = promptArg.split("=")[1];
+  let promptText = "";
+
+  if (urlArg) {
+    const url = urlArg.split("=")[1];
+    console.log(`Fetching job description from ${url}...`);
+    try {
+      const scrapeBrowser = await puppeteer.launch();
+      const page = await scrapeBrowser.newPage();
+      // Set User-Agent to mimic a real browser
+      await page.setUserAgent(
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+      );
+      await page.goto(url, { waitUntil: "networkidle2" });
+      const text = await page.evaluate(() => document.body.innerText);
+      await scrapeBrowser.close();
+      promptText += `\n\nJob Description from URL (${url}):\n${text}\n\n`;
+    } catch (err) {
+      console.error("Warning: Failed to fetch URL content:", err.message);
+      if (!promptArg) {
+        console.error("Exiting because URL fetch failed and no prompt was provided.");
+        process.exit(1);
+      }
+    }
+  }
+
+  if (promptArg) {
+    const pText = promptArg.split("=")[1];
+    promptText = pText + promptText;
+  }
+
   const lang = langArg ? langArg.split("=")[1] : "en";
   const theme = themeArg ? themeArg.split("=")[1] : "default";
 
@@ -97,22 +130,30 @@ async function main() {
         ${promptText}
         
         Instructions:
+        - Identify the name of the company this cover letter is for.
         - Write a professional and engaging cover letter tailored to the job description/request.
         - The content should be less than 250 words, fitting on a single A4 page.
         - Use HTML format for the body content (use <p> for paragraphs, <br> for line breaks).
         - Do NOT include the header (Name, Address) or closing signature block (Sincerely, Name) as these will be added by the template.
         - Focus on the body paragraphs.
-        - Do NOT wrap the output in markdown code blocks (e.g. \`\`\`html).
         
         When writing the cover letter, you can use this as a reference for writing style (do NOT copy content, only style):
         ${referenceLetter}
+
+        IMPORTANT: Your response MUST be a JSON object with the following structure:
+        {
+          "companyName": "Name of the company",
+          "htmlContent": "HTML content of the cover letter"
+        }
     `;
 
   let cleanContent;
+  let companyName = "Company";
   try {
     const result = await model.generateContent(fullPrompt);
-    const generatedContent = result.response.text();
-    cleanContent = generatedContent.replace(/```html/g, "").replace(/```/g, "");
+    const response = JSON.parse(result.response.text());
+    cleanContent = response.htmlContent;
+    companyName = response.companyName;
   } catch (error) {
     console.error("Error generating content with Gemini:", error);
     process.exit(1);
@@ -142,7 +183,7 @@ async function main() {
 
   const finalHtml = templateHtml.replace(
     "<!-- Content will be injected here by the script -->",
-    `${headerHtml}<div class="text-gray-700 leading-relaxed space-y-4">${cleanContent}</div>`
+    `${headerHtml}<div class="text-gray-700 leading-relaxed space-y-4">${cleanContent}</div>`,
   );
 
   const tempHtmlPath = path.join(process.cwd(), "docs", "temp_cover_letter.html");
@@ -156,13 +197,13 @@ async function main() {
     outputPath = outputArg.split("=")[1];
   } else {
     const date = new Date().toISOString().split("T")[0];
-    // Create a readable slug from the prompt
-    const promptSlug = promptText
+    // Create a readable slug from the company name
+    const companySlug = companyName
       .replace(/[^a-zA-Z0-9 ]/g, "") // Remove non-alphanumeric chars except spaces
       .trim()
       .replace(/\s+/g, "_") // Replace spaces with underscores
       .substring(0, 30); // Truncate to 30 chars
-    outputPath = path.join(process.cwd(), "exports", `cover-letter-${date}-${lang}-${promptSlug}.pdf`);
+    outputPath = path.join(process.cwd(), "exports", `cover-letter-${date}-${lang}-${companySlug}.pdf`);
   }
 
   const exportsDir = path.join(process.cwd(), "exports");
