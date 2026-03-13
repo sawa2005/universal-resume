@@ -4,25 +4,53 @@ import fs from 'fs';
 
 async function main() {
   const args = process.argv.slice(2);
-  const langArg = args.find(arg => arg.startsWith('--lang='));
-  const tagsArg = args.find(arg => arg.startsWith('--tags=')); // Comma separated
-  const themeArg = args.find(arg => arg.startsWith('--theme='));
-  const outputArg = args.find(arg => arg.startsWith('--output='));
+  console.log('Arguments received:', args);
+  
+  // Load data.json to validate languages and get config
+  const dataPath = path.join(process.cwd(), 'docs', 'data.json');
+  if (!fs.existsSync(dataPath)) {
+    console.error('Error: docs/data.json not found.');
+    process.exit(1);
+  }
+  const allData = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+  const availableLanguages = Object.keys(allData).filter(key => key !== 'config');
 
-  const lang = langArg ? langArg.split('=')[1] : 'en';
-  const tags = tagsArg ? tagsArg.split('=')[1].split(',') : [];
-  const theme = themeArg ? themeArg.split('=')[1] : 'default';
+  const getArgValue = (flag) => {
+    const index = args.findIndex(arg => arg === flag);
+    if (index !== -1 && args[index + 1] && !args[index + 1].startsWith('--')) {
+      return args[index + 1];
+    }
+    const startsWithArg = args.find(arg => arg.startsWith(`${flag}=`));
+    if (startsWithArg) return startsWithArg.split('=')[1];
+    return null;
+  };
+
+  // 1. Try to get lang from flag --lang
+  let lang = getArgValue('--lang');
+  
+  // 2. If no flag, check if any positional argument matches an available language
+  if (!lang) {
+    lang = args.find(arg => availableLanguages.includes(arg));
+  }
+  
+  // 3. Default to 'en' or first available
+  lang = lang || (availableLanguages.includes('en') ? 'en' : availableLanguages[0]);
+
+  const tagsStr = getArgValue('--tags');
+  const tags = tagsStr ? tagsStr.split(',') : [];
+  const theme = getArgValue('--theme') || 'default';
+  const output = getArgValue('--output');
 
   // Determine output path
   let outputPath;
-  if (outputArg) {
-    outputPath = outputArg.split('=')[1];
+  if (output) {
+    outputPath = output;
   } else {
     // Generate automatic filename
     const date = new Date().toISOString().split('T')[0];
-    const tagsStr = tags.length ? `-${tags.join('_')}` : '-All';
-    const themeStr = theme !== 'default' ? `-${theme}` : '';
-    const filename = `resume-${date}-${lang}${tagsStr}${themeStr}.pdf`;
+    const tagsSuffix = tags.length ? `-${tags.join('_')}` : '-All';
+    const themeSuffix = theme !== 'default' ? `-${theme}` : '';
+    const filename = `resume-${date}-${lang}${tagsSuffix}${themeSuffix}.pdf`;
     
     // Ensure exports directory exists
     const exportsDir = path.join(process.cwd(), 'exports');
@@ -40,7 +68,6 @@ async function main() {
       console.log(`Overwriting existing file: ${outputPath}`);
     } catch (err) {
       console.error(`Error deleting existing file: ${err.message}`);
-      // Proceeding might fail if the file is locked, but we can try.
     }
   }
 
@@ -60,24 +87,16 @@ async function main() {
     const url = request.url();
     
     if (url.endsWith('data.json')) {
-      const dataPath = path.join(process.cwd(), 'docs', 'data.json');
-      const data = fs.readFileSync(dataPath, 'utf8');
+      // Use the already read allData
       request.respond({
         content: 'application/json',
-        body: data
+        body: JSON.stringify(allData)
       });
     } else if (url.match(/\.(woff2?|ttf|otf)$/)) {
-        // Extract filename from URL (handles both relative and absolute-like paths)
         const filename = path.basename(url);
-        // Assuming fonts are in docs/fonts/
-        // Some fonts might be in subfolders like docs/fonts/original/
-        // But the CSS seems to point to /fonts/filename directly.
-        // Let's check if it exists in docs/fonts/ first.
         let fontPath = path.join(process.cwd(), 'docs', 'fonts', filename);
         
         if (!fs.existsSync(fontPath)) {
-            // Check original folder if needed, though CSS didn't seem to use it for the main ones.
-            // But let's be safe or just fail gracefully.
             const originalFontPath = path.join(process.cwd(), 'docs', 'fonts', 'original', filename);
             if (fs.existsSync(originalFontPath)) {
                 fontPath = originalFontPath;
@@ -105,11 +124,18 @@ async function main() {
   // Wait for fonts to be ready
   await page.evaluateHandle('document.fonts.ready');
 
+  // Wait for the app to be fully initialized (including event listeners)
+  await page.waitForFunction(() => window.appReady === true);
+
   // Apply Language
   if (lang === 'sv') {
     await page.click('#btn-sv');
-  } else {
+  } else if (lang === 'en') {
     await page.click('#btn-en');
+  } else {
+    // If more languages are added, we'd need a more generic way to click buttons
+    // For now, these are the two supported buttons.
+    console.warn(`Language button for '${lang}' not specifically handled, defaulting to page default.`);
   }
 
   // Apply Theme

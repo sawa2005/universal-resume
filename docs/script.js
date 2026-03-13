@@ -304,9 +304,6 @@ fetch('data.json')
     // Event Listeners
     document.getElementById('btn-en').addEventListener('click', () => {
       currentLang = 'en';
-      // Reset filter when switching language? Maybe keep it if tags match.
-      // For safety/simplicity, we can keep it, but if tags differ, it might show nothing.
-      // Let's reset to 'All' for safety.
       currentProjectFilter = new Set(['All']);
       render(currentLang);
     });
@@ -315,5 +312,8 @@ fetch('data.json')
       currentProjectFilter = new Set(['All']);
       render(currentLang);
     });
+
+    // Signal that the app is ready and listeners are attached
+    window.appReady = true;
   })
   .catch(err => console.error('Error loading resume data:', err));
