@@ -1,415 +1,420 @@
 {
-    "config": {
-        "theme": "default",
-        "themes": {
-            "default": {
-                "--color-page-background": "#ffffff",
-                "--color-gray-150": "hsl(0, 5%, 97%)",
-                "--color-gray-250": "hsl(0, 5%, 93.5%)",
-                "--color-gray-550": "hsl(0, 5%, 63%)",
-                "--color-gray-600": "hsl(0, 5%, 45%)",
-                "--color-gray-650": "hsl(0, 5%, 48%)",
-                "--color-gray-700": "hsl(0, 5%, 35%)",
-                "--color-gray-750": "hsl(0, 5%, 32%)"
-            },
-            "warm": {
-                "--color-page-background": "#ffffff",
-                "--color-gray-150": "hsl(35, 30%, 96%)",
-                "--color-gray-250": "hsl(35, 25%, 92%)",
-                "--color-gray-550": "hsl(30, 15%, 60%)",
-                "--color-gray-600": "hsl(30, 18%, 48%)",
-                "--color-gray-650": "hsl(30, 20%, 45%)",
-                "--color-gray-700": "hsl(30, 22%, 35%)",
-                "--color-gray-750": "hsl(30, 25%, 30%)"
-            },
-            "cold": {
-                "--color-page-background": "#ffffff",
-                "--color-gray-150": "hsl(200, 40%, 96%)",
-                "--color-gray-250": "hsl(200, 35%, 92%)",
-                "--color-gray-550": "hsl(205, 25%, 60%)",
-                "--color-gray-600": "hsl(205, 28%, 48%)",
-                "--color-gray-650": "hsl(205, 30%, 45%)",
-                "--color-gray-700": "hsl(205, 35%, 35%)",
-                "--color-gray-750": "hsl(205, 40%, 30%)"
-            },
-            "dark": {
-                "--color-page-background": "hsl(215, 15%, 15%)",
-                "--color-gray-150": "hsl(215, 15%, 22%)",
-                "--color-gray-250": "hsl(215, 15%, 25%)",
-                "--color-gray-550": "hsl(215, 10%, 65%)",
-                "--color-gray-600": "hsl(215, 10%, 75%)",
-                "--color-gray-650": "hsl(215, 10%, 80%)",
-                "--color-gray-700": "hsl(215, 10%, 90%)",
-                "--color-gray-750": "hsl(215, 10%, 95%)"
-            }
-        }
-    },
-    "en": {
-        "labels": {
-            "about": "ABOUT ME",
-            "experience": "EXPERIENCE",
-            "education": "EDUCATION",
-            "projects": "PROJECTS",
-            "skills": "SKILLS",
-            "contact": "CONTACT",
-            "relevantProjects": "RELEVANT PROJECTS"
-        },
-        "name": "Samuel Ward",
-        "initials": "SW",
-        "title": "Aspiring full-stack developer",
-        "about": [
-            {
-                "title": "",
-                "period": "",
-                "description": "Hello! I am a full-stack web developer with experience in many different technologies and frameworks from my own projects, internships, and education. <br /><br /> Recently, I have focused heavily on TypeScript and specifically Next.js/React through my course at Lexicon and my previous internship."
-            }
-        ],
-        "experience": [
-            {
-                "company": "Traino AB",
-                "role": "Fullstack Developer (Internship)",
-                "period": "September 2024 – January 2025",
-                "content": [
-                    "Developed a Progressive Web Application (PWA) using Next.js, PHP, JSX, CSS, AWS S3, Stripe, MySQL.",
-                    "Worked within GitHub managing merging and fetch requests across multiple branches.",
-                    "Created the company's AWS S3 implementation and designed as well as conducted a 4-day training session to teach the team how to use it."
-                ],
-                "type": "list"
-            },
-            {
-                "company": "Team PGZ",
-                "role": "Web Developer",
-                "period": "October 2022 – Present",
-                "content": [
-                    "Developed a custom website from scratch for a racing team called Team PGZ with the aim of improving the team's online presence.",
-                    "Created the team's identity and design style as this was their first website.",
-                    "Presenting the team to around 1.3-1.5k visitors per month."
-                ],
-                "type": "list"
-            }
-        ],
-        "education": [
-            {
-                "institution": "Lexicon Östergötland",
-                "degree": "Fullstack Next.js/React",
-                "period": "August 2025 - Present",
-                "content": null
-            },
-            {
-                "institution": "Mid Sweden University",
-                "degree": "Web Development",
-                "period": "2020 – 2024",
-                "content": null
-            },
-            {
-                "institution": "Realgymnasiet Norrköping",
-                "degree": "Technology Program (Information and Media Technology)",
-                "period": "2017 – 2020",
-                "content": null
-            }
-        ],
-        "projects": [
-            {
-                "name": "chat-app – Real-time chat application",
-                "url": "https://github.com/sawa2005/chat-app",
-                "period": "2025",
-                "tags": ["TypeScript", "Next.js", "React"],
-                "description": "Modern chat app with many features: GIF, emoji, image upload, group conversations, user authentication etc. Written in TypeScript with Next.js, Supabase, Prisma, shadcn/ui & TailwindCSS."
-            },
-            {
-                "name": "books & quotes – Client Website & REST API",
-                "url": "https://bookquotes.onrender.com/",
-                "period": "2025",
-                "tags": ["ASP.NET", "REST API", "SQLite"],
-                "description": "Web service where users can save books and quotes they like. API built with ASP.NET Core 8, JWT authentication and SQLite database. Client built with Angular 18, the entire application published via Render."
-            },
-            {
-                "name": "Devpendent – Freelance Platform for Developers",
-                "url": "https://github.com/sawa2005/Devpendent",
-                "period": "2024",
-                "tags": ["C#", "ASP.NET"],
-                "description": "Web application where developers can advertise their freelance services. Built with ASP.NET MVC, SQL Server and Azure publishing. CSHTML, Sass, C# and JS/jQuery."
-            },
-            {
-                "name": "mpthree – Client Website & REST API",
-                "url": "https://slw-mpthree.netlify.app/",
-                "period": "2024",
-                "tags": ["React", "REST API", "HTML", "CSS"],
-                "description": "Web service for uploading .mp3 files. API built with Node.js, MongoDB with Mongoose schemas as database. Client built with React, HTML, CSS and JS/JSX."
-            },
-            {
-                "name": "Team PGZ - Website",
-                "url": "https://teampgz.com/",
-                "period": "2023",
-                "tags": ["HTML", "CSS"],
-                "description": "Website created during freelance work presenting Team PGZ. Built with HTML, CSS and JavaScript. The focus was to create a simple 'single page' website that looks modern."
-            },
-            {
-                "name": "My Portfolio Website",
-                "url": "https://slw.one/",
-                "period": "2023",
-                "tags": ["REST API", "TypeScript", "PHP", "HTML"],
-                "description": "Portfolio website presenting my education, previous projects and design style. The information shown is fetched from a REST API created with PHP. Built with HTML, TypeScript, Sass and Gulp for automated workflow."
-            },
-            {
-                "name": "Setup shop – Web Business Concept",
-                "url": "https://github.com/sawa2005/setup-shop",
-                "period": "2023",
-                "tags": ["ASP.NET", "SQLite", "C#", "HTML", "CSS"],
-                "description": "Web business concept built with ASP.NET MVC. ASP.NET Identity for user accounts and SQLite as database. C# for backend and HTML, CSS, JS/jQuery for frontend."
-            },
-            {
-                "name": "Gotlands Vandrarhem – WordPress Website & Theme",
-                "url": "https://samuelwarduppgifter.one/gotland/",
-                "period": "2022",
-                "tags": ["HTML", "CSS", "PHP"],
-                "description": "Website built with WordPress CMS presenting a fictional hostel. Based on a custom created theme specific for the website. HTML, CSS, JS and PHP."
-            },
-            {
-                "name": "Song API – Web API",
-                "url": "https://github.com/sawa2005/song-api",
-                "period": "2022",
-                "tags": ["ASP.NET", "SQLite", "C#"],
-                "description": "ASP.NET Core API handling songs with different properties. Stores these songs in a SQLite database with Entity Framework. Built entirely within C#."
-            },
-            {
-                "name": "PostHouse – Simple Blog Service",
-                "url": "https://posthouse.one/",
-                "period": "2021",
-                "tags": ["PHP", "HTML", "CSS"],
-                "description": "Blog/social media service similar to Twitter/X. Built entirely within PHP with a MySQL database for storing posts and user accounts. HTML, CSS, JS for frontend."
-            }
-        ],
-        "skills": [
-            {
-                "name": "Programming Languages",
-                "level": null,
-                "description": null,
-                "tags": ["HTML5", "CSS & SCSS", "JavaScript & TypeScript", "PHP", "C#", "SQL"]
-            },
-            {
-                "name": "Technologies",
-                "level": null,
-                "description": null,
-                "tags": ["Node.js", "ASP.NET", "Git", "React", "Angular", "Next.js", "MySQL", "PostgreSQL"]
-            },
-            {
-                "name": "Tools",
-                "level": null,
-                "description": null,
-                "tags": [
-                    "Visual Studio & VSCode",
-                    "Adobe Xd",
-                    "Figma",
-                    "GitHub",
-                    "Azure",
-                    "AWS S3",
-                    "Supabase",
-                    "Tailwind"
-                ]
-            },
-            {
-                "name": "Languages",
-                "level": null,
-                "description": null,
-                "tags": ["Swedish (Native)", "English (Native)"]
-            },
-            {
-                "name": "Driving License",
-                "level": null,
-                "description": null,
-                "tags": ["Category B License"]
-            }
-        ],
-        "contact": [
-            { "text": "contact@slw.one", "isLink": false },
-            { "text": "072-868 28 43", "isLink": false },
-            { "text": "github.com/sawa2005", "url": "https://github.com/sawa2005", "isLink": true },
-            { "text": "Norrköping, Sweden", "isLink": false }
-        ]
-    },
-    "sv": {
-        "labels": {
-            "about": "OM MIG",
-            "experience": "ERFARENHET",
-            "education": "UTBILDNING",
-            "projects": "PROJEKT",
-            "skills": "FÄRDIGHETER",
-            "contact": "KONTAKT",
-            "relevantProjects": "RELEVANTA PROJEKT"
-        },
-        "name": "Samuel Ward",
-        "initials": "SW",
-        "title": "Aspiring full-stack developer",
-        "about": [
-            {
-                "title": "",
-                "period": "",
-                "description": "Hej! Jag är en fullstack-webbutvecklare med erfarenhet inom många olika teknologier och ramverk från både mina egna projekt, praktik och utbildning. <br /><br /> På senare tid har jag fokuserat mycket på TypeScript och specifikt Next.js/React genom min kurs på Lexicon och jag ser fram emot att fortsätta utvecklas som utvecklare inom detta och andra områden."
-            }
-        ],
-        "experience": [
-            {
-                "company": "Traino AB",
-                "role": "Fullstack-utvecklare (Praktik)",
-                "period": "September 2024 – Januari 2025",
-                "content": [
-                    "Utvecklade en Progressive Web Application (PWA) med Next.js, PHP, JSX, CSS, AWS S3, Stripe, MySQL.",
-                    "Jobbade inom GitHub med merging och fetch requests inom flera brancher.",
-                    "Skapade företagets AWS S3-implementation och skapade samt genomförde en 4-dagars utbildning för att lära teamet hur det används."
-                ],
-                "type": "list"
-            },
-            {
-                "company": "Team PGZ",
-                "role": "Webbutvecklare",
-                "period": "Oktober 2022 – Pågående",
-                "content": [
-                    "Utvecklade en anpassad webbplats från grunden för ett racing team kallat Team PGZ med syftet att förbättra teamets online-närvaro.",
-                    "Skapade teamets identitet och designstil eftersom detta var deras första webbsida.",
-                    "Presenterar teamet till omkring 1.3-1.5k besökare per månad."
-                ],
-                "type": "list"
-            }
-        ],
-        "education": [
-            {
-                "institution": "Lexicon Östergötland",
-                "degree": "Fullstack Next.js/React",
-                "period": "Augusti 2025 - Pågående",
-                "content": null
-            },
-            {
-                "institution": "Mittuniversitetet",
-                "degree": "Webbutveckling",
-                "period": "2020 – 2024",
-                "content": null
-            },
-            {
-                "institution": "Realgymnasiet Norrköping",
-                "degree": "Teknikprogrammet (Informations- och medieteknik)",
-                "period": "2017 – 2020",
-                "content": null
-            }
-        ],
-        "projects": [
-            {
-                "name": "chat-app – Real-time chatt applikation",
-                "url": "https://github.com/sawa2005/chat-app",
-                "period": "2025",
-                "tags": ["TypeScript", "Next.js", "React"],
-                "description": "Modern chatt app med många funktioner: GIF, emoji, bild-uppladdning, gruppkonversationer, användarautentisering etc. Skriven i TypeScript med Next.js, Supabase, Prisma, shadcn/ui & TailwindCSS."
-            },
-            {
-                "name": "books & quotes – Klientwebbsida & REST API",
-                "url": "https://bookquotes.onrender.com/",
-                "period": "2025",
-                "tags": ["ASP.NET", "REST API", "SQLite"],
-                "description": "Webbtjänst där användare kan spara böcker och citat de gillar. API byggd med ASP.NET Core 8, JWT-autentisering och SQLite databas. Klient byggd med Angular 18, hela applikationen publicerades via Render."
-            },
-            {
-                "name": "Devpendent – Frilansplattform för utvecklare",
-                "url": "https://github.com/sawa2005/Devpendent",
-                "period": "2024",
-                "tags": ["C#", "ASP.NET"],
-                "description": "Webbapplikation där utvecklare kan annonsera sina frilanstjänster. Byggd med ASP.NET MVC, SQL Server och Azure-publicering. CSHTML, Sass, C# och JS/jQuery."
-            },
-            {
-                "name": "mpthree – Klientwebbsida & REST API",
-                "url": "https://slw-mpthree.netlify.app/",
-                "period": "2024",
-                "tags": ["React", "REST API", "HTML", "CSS"],
-                "description": "Webbtjänst för uppladdning av .mp3 filer. API byggd med Node.js, MongoDB med Mongoose-scheman som databas. Klient byggd med React, HTML, CSS och JS/JSX."
-            },
-            {
-                "name": "Team PGZ - Webbplats",
-                "url": "https://teampgz.com/",
-                "period": "2023",
-                "tags": ["HTML", "CSS"],
-                "description": "Webbplats skapad under frilansarbete som presenterar Team PGZ. Byggd med HTML, CSS och JavaScript. Fokuset var att skapa en simpel ”single page” webbsida som ser modern ut."
-            },
-            {
-                "name": "Min portfoliowebbsida",
-                "url": "https://slw.one/",
-                "period": "2023",
-                "tags": ["REST API", "TypeScript", "PHP", "HTML"],
-                "description": "Portfoliowebbsida som presenterar min utbildning, tidigare projekt och designstil. Informationen som visas hämtas från ett REST API som skapades med PHP. Byggd med HTML, TypeScript, Sass och Gulp för automatiserat arbetsflöde."
-            },
-            {
-                "name": "Setup shop – Webbaffärskoncept",
-                "url": "https://github.com/sawa2005/setup-shop",
-                "period": "2023",
-                "tags": ["ASP.NET", "SQLite", "C#", "HTML", "CSS"],
-                "description": "Webbaffärskoncept byggt med ASP.NET MVC. ASP.NET Identity för användarkonton och SQLite som databas. C# för backend och HTML, CSS, JS/jQuery för frontend."
-            },
-            {
-                "name": "Gotlands Vandrarhem – WordPress webbsida & tema",
-                "url": "https://samuelwarduppgifter.one/gotland/",
-                "period": "2022",
-                "tags": ["HTML", "CSS", "PHP"],
-                "description": "Webbsida byggd med WordPress CMS som presenterar ett fiktivt vandrarhem. Baserat på ett eget skapat tema specifikt för webbsidan. HTML, CSS, JS och PHP."
-            },
-            {
-                "name": "Song API – Webb-API",
-                "url": "https://github.com/sawa2005/song-api",
-                "period": "2022",
-                "tags": ["ASP.NET", "SQLite", "C#"],
-                "description": "ASP.NET Core API som hanterar låtar med olika egenskaper. Lagrar dessa låtar i en SQLite-databas med Entity Framework. Byggd helt inom C#."
-            },
-            {
-                "name": "PostHouse – Simpel bloggtjänst",
-                "url": "https://posthouse.one/",
-                "period": "2021",
-                "tags": ["PHP", "HTML", "CSS"],
-                "description": "Blogg/social mediatjänst liknande till Twitter/X. Byggt helt inom PHP med en MySQL-databas för lagring av poster och användarkonton. HTML, CSS, JS för frontend."
-            }
-        ],
-        "skills": [
-            {
-                "name": "Programmeringsspråk",
-                "level": null,
-                "description": null,
-                "tags": ["HTML5", "CSS & SCSS", "JavaScript & TypeScript", "PHP", "C#", "SQL"]
-            },
-            {
-                "name": "Teknologier",
-                "level": null,
-                "description": null,
-                "tags": ["Node.js", "ASP.NET", "Git", "React", "Angular", "Next.js", "MySQL", "PostgreSQL"]
-            },
-            {
-                "name": "Verktyg",
-                "level": null,
-                "description": null,
-                "tags": [
-                    "Visual Studio & VSCode",
-                    "Adobe Xd",
-                    "Figma",
-                    "GitHub",
-                    "Azure",
-                    "AWS S3",
-                    "Supabase",
-                    "Tailwind"
-                ]
-            },
-            {
-                "name": "Språk",
-                "level": null,
-                "description": null,
-                "tags": ["Svenska (modersmål)", "Engelska (modersmål)"]
-            },
-            {
-                "name": "Körkort",
-                "level": null,
-                "description": null,
-                "tags": ["B-körkort"]
-            }
-        ],
-        "contact": [
-            { "text": "contact@slw.one", "isLink": false },
-            { "text": "072-868 28 43", "isLink": false },
-            { "text": "github.com/sawa2005", "url": "https://github.com/sawa2005", "isLink": true },
-            { "text": "Norrköping, Sverige", "isLink": false }
-        ]
+  "config": {
+    "theme": "default",
+    "themes": {
+      "default": {
+        "--color-page-background": "#ffffff",
+        "--color-gray-150": "hsl(0, 5%, 97%)",
+        "--color-gray-250": "hsl(0, 5%, 93.5%)",
+        "--color-gray-550": "hsl(0, 5%, 63%)",
+        "--color-gray-600": "hsl(0, 5%, 45%)",
+        "--color-gray-650": "hsl(0, 5%, 48%)",
+        "--color-gray-700": "hsl(0, 5%, 35%)",
+        "--color-gray-750": "hsl(0, 5%, 32%)"
+      },
+      "warm": {
+        "--color-page-background": "#ffffff",
+        "--color-gray-150": "hsl(35, 30%, 96%)",
+        "--color-gray-250": "hsl(35, 25%, 92%)",
+        "--color-gray-550": "hsl(30, 15%, 60%)",
+        "--color-gray-600": "hsl(30, 18%, 48%)",
+        "--color-gray-650": "hsl(30, 20%, 45%)",
+        "--color-gray-700": "hsl(30, 22%, 35%)",
+        "--color-gray-750": "hsl(30, 25%, 30%)"
+      },
+      "cold": {
+        "--color-page-background": "#ffffff",
+        "--color-gray-150": "hsl(200, 40%, 96%)",
+        "--color-gray-250": "hsl(200, 35%, 92%)",
+        "--color-gray-550": "hsl(205, 25%, 60%)",
+        "--color-gray-600": "hsl(205, 28%, 48%)",
+        "--color-gray-650": "hsl(205, 30%, 45%)",
+        "--color-gray-700": "hsl(205, 35%, 35%)",
+        "--color-gray-750": "hsl(205, 40%, 30%)"
+      },
+      "dark": {
+        "--color-page-background": "hsl(215, 15%, 15%)",
+        "--color-gray-150": "hsl(215, 15%, 22%)",
+        "--color-gray-250": "hsl(215, 15%, 25%)",
+        "--color-gray-550": "hsl(215, 10%, 65%)",
+        "--color-gray-600": "hsl(215, 10%, 75%)",
+        "--color-gray-650": "hsl(215, 10%, 80%)",
+        "--color-gray-700": "hsl(215, 10%, 90%)",
+        "--color-gray-750": "hsl(215, 10%, 95%)"
+      }
     }
+  },
+  "en": {
+    "labels": {
+      "about": "ABOUT ME",
+      "experience": "EXPERIENCE",
+      "education": "EDUCATION",
+      "projects": "PROJECTS",
+      "skills": "SKILLS",
+      "contact": "CONTACT",
+      "relevantProjects": "RELEVANT PROJECTS"
+    },
+    "name": "Samuel Ward",
+    "initials": "SW",
+    "title": "Aspiring full-stack developer",
+    "about": [
+      {
+        "title": "",
+        "period": "",
+        "description": "Hello! I am a full-stack web developer with experience in many different technologies and frameworks from my own projects, internships, and education. <br /><br /> Recently, I have focused heavily on TypeScript and specifically Next.js/React through my course at Lexicon and my previous internship. <br /><br /> I'm currently an intern at Beegleton with a focus on WordPress."
+      }
+    ],
+
+    "experience": [
+      {
+        "company": "Beegleton",
+        "role": "Web Developer (Internship)",
+        "period": "February 2025 – Present",
+        "content": [
+          "Working with all kinds of web development tasks for the company, such as developing and maintaining the company and its clients' websites to content management and SEO optimization.",
+          "Focus lies on CMS systems such as WordPress and Snowfire while also building custom blocks with GitHub version control.",
+          "High paced work environment with a lot of responsibility and freedom to work independently while also collaborating with the team on different projects."
+        ],
+        "type": "list"
+      },
+      {
+        "company": "Traino AB",
+        "role": "Fullstack Developer (Internship)",
+        "period": "September 2024 – January 2025",
+        "content": [
+          "Developed a Progressive Web Application (PWA) using Next.js, PHP, JSX, CSS, AWS S3, Stripe, MySQL.",
+          "Worked within GitHub managing merging and fetch requests across multiple branches.",
+          "Created the company's AWS S3 implementation and designed as well as conducted a 4-day training session to teach the team how to use it."
+        ],
+        "type": "list"
+      },
+      {
+        "company": "Team PGZ",
+        "role": "Web Developer",
+        "period": "October 2022 – Present",
+        "content": [
+          "Developed and currently maintaining custom website from scratch for a racing team called Team PGZ with the aim of improving the team's online presence.",
+          "Created the team's identity and design style as this was their first website.",
+          "Presenting the team to around 1.3-1.5k visitors per month."
+        ],
+        "type": "list"
+      }
+    ],
+    "education": [
+      {
+        "institution": "Lexicon Östergötland",
+        "degree": "Fullstack Next.js/React",
+        "period": "August 2025 - Present",
+        "content": null
+      },
+      {
+        "institution": "Mid Sweden University",
+        "degree": "Web Development",
+        "period": "2020 – 2024",
+        "content": null
+      },
+      {
+        "institution": "Realgymnasiet Norrköping",
+        "degree": "Technology Program (Information and Media Technology)",
+        "period": "2017 – 2020",
+        "content": null
+      }
+    ],
+    "projects": [
+      {
+        "name": "chat-app – Real-time chat application",
+        "url": "https://github.com/sawa2005/chat-app",
+        "period": "2025",
+        "tags": ["TypeScript", "Next.js", "React"],
+        "description": "Modern chat app with many features: GIF, emoji, image upload, group conversations, user authentication etc. Written in TypeScript with Next.js, Supabase, Prisma, shadcn/ui & TailwindCSS."
+      },
+      {
+        "name": "books & quotes – Client Website & REST API",
+        "url": "https://bookquotes.onrender.com/",
+        "period": "2025",
+        "tags": ["ASP.NET", "REST API", "SQLite"],
+        "description": "Web service where users can save books and quotes they like. API built with ASP.NET Core 8, JWT authentication and SQLite database. Client built with Angular 18, the entire application published via Render."
+      },
+      {
+        "name": "Devpendent – Freelance Platform for Developers",
+        "url": "https://github.com/sawa2005/Devpendent",
+        "period": "2024",
+        "tags": ["C#", "ASP.NET"],
+        "description": "Web application where developers can advertise their freelance services. Built with ASP.NET MVC, SQL Server and Azure publishing. CSHTML, Sass, C# and JS/jQuery."
+      },
+      {
+        "name": "mpthree – Client Website & REST API",
+        "url": "https://slw-mpthree.netlify.app/",
+        "period": "2024",
+        "tags": ["React", "REST API", "HTML", "CSS"],
+        "description": "Web service for uploading .mp3 files. API built with Node.js, MongoDB with Mongoose schemas as database. Client built with React, HTML, CSS and JS/JSX."
+      },
+      {
+        "name": "Team PGZ - Website",
+        "url": "https://teampgz.com/",
+        "period": "2023",
+        "tags": ["HTML", "CSS"],
+        "description": "Website created during freelance work presenting Team PGZ. Built with HTML, CSS and JavaScript. The focus was to create a simple 'single page' website that looks modern."
+      },
+      {
+        "name": "My Portfolio Website",
+        "url": "https://slw.one/",
+        "period": "2023",
+        "tags": ["REST API", "TypeScript", "PHP", "HTML"],
+        "description": "Portfolio website presenting my education, previous projects and design style. The information shown is fetched from a REST API created with PHP. Built with HTML, TypeScript, Sass and Gulp for automated workflow."
+      },
+      {
+        "name": "Setup shop – Web Business Concept",
+        "url": "https://github.com/sawa2005/setup-shop",
+        "period": "2023",
+        "tags": ["ASP.NET", "SQLite", "C#", "HTML", "CSS"],
+        "description": "Web business concept built with ASP.NET MVC. ASP.NET Identity for user accounts and SQLite as database. C# for backend and HTML, CSS, JS/jQuery for frontend."
+      },
+      {
+        "name": "Gotlands Vandrarhem – WordPress Website & Theme",
+        "url": "https://samuelwarduppgifter.one/gotland/",
+        "period": "2022",
+        "tags": ["HTML", "CSS", "PHP"],
+        "description": "Website built with WordPress CMS presenting a fictional hostel. Based on a custom created theme specific for the website. HTML, CSS, JS and PHP."
+      },
+      {
+        "name": "Song API – Web API",
+        "url": "https://github.com/sawa2005/song-api",
+        "period": "2022",
+        "tags": ["ASP.NET", "SQLite", "C#"],
+        "description": "ASP.NET Core API handling songs with different properties. Stores these songs in a SQLite database with Entity Framework. Built entirely within C#."
+      },
+      {
+        "name": "PostHouse – Simple Blog Service",
+        "url": "https://posthouse.one/",
+        "period": "2021",
+        "tags": ["PHP", "HTML", "CSS"],
+        "description": "Blog/social media service similar to Twitter/X. Built entirely within PHP with a MySQL database for storing posts and user accounts. HTML, CSS, JS for frontend."
+      }
+    ],
+    "skills": [
+      {
+        "name": "Programming Languages",
+        "level": null,
+        "description": null,
+        "tags": ["HTML5", "CSS & SCSS", "JavaScript & TypeScript", "PHP", "C#", "SQL"]
+      },
+      {
+        "name": "Technologies",
+        "level": null,
+        "description": null,
+        "tags": ["Node.js", "ASP.NET", "Git", "React", "Angular", "Next.js", "MySQL", "PostgreSQL"]
+      },
+      {
+        "name": "Tools",
+        "level": null,
+        "description": null,
+        "tags": ["Visual Studio & VSCode", "Adobe Xd", "Figma", "GitHub", "Azure", "AWS S3", "Supabase", "Tailwind"]
+      },
+      {
+        "name": "Languages",
+        "level": null,
+        "description": null,
+        "tags": ["Swedish (Native)", "English (Native)"]
+      },
+      {
+        "name": "Driving License",
+        "level": null,
+        "description": null,
+        "tags": ["Category B License"]
+      }
+    ],
+    "contact": [
+      { "text": "contact@slw.one", "isLink": false },
+      { "text": "072-868 28 43", "isLink": false },
+      { "text": "github.com/sawa2005", "url": "https://github.com/sawa2005", "isLink": true },
+      { "text": "Norrköping, Sweden", "isLink": false }
+    ]
+  },
+  "sv": {
+    "labels": {
+      "about": "OM MIG",
+      "experience": "ERFARENHET",
+      "education": "UTBILDNING",
+      "projects": "PROJEKT",
+      "skills": "FÄRDIGHETER",
+      "contact": "KONTAKT",
+      "relevantProjects": "RELEVANTA PROJEKT"
+    },
+    "name": "Samuel Ward",
+    "initials": "SW",
+    "title": "Aspiring full-stack developer",
+    "about": [
+      {
+        "title": "",
+        "period": "",
+        "description": "Hej! Jag är en fullstack-webbutvecklare med erfarenhet inom många olika teknologier och ramverk från både mina egna projekt, praktik och utbildning. <br /><br /> På senare tid har jag fokuserat mycket på TypeScript och specifikt Next.js/React genom min kurs på Lexicon och jag ser fram emot att fortsätta utvecklas som utvecklare inom detta och andra områden. <br /><br /> Just nu praktiserar jag hos Beegleton med fokus på WordPress."
+      }
+    ],
+    "experience": [
+      {
+        "company": "Beegleton",
+        "role": "Webbutvecklare (Praktik)",
+        "period": "Februari 2025 – Pågående",
+        "content": [
+          "Jobbar med alla möjliga webbutvecklingsuppgifter för företaget, såsom att utveckla och underhålla företagets och dess kunders webbplatser till innehållshantering och SEO-optimering.",
+          "Fokus ligger på att lära mig mer om CMS-system som WordPress och Snowfire samtidigt som jag bygger anpassade block med GitHub version control.",
+          "Högt tempo i arbetet med mycket ansvar och frihet att arbeta självständigt samtidigt som man samarbetar med teamet på olika projekt på samma gång."
+        ],
+        "type": "list"
+      },
+      {
+        "company": "Traino AB",
+        "role": "Fullstack-utvecklare (Praktik)",
+        "period": "September 2024 – Januari 2025",
+        "content": [
+          "Utvecklade en Progressive Web Application (PWA) med Next.js, PHP, JSX, CSS, AWS S3, Stripe, MySQL.",
+          "Jobbade inom GitHub med merging och fetch requests inom flera brancher.",
+          "Skapade företagets AWS S3-implementation och skapade samt genomförde en 4-dagars utbildning för att lära teamet hur det används."
+        ],
+        "type": "list"
+      },
+      {
+        "company": "Team PGZ",
+        "role": "Webbutvecklare",
+        "period": "Oktober 2022 – Pågående",
+        "content": [
+          "Utvecklade en anpassad webbplats från grunden för ett racing team kallat Team PGZ med syftet att förbättra teamets online-närvaro.",
+          "Skapade teamets identitet och designstil eftersom detta var deras första webbsida.",
+          "Presenterar teamet till omkring 1.3-1.5k besökare per månad."
+        ],
+        "type": "list"
+      }
+    ],
+    "education": [
+      {
+        "institution": "Lexicon Östergötland",
+        "degree": "Fullstack Next.js/React",
+        "period": "Augusti 2025 - Pågående",
+        "content": null
+      },
+      {
+        "institution": "Mittuniversitetet",
+        "degree": "Webbutveckling",
+        "period": "2020 – 2024",
+        "content": null
+      },
+      {
+        "institution": "Realgymnasiet Norrköping",
+        "degree": "Teknikprogrammet (Informations- och medieteknik)",
+        "period": "2017 – 2020",
+        "content": null
+      }
+    ],
+    "projects": [
+      {
+        "name": "chat-app – Real-time chatt applikation",
+        "url": "https://github.com/sawa2005/chat-app",
+        "period": "2025",
+        "tags": ["TypeScript", "Next.js", "React"],
+        "description": "Modern chatt app med många funktioner: GIF, emoji, bild-uppladdning, gruppkonversationer, användarautentisering etc. Skriven i TypeScript med Next.js, Supabase, Prisma, shadcn/ui & TailwindCSS."
+      },
+      {
+        "name": "books & quotes – Klientwebbsida & REST API",
+        "url": "https://bookquotes.onrender.com/",
+        "period": "2025",
+        "tags": ["ASP.NET", "REST API", "SQLite"],
+        "description": "Webbtjänst där användare kan spara böcker och citat de gillar. API byggd med ASP.NET Core 8, JWT-autentisering och SQLite databas. Klient byggd med Angular 18, hela applikationen publicerades via Render."
+      },
+      {
+        "name": "Devpendent – Frilansplattform för utvecklare",
+        "url": "https://github.com/sawa2005/Devpendent",
+        "period": "2024",
+        "tags": ["C#", "ASP.NET"],
+        "description": "Webbapplikation där utvecklare kan annonsera sina frilanstjänster. Byggd med ASP.NET MVC, SQL Server och Azure-publicering. CSHTML, Sass, C# och JS/jQuery."
+      },
+      {
+        "name": "mpthree – Klientwebbsida & REST API",
+        "url": "https://slw-mpthree.netlify.app/",
+        "period": "2024",
+        "tags": ["React", "REST API", "HTML", "CSS"],
+        "description": "Webbtjänst för uppladdning av .mp3 filer. API byggd med Node.js, MongoDB med Mongoose-scheman som databas. Klient byggd med React, HTML, CSS och JS/JSX."
+      },
+      {
+        "name": "Team PGZ - Webbplats",
+        "url": "https://teampgz.com/",
+        "period": "2023",
+        "tags": ["HTML", "CSS"],
+        "description": "Webbplats skapad under frilansarbete som presenterar Team PGZ. Byggd med HTML, CSS och JavaScript. Fokuset var att skapa en simpel ”single page” webbsida som ser modern ut."
+      },
+      {
+        "name": "Min portfoliowebbsida",
+        "url": "https://slw.one/",
+        "period": "2023",
+        "tags": ["REST API", "TypeScript", "PHP", "HTML"],
+        "description": "Portfoliowebbsida som presenterar min utbildning, tidigare projekt och designstil. Informationen som visas hämtas från ett REST API som skapades med PHP. Byggd med HTML, TypeScript, Sass och Gulp för automatiserat arbetsflöde."
+      },
+      {
+        "name": "Setup shop – Webbaffärskoncept",
+        "url": "https://github.com/sawa2005/setup-shop",
+        "period": "2023",
+        "tags": ["ASP.NET", "SQLite", "C#", "HTML", "CSS"],
+        "description": "Webbaffärskoncept byggt med ASP.NET MVC. ASP.NET Identity för användarkonton och SQLite som databas. C# för backend och HTML, CSS, JS/jQuery för frontend."
+      },
+      {
+        "name": "Gotlands Vandrarhem – WordPress webbsida & tema",
+        "url": "https://samuelwarduppgifter.one/gotland/",
+        "period": "2022",
+        "tags": ["HTML", "CSS", "PHP"],
+        "description": "Webbsida byggd med WordPress CMS som presenterar ett fiktivt vandrarhem. Baserat på ett eget skapat tema specifikt för webbsidan. HTML, CSS, JS och PHP."
+      },
+      {
+        "name": "Song API – Webb-API",
+        "url": "https://github.com/sawa2005/song-api",
+        "period": "2022",
+        "tags": ["ASP.NET", "SQLite", "C#"],
+        "description": "ASP.NET Core API som hanterar låtar med olika egenskaper. Lagrar dessa låtar i en SQLite-databas med Entity Framework. Byggd helt inom C#."
+      },
+      {
+        "name": "PostHouse – Simpel bloggtjänst",
+        "url": "https://posthouse.one/",
+        "period": "2021",
+        "tags": ["PHP", "HTML", "CSS"],
+        "description": "Blogg/social mediatjänst liknande till Twitter/X. Byggt helt inom PHP med en MySQL-databas för lagring av poster och användarkonton. HTML, CSS, JS för frontend."
+      }
+    ],
+    "skills": [
+      {
+        "name": "Programmeringsspråk",
+        "level": null,
+        "description": null,
+        "tags": ["HTML5", "CSS & SCSS", "JavaScript & TypeScript", "PHP", "C#", "SQL"]
+      },
+      {
+        "name": "Teknologier",
+        "level": null,
+        "description": null,
+        "tags": ["Node.js", "ASP.NET", "Git", "React", "Angular", "Next.js", "MySQL", "PostgreSQL"]
+      },
+      {
+        "name": "Verktyg",
+        "level": null,
+        "description": null,
+        "tags": ["Visual Studio & VSCode", "Adobe Xd", "Figma", "GitHub", "Azure", "AWS S3", "Supabase", "Tailwind"]
+      },
+      {
+        "name": "Språk",
+        "level": null,
+        "description": null,
+        "tags": ["Svenska (modersmål)", "Engelska (modersmål)"]
+      },
+      {
+        "name": "Körkort",
+        "level": null,
+        "description": null,
+        "tags": ["B-körkort"]
+      }
+    ],
+    "contact": [
+      { "text": "contact@slw.one", "isLink": false },
+      { "text": "072-868 28 43", "isLink": false },
+      { "text": "github.com/sawa2005", "url": "https://github.com/sawa2005", "isLink": true },
+      { "text": "Norrköping, Sverige", "isLink": false }
+    ]
+  }
 }
