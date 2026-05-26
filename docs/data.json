@@ -61,7 +61,7 @@
       {
         "title": "",
         "period": "",
-        "description": "Hello! I am a full-stack web developer with experience in many different technologies and frameworks from my own projects, internships, and education. <br /><br /> Recently, I have focused heavily on TypeScript and specifically Next.js/React through my course at Lexicon and my previous internship. <br /><br /> I'm currently an intern at Beegleton with a focus on WordPress."
+        "description": "Hello! I am a full-stack web developer with experience in many different technologies and frameworks from my own projects, internships, and education. <br /><br /> Recently, I have focused heavily on TypeScript and specifically Next.js/React through my course at Lexicon and my previous internship but I have experience in many tech stacks."
       }
     ],
 
@@ -69,10 +69,10 @@
       {
         "company": "Beegleton",
         "role": "Web Developer (Internship)",
-        "period": "February 2025 – Present",
+        "period": "February 2026 – May 2026",
         "content": [
-          "Working with all kinds of web development tasks for the company, such as developing and maintaining the company and its clients' websites to content management and SEO optimization.",
-          "Focus lies on CMS systems such as WordPress and Snowfire while also building custom blocks with GitHub version control.",
+          "During my time as intern I got the opportunity to build the company's new WordPress website from scratch based on a new graphic profile. This included everything from design to development and deployment.",
+          "Also got to help with a lot of other web development tasks for the company's clients such as making new custom blocks, updating content or style on existing websites, SEO optimization and more.",
           "High paced work environment with a lot of responsibility and freedom to work independently while also collaborating with the team on different projects."
         ],
         "type": "list"
@@ -95,7 +95,7 @@
         "content": [
           "Developed and currently maintaining custom website from scratch for a racing team called Team PGZ with the aim of improving the team's online presence.",
           "Created the team's identity and design style as this was their first website.",
-          "Presenting the team to around 1.3-1.5k visitors per month."
+          "Presenting the team to over 2k visitors per month."
         ],
         "type": "list"
       }
@@ -104,7 +104,7 @@
       {
         "institution": "Lexicon Östergötland",
         "degree": "Fullstack Next.js/React",
-        "period": "August 2025 - Present",
+        "period": "August 2025 - May 2026",
         "content": null
       },
       {
@@ -158,7 +158,7 @@
       },
       {
         "name": "My Portfolio Website",
-        "url": "https://slw.one/",
+        "url": "https://samuelward.dev/",
         "period": "2023",
         "tags": ["REST API", "TypeScript", "PHP", "HTML"],
         "description": "Portfolio website presenting my education, previous projects and design style. The information shown is fetched from a REST API created with PHP. Built with HTML, TypeScript, Sass and Gulp for automated workflow."
@@ -225,7 +225,7 @@
       }
     ],
     "contact": [
-      { "text": "contact@slw.one", "isLink": false },
+      { "text": "contact@samuelward.dev", "isLink": false },
       { "text": "072-868 28 43", "isLink": false },
       { "text": "github.com/sawa2005", "url": "https://github.com/sawa2005", "isLink": true },
       { "text": "Norrköping, Sweden", "isLink": false }
@@ -248,17 +248,17 @@
       {
         "title": "",
         "period": "",
-        "description": "Hej! Jag är en fullstack-webbutvecklare med erfarenhet inom många olika teknologier och ramverk från både mina egna projekt, praktik och utbildning. <br /><br /> På senare tid har jag fokuserat mycket på TypeScript och specifikt Next.js/React genom min kurs på Lexicon och jag ser fram emot att fortsätta utvecklas som utvecklare inom detta och andra områden. <br /><br /> Just nu praktiserar jag hos Beegleton med fokus på WordPress."
+        "description": "Hej! Jag är en fullstack-webbutvecklare med erfarenhet inom många olika teknologier och ramverk från både mina egna projekt, praktik och utbildning. <br /><br /> På senare tid har jag fokuserat mycket på TypeScript och specifikt Next.js/React genom min kurs på Lexicon och jag ser fram emot att fortsätta utvecklas som utvecklare inom detta och andra områden."
       }
     ],
     "experience": [
       {
         "company": "Beegleton",
         "role": "Webbutvecklare (Praktik)",
-        "period": "Februari 2025 – Pågående",
+        "period": "Februari 2026 – Maj 2026",
         "content": [
-          "Jobbar med alla möjliga webbutvecklingsuppgifter för företaget, såsom att utveckla och underhålla företagets och dess kunders webbplatser till innehållshantering och SEO-optimering.",
-          "Fokus ligger på att lära mig mer om CMS-system som WordPress och Snowfire samtidigt som jag bygger anpassade block med GitHub version control.",
+          "Under min tid som praktikant fick jag möjligheten att bygga företagets nya WordPress-webbplats från grunden baserat på en ny grafisk profil. Detta inkluderade allt från design till utveckling och deployment.",
+          "Fick även hjälpa till med en massa andra webbutvecklingsuppgifter för företagets kunder såsom att göra nya anpassade block, uppdatera innehåll eller stil på befintliga webbplatser, SEO-optimering och mer.",
           "Högt tempo i arbetet med mycket ansvar och frihet att arbeta självständigt samtidigt som man samarbetar med teamet på olika projekt på samma gång."
         ],
         "type": "list"
@@ -281,7 +281,7 @@
         "content": [
           "Utvecklade en anpassad webbplats från grunden för ett racing team kallat Team PGZ med syftet att förbättra teamets online-närvaro.",
           "Skapade teamets identitet och designstil eftersom detta var deras första webbsida.",
-          "Presenterar teamet till omkring 1.3-1.5k besökare per månad."
+          "Presenterar teamet till över 2 tusen besökare per månad."
         ],
         "type": "list"
       }
@@ -290,7 +290,7 @@
       {
         "institution": "Lexicon Östergötland",
         "degree": "Fullstack Next.js/React",
-        "period": "Augusti 2025 - Pågående",
+        "period": "Augusti 2025 - Maj 2026",
         "content": null
       },
       {
@@ -344,7 +344,7 @@
       },
       {
         "name": "Min portfoliowebbsida",
-        "url": "https://slw.one/",
+        "url": "https://samuelward.dev/",
         "period": "2023",
         "tags": ["REST API", "TypeScript", "PHP", "HTML"],
         "description": "Portfoliowebbsida som presenterar min utbildning, tidigare projekt och designstil. Informationen som visas hämtas från ett REST API som skapades med PHP. Byggd med HTML, TypeScript, Sass och Gulp för automatiserat arbetsflöde."
@@ -411,7 +411,7 @@
       }
     ],
     "contact": [
-      { "text": "contact@slw.one", "isLink": false },
+      { "text": "contact@samuelward.dev", "isLink": false },
       { "text": "072-868 28 43", "isLink": false },
       { "text": "github.com/sawa2005", "url": "https://github.com/sawa2005", "isLink": true },
       { "text": "Norrköping, Sverige", "isLink": false }
