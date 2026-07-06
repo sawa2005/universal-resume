@@ -403,7 +403,7 @@
         "name": "Teknologier",
         "level": null,
         "description": null,
-        "tags": ["Node.js", "ASP.NET", "Git", "React", "Angular", "Next.js", "MySQL", "PostgreSQL"]
+        "tags": ["Node.js", "ASP.NET", "Git", "React", "Angular", "Next.js", "MySQL", "PostgreSQL", "WordPress"]
       },
       {
         "name": "Verktyg",
