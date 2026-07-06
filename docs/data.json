@@ -122,6 +122,13 @@
     ],
     "projects": [
       {
+        "name": "Beegleton - WordPress Website",
+        "url": "https://beegleton.com/",
+        "period": "2026",
+        "tags": ["WordPress", "React", "TypeScript", "PHP"],
+        "description": "During my internship my main task was rebuilding their website from scratch using the native React.js Gutenberg block structure and the result was this website. It was great to be able to use my React experience within WordPress as well as having a good local development experience and GitHub version control which normally isn't easy with CMS development."
+      },
+      {
         "name": "chat-app – Real-time chat application",
         "url": "https://github.com/sawa2005/chat-app",
         "period": "2025",
@@ -174,7 +181,7 @@
         "name": "Gotlands Vandrarhem – WordPress Website & Theme",
         "url": "https://samuelwarduppgifter.one/gotland/",
         "period": "2022",
-        "tags": ["HTML", "CSS", "PHP"],
+        "tags": ["WordPress", "HTML", "CSS", "PHP"],
         "description": "Website built with WordPress CMS presenting a fictional hostel. Based on a custom created theme specific for the website. HTML, CSS, JS and PHP."
       },
       {
@@ -307,6 +314,13 @@
       }
     ],
     "projects": [
+      {
+        "name": "Beegleton - WordPress-webbplats",
+        "url": "https://beegleton.com/",
+        "period": "2026",
+        "tags": ["WordPress", "React", "TypeScript", "PHP"],
+        "description": "Under min praktik var min huvudsakliga uppgift att bygga om deras webbplats från grunden med hjälp av den inbyggda React.js-baserade Gutenberg-blockstrukturen. Resultatet blev denna webbplats. Det var väldigt givande att kunna använda mina React-kunskaper även i WordPress, samtidigt som jag fick en smidig lokal utvecklingsmiljö och versionshantering med GitHub, något som annars ofta är svårt att uppnå vid CMS-utveckling."
+      },
       {
         "name": "chat-app – Real-time chatt applikation",
         "url": "https://github.com/sawa2005/chat-app",
