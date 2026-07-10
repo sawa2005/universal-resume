@@ -1,0 +1,269 @@
+{
+  "config": {
+    "theme": "default",
+    "themes": {
+      "default": {
+        "--color-page-background": "#ffffff",
+        "--color-gray-150": "hsl(0, 5%, 97%)",
+        "--color-gray-250": "hsl(0, 5%, 93.5%)",
+        "--color-gray-550": "hsl(0, 5%, 63%)",
+        "--color-gray-600": "hsl(0, 5%, 45%)",
+        "--color-gray-650": "hsl(0, 5%, 48%)",
+        "--color-gray-700": "hsl(0, 5%, 35%)",
+        "--color-gray-750": "hsl(0, 5%, 32%)"
+      },
+      "warm": {
+        "--color-page-background": "#ffffff",
+        "--color-gray-150": "hsl(35, 30%, 96%)",
+        "--color-gray-250": "hsl(35, 25%, 92%)",
+        "--color-gray-550": "hsl(30, 15%, 60%)",
+        "--color-gray-600": "hsl(30, 18%, 48%)",
+        "--color-gray-650": "hsl(30, 20%, 45%)",
+        "--color-gray-700": "hsl(30, 22%, 35%)",
+        "--color-gray-750": "hsl(30, 25%, 30%)"
+      },
+      "cold": {
+        "--color-page-background": "#ffffff",
+        "--color-gray-150": "hsl(200, 40%, 96%)",
+        "--color-gray-250": "hsl(200, 35%, 92%)",
+        "--color-gray-550": "hsl(205, 25%, 60%)",
+        "--color-gray-600": "hsl(205, 28%, 48%)",
+        "--color-gray-650": "hsl(205, 30%, 45%)",
+        "--color-gray-700": "hsl(205, 35%, 35%)",
+        "--color-gray-750": "hsl(205, 40%, 30%)"
+      },
+      "dark": {
+        "--color-page-background": "hsl(215, 15%, 15%)",
+        "--color-gray-150": "hsl(215, 15%, 22%)",
+        "--color-gray-250": "hsl(215, 15%, 25%)",
+        "--color-gray-550": "hsl(215, 10%, 65%)",
+        "--color-gray-600": "hsl(215, 10%, 75%)",
+        "--color-gray-650": "hsl(215, 10%, 80%)",
+        "--color-gray-700": "hsl(215, 10%, 90%)",
+        "--color-gray-750": "hsl(215, 10%, 95%)"
+      }
+    }
+  },
+  "en": {
+    "labels": {
+      "about": "PROFILE",
+      "experience": "EXPERIENCE",
+      "education": "EDUCATION",
+      "projects": "PROJECTS",
+      "skills": "SKILLS",
+      "contact": "CONTACT",
+      "relevantProjects": "RELEVANT PROJECTS"
+    },
+    "name": "Samuel Ward",
+    "initials": "SW",
+    "title": "Service-minded, car enthusiast",
+    "about": [
+      {
+        "title": "",
+        "period": "",
+        "description": "Service-minded and self-driven, with hands-on experience working directly with clients in fast-paced environments. A car enthusiast since childhood — I maintain my own car, compete at a high level in motorsport simulation for Team PGZ, and build technical setups for other drivers, giving me a practical understanding of vehicle dynamics. Comfortable adapting quickly to new tools and systems."
+      }
+    ],
+
+    "experience": [
+      {
+        "company": "Team PGZ",
+        "role": "Driver & Web Developer",
+        "period": "October 2022 – Present",
+        "content": [
+          "Active competitive driver for the team in motorsport simulation, building a deeper practical understanding of vehicle performance and handling.",
+          "Built and maintain the team's public identity and website from scratch, presenting the team to over 2k visitors per month.",
+          "Took full ownership of the project independently, from concept to ongoing upkeep."
+        ],
+        "type": "list"
+      },
+      {
+        "company": "Beegleton",
+        "role": "Web Developer (Internship)",
+        "period": "February 2026 – May 2026",
+        "content": [
+          "Worked closely with the company's clients on tailored requests — from new features to content and style updates on existing sites.",
+          "Fast-paced environment with a lot of individual responsibility, while collaborating closely with the team across projects.",
+          "Built the company's new website from scratch based on a new graphic profile, from design through to launch."
+        ],
+        "type": "list"
+      },
+      {
+        "company": "Traino AB",
+        "role": "Fullstack Developer (Internship)",
+        "period": "September 2024 – January 2025",
+        "content": [
+          "Designed and led a 4-day training session to teach the team how to use a new tool I had implemented — full ownership of planning and delivery.",
+          "Collaborated closely with the team via GitHub with structured handling of changes across branches.",
+          "Developed a Progressive Web Application (PWA) with a focus on user experience."
+        ],
+        "type": "list"
+      }
+    ],
+    "education": [
+      {
+        "institution": "Lexicon Östergötland",
+        "degree": "Fullstack Next.js/React",
+        "period": "August 2025 - May 2026",
+        "content": null
+      },
+      {
+        "institution": "Mid Sweden University",
+        "degree": "Web Development",
+        "period": "2020 – 2024",
+        "content": null
+      },
+      {
+        "institution": "Realgymnasiet Norrköping",
+        "degree": "Technology Program (Information and Media Technology)",
+        "period": "2017 – 2020",
+        "content": null
+      }
+    ],
+    "projects": [],
+    "skills": [
+      {
+        "name": "Personal Qualities",
+        "level": null,
+        "description": null,
+        "tags": ["Service-minded", "Self-driven", "Structured", "Client-facing experience", "Team player"]
+      },
+      {
+        "name": "Languages",
+        "level": null,
+        "description": null,
+        "tags": ["Swedish (Native)", "English (Native)"]
+      },
+      {
+        "name": "Driving License",
+        "level": null,
+        "description": null,
+        "tags": ["Category B License (Manual)"]
+      },
+      {
+        "name": "Technical Background",
+        "level": null,
+        "description": null,
+        "tags": ["Computer literate", "Quick to adapt to new tools and systems"]
+      }
+    ],
+    "contact": [
+      { "text": "contact@samuelward.dev", "isLink": false },
+      { "text": "072-868 28 43", "isLink": false },
+      { "text": "Norrköping, Sweden", "isLink": false }
+    ]
+  },
+  "sv": {
+    "labels": {
+      "about": "OM MIG",
+      "experience": "ERFARENHET",
+      "education": "UTBILDNING",
+      "projects": "PROJEKT",
+      "skills": "KOMPETENSER",
+      "contact": "KONTAKT",
+      "relevantProjects": "RELEVANTA PROJEKT"
+    },
+    "name": "Samuel Ward",
+    "initials": "SW",
+    "title": "Serviceinriktad med bilintresse",
+    "about": [
+      {
+        "title": "",
+        "period": "",
+        "description": "Serviceinriktad och självgående, med erfarenhet av att arbeta direkt med kunder i högt tempo. Bilintresserad sedan barnsben – jag sköter service och underhåll på min egen bil, tävlar på hög nivå inom simulerad motorsport för Team PGZ, och bygger tekniska setups åt andra förare, vilket gett mig praktisk förståelse för bilars köregenskaper. Van vid att snabbt sätta mig in i nya verktyg och system."
+      }
+    ],
+    "experience": [
+      {
+        "company": "Team PGZ",
+        "role": "Förare & Webbutvecklare",
+        "period": "Oktober 2022 – Pågående",
+        "content": [
+          "Aktiv tävlingsförare för teamet inom simulerad motorsport, vilket gett en djupare praktisk förståelse för bilars prestanda och köregenskaper.",
+          "Byggt upp och driver teamets identitet och webbplats från grunden – presenterar teamet för över 2 000 besökare i månaden.",
+          "Tog fullt ägandeskap för projektet på egen hand, från idé till löpande underhåll."
+        ],
+        "type": "list"
+      },
+      {
+        "company": "Beegleton",
+        "role": "Webbutvecklare (Praktik)",
+        "period": "Februari 2026 – Maj 2026",
+        "content": [
+          "Arbetade nära företagets kunder och arbetade med allt från nya funktioner till innehålls- och stiluppdateringar på befintliga webbplatser.",
+          "Högt tempo med stort eget ansvar, samtidigt som jag samarbetade tätt med teamet i olika projekt.",
+          "Byggde företagets nya webbplats från grunden baserat på en ny grafisk profil, från design till lansering."
+        ],
+        "type": "list"
+      },
+      {
+        "company": "Traino AB",
+        "role": "Fullstack-utvecklare (Praktik)",
+        "period": "September 2024 – Januari 2025",
+        "content": [
+          "Höll i en fyra dagar lång utbildning för att lära teamet ett nytt verktyg jag implementerat med fullt ansvar för både upplägg och genomförande.",
+          "Samarbetade tätt med teamet under hela praktiken med dagliga möten som såg till att alla var på samma sida.",
+          "Utvecklade en Progressive Web Application (PWA) med fokus på användarupplevelse."
+        ],
+        "type": "list"
+      }
+    ],
+    "education": [
+      {
+        "institution": "Lexicon Östergötland",
+        "degree": "Fullstack Next.js/React",
+        "period": "Augusti 2025 - Maj 2026",
+        "content": null
+      },
+      {
+        "institution": "Mittuniversitetet",
+        "degree": "Webbutveckling",
+        "period": "2020 – 2024",
+        "content": null
+      },
+      {
+        "institution": "Realgymnasiet Norrköping",
+        "degree": "Teknikprogrammet (Informations- och medieteknik)",
+        "period": "2017 – 2020",
+        "content": null
+      }
+    ],
+    "projects": [],
+    "skills": [
+      {
+        "name": "Personliga egenskaper",
+        "level": null,
+        "description": null,
+        "tags": ["Serviceinriktad", "Självgående", "Strukturerad", "Van vid kundkontakt", "Samarbetsförmåga"]
+      },
+      {
+        "name": "Språk",
+        "level": null,
+        "description": null,
+        "tags": ["Svenska (modersmål)", "Engelska (modersmål)"]
+      },
+      {
+        "name": "Körkort",
+        "level": null,
+        "description": null,
+        "tags": ["B-körkort (manuellt)"]
+      },
+      {
+        "name": "Teknisk bakgrund",
+        "level": null,
+        "description": null,
+        "tags": [
+          "Datorvana",
+          "Snabb inlärningsförmåga för nya system och verktyg",
+          "Grundläggande fordonsteknisk förståelse",
+          "IT-kompetens"
+        ]
+      }
+    ],
+    "contact": [
+      { "text": "contact@samuelward.dev", "isLink": false },
+      { "text": "072-868 28 43", "isLink": false },
+      { "text": "Norrköping, Sverige", "isLink": false }
+    ]
+  }
+}
