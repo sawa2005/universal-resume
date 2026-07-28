@@ -1,11 +1,183 @@
 import fs from "fs";
 import path from "path";
+import http from "http";
 import puppeteer from "puppeteer";
+import readline from "readline";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import dotenv from "dotenv";
 import { fileURLToPath } from "url";
+import { exec } from "child_process";
+import { promisify } from "util";
+
+const execAsync = promisify(exec);
 
 dotenv.config();
+
+function createPrompt() {
+  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+  return new Promise((resolve) => {
+    rl.question("What would you like to do? [1/2/3]: ", (answer) => {
+      rl.close();
+      resolve(answer.trim());
+    });
+  });
+}
+
+async function askUser(questionText) {
+  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+  return new Promise((resolve) => {
+    rl.question(questionText, (answer) => {
+      rl.close();
+      resolve(answer.trim());
+    });
+  });
+}
+
+function displayCoverLetterPreview(htmlContent, companyName) {
+  const lines = htmlContent.split("<br>").map((line) => line.trim()).filter(Boolean);
+  console.log("\n--- Cover Letter Preview ---");
+  if (companyName && companyName !== "Company") {
+    console.log(`To: ${companyName}\n`);
+  }
+  for (const line of lines) {
+    const cleanLine = line.replace(/<\/?p>/gi, "").trim();
+    if (cleanLine) {
+      console.log(cleanLine);
+    }
+  }
+  console.log("---------------------------\n");
+}
+
+function saveDraft(htmlContent, companyName, lang) {
+  const date = new Date().toISOString().split("T")[0];
+  const companySlug = companyName
+    .replace(/[^a-zA-Z0-9 ]/g, "")
+    .trim()
+    .replace(/\s+/g, "_")
+    .substring(0, 30);
+  const draftPath = path.join(process.cwd(), "exports", `draft-cover-letter-${date}-${lang}-${companySlug}.html`);
+  fs.writeFileSync(draftPath, htmlContent, "utf8");
+  console.log(`Draft saved to: ${draftPath}`);
+}
+
+async function openInBrowser(htmlContent) {
+  return new Promise((resolve, reject) => {
+    const tempHtmlPath = path.join(process.cwd(), "docs", "temp_cover_letter.html");
+    fs.writeFileSync(tempHtmlPath, htmlContent, "utf8");
+
+    let serverClosed = false;
+
+    const server = http.createServer(async (req, res) => {
+      if (req.method === "POST" && req.url === "/save") {
+        let body = "";
+        for await (const chunk of req) body += chunk;
+        try {
+          const data = JSON.parse(body);
+          fs.writeFileSync(tempHtmlPath, data.html, "utf8");
+          res.writeHead(200, { "Content-Type": "application/json" });
+          res.end(JSON.stringify({ ok: true }));
+          console.log("Edited content saved to disk.");
+
+          if (!serverClosed) {
+            serverClosed = true;
+            server.close(() => resolve());
+          }
+        } catch (e) {
+          res.writeHead(400, { "Content-Type": "application/json" });
+          res.end(JSON.stringify({ ok: false, error: e.message }));
+        }
+      } else if (req.url === "/" || req.url === "/index.html") {
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.end(htmlContent);
+      } else {
+        res.writeHead(404);
+        res.end("Not found");
+      }
+    });
+
+    server.listen(0, "127.0.0.1", () => {
+      const port = server.address().port;
+      const url = `http://127.0.0.1:${port}`;
+      console.log(`\nOpening cover letter in browser... Click Save when done.`);
+
+      const crossPlatformOpen =
+        process.platform === "win32" ? `start ""` : process.platform === "darwin" ? "open" : "xdg-open";
+      execAsync(`${crossPlatformOpen} "${url}"`).catch(() => {});
+    });
+
+    server.on("error", (err) => {
+      if (!serverClosed) {
+        serverClosed = true;
+        reject(err);
+      }
+    });
+
+    setTimeout(() => {
+      if (!serverClosed) {
+        serverClosed = true;
+        console.log("\nTimeout waiting for save. Using original content.");
+        server.close(() => resolve());
+      }
+    }, 300000);
+  });
+}
+
+function buildEditableHtml(templatePath, headerHtml, content) {
+  let templateHtml = fs.readFileSync(templatePath, "utf8");
+
+  const saveScript = `
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const btn = document.createElement("button");
+        Object.assign(btn.style, {
+          position: "fixed", top: "16px", right: "16px", zIndex: "9999",
+          padding: "10px 20px", background: "#4F46E5", color: "#fff", border: "none",
+          borderRadius: "8px", fontSize: "14px", fontWeight: "bold", cursor: "pointer",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.15)", transition: "background 0.2s"
+        });
+        btn.textContent = "Save";
+        btn.onmouseover = () => btn.style.background = "#4338CA";
+        btn.onmouseout = () => btn.style.background = "#4F46E5";
+
+        const msg = document.createElement("div");
+        Object.assign(msg.style, {
+          position: "fixed", top: "16px", right: "90px", zIndex: "9999",
+          padding: "8px 16px", background: "#10B981", color: "#fff", borderRadius: "8px",
+          fontSize: "13px", fontWeight: "bold", opacity: "0", transition: "opacity 0.3s"
+        });
+        msg.textContent = "Saved! Press Enter in terminal.";
+
+        btn.onclick = async () => {
+          const contentDiv = document.querySelector("[contenteditable]");
+          if (!contentDiv) return;
+          try {
+            const res = await fetch("/save", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ html: contentDiv.outerHTML })
+            });
+            const result = await res.json();
+            if (result.ok) {
+              msg.style.opacity = "1";
+              setTimeout(() => (msg.style.opacity = "0"), 2500);
+            } else {
+              alert("Save failed: " + result.error);
+            }
+          } catch (e) {
+            alert("Save failed: " + e.message);
+          }
+        };
+
+        document.body.prepend(btn, msg);
+      });
+    <\/script>`;
+
+  const finalHtml = templateHtml.replace(
+    "<!-- Content will be injected here by the script -->",
+    `${headerHtml}<div class="text-gray-700 leading-relaxed space-y-4" contenteditable="true">${content}</div>${saveScript}`,
+  );
+  return finalHtml;
+}
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -159,6 +331,71 @@ async function main() {
     process.exit(1);
   }
 
+  // Review step - ask user what to do with the generated content
+  let finalContent = cleanContent;
+  const skipReview = args.includes("--skip-review");
+  
+  if (!skipReview) {
+    displayCoverLetterPreview(cleanContent, companyName);
+    
+    console.log("1. Generate PDF now");
+    console.log("2. Save draft to file");
+    console.log("3. Open in browser for editing\n");
+    
+    const choice = await createPrompt();
+    
+    if (choice === "2") {
+      const templatePath = path.join(process.cwd(), "docs", "cover_letter_template.html");
+      let templateHtml = fs.readFileSync(templatePath, "utf8");
+      const headerHtml = `
+        <header class="flex items-center mb-8 md:mb-11">
+            <div class="initials-container mr-5 w-12 h-12 flex items-center justify-center text-xl leading-none text-gray-700 bg-gray-250 font-mono font-light shadow-inner rounded-lg print:bg-transparent print:border print:border-gray-300">
+                <div class="text-center">${langData.initials}</div>
+            </div>
+            <h1 class="text-2xl font-semibold text-gray-750 pb-px">${langData.name}</h1>
+        </header>
+        <div class="mb-8 space-y-1">
+            ${langData.contact.map((c) => `<div class="text-gray-600 text-sm">${c.text}</div>`).join("")}
+        </div>
+        <hr class="mb-8 border-gray-200" />
+      `;
+      const fullHtml = buildEditableHtml(templatePath, headerHtml, cleanContent);
+      saveDraft(fullHtml, companyName, lang);
+      process.exit(0);
+    } else if (choice === "3") {
+      const templatePath = path.join(process.cwd(), "docs", "cover_letter_template.html");
+      let templateHtml = fs.readFileSync(templatePath, "utf8");
+      const headerHtml = `
+        <header class="flex items-center mb-8 md:mb-11">
+            <div class="initials-container mr-5 w-12 h-12 flex items-center justify-center text-xl leading-none text-gray-700 bg-gray-250 font-mono font-light shadow-inner rounded-lg print:bg-transparent print:border print:border-gray-300">
+                <div class="text-center">${langData.initials}</div>
+            </div>
+            <h1 class="text-2xl font-semibold text-gray-750 pb-px">${langData.name}</h1>
+        </header>
+        <div class="mb-8 space-y-1">
+            ${langData.contact.map((c) => `<div class="text-gray-600 text-sm">${c.text}</div>`).join("")}
+        </div>
+        <hr class="mb-8 border-gray-200" />
+      `;
+      const editableHtml = buildEditableHtml(templatePath, headerHtml, cleanContent);
+
+      try {
+        await openInBrowser(editableHtml);
+        const editedHtml = fs.readFileSync(path.join(process.cwd(), "docs", "temp_cover_letter.html"), "utf8");
+        const contentMatch = editedHtml.match(/contenteditable="true">([\s\S]*?)<\/div>/);
+        if (contentMatch) {
+          finalContent = contentMatch[1];
+          console.log("Edited content captured. Generating PDF...");
+        } else {
+          console.log("No edits detected, using original generated content.");
+        }
+      } catch (err) {
+        console.error("Error opening browser:", err.message);
+        finalContent = cleanContent;
+      }
+    }
+  }
+
   // Prepare HTML
   const templatePath = path.join(process.cwd(), "docs", "cover_letter_template.html");
   if (!fs.existsSync(templatePath)) {
@@ -183,7 +420,7 @@ async function main() {
 
   const finalHtml = templateHtml.replace(
     "<!-- Content will be injected here by the script -->",
-    `${headerHtml}<div class="text-gray-700 leading-relaxed space-y-4">${cleanContent}</div>`,
+    `${headerHtml}<div class="text-gray-700 leading-relaxed space-y-4">${finalContent}</div>`,
   );
 
   const tempHtmlPath = path.join(process.cwd(), "docs", "temp_cover_letter.html");
