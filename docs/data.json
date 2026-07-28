@@ -61,7 +61,7 @@
       {
         "title": "",
         "period": "",
-        "description": "Hello! I am a full-stack web developer with experience in many different technologies and frameworks from my own projects, internships, and education. <br /><br /> Recently, I have focused heavily on TypeScript and specifically Next.js/React through my course at Lexicon and my previous internship but I have experience in many tech stacks."
+        "description": "Hello! I am a full-stack web developer with experience in many different technologies and frameworks from my own projects, internships, and education."
       }
     ],
 
@@ -90,8 +90,8 @@
       },
       {
         "company": "Team PGZ",
-        "role": "Web Developer",
-        "period": "October 2022 – Present",
+        "role": "Freelance Web Developer",
+        "period": "Since October 2022",
         "content": [
           "Developed and currently maintaining custom website from scratch for a racing team called Team PGZ with the aim of improving the team's online presence.",
           "Created the team's identity and design style as this was their first website.",
@@ -103,20 +103,14 @@
     "education": [
       {
         "institution": "Lexicon Östergötland",
-        "degree": "Fullstack Next.js/React",
-        "period": "August 2025 - May 2026",
+        "degree": "Training Program: Full-Stack Web Developer (Next.js)",
+        "period": "2026",
         "content": null
       },
       {
         "institution": "Mid Sweden University",
-        "degree": "Web Development",
-        "period": "2020 – 2024",
-        "content": null
-      },
-      {
-        "institution": "Realgymnasiet Norrköping",
-        "degree": "Technology Program (Information and Media Technology)",
-        "period": "2017 – 2020",
+        "degree": "Associate Degree: Web Development",
+        "period": "2024",
         "content": null
       }
     ],
@@ -255,7 +249,7 @@
       {
         "title": "",
         "period": "",
-        "description": "Hej! Jag är en fullstack-webbutvecklare med erfarenhet inom många olika teknologier och ramverk från både mina egna projekt, praktik och utbildning. <br /><br /> På senare tid har jag fokuserat mycket på TypeScript och specifikt Next.js/React genom min kurs på Lexicon och jag ser fram emot att fortsätta utvecklas som utvecklare inom detta och andra områden."
+        "description": "Hej! Jag är en fullstack-webbutvecklare med erfarenhet inom många olika teknologier och ramverk från både mina egna projekt, praktik och utbildning."
       }
     ],
     "experience": [
@@ -283,8 +277,8 @@
       },
       {
         "company": "Team PGZ",
-        "role": "Webbutvecklare",
-        "period": "Oktober 2022 – Pågående",
+        "role": "Frilansande Webbutvecklare",
+        "period": "Sedan Oktober 2022",
         "content": [
           "Utvecklade en anpassad webbplats från grunden för ett racing team kallat Team PGZ med syftet att förbättra teamets online-närvaro.",
           "Skapade teamets identitet och designstil eftersom detta var deras första webbsida.",
@@ -296,20 +290,14 @@
     "education": [
       {
         "institution": "Lexicon Östergötland",
-        "degree": "Fullstack Next.js/React",
-        "period": "Augusti 2025 - Maj 2026",
+        "degree": "Intensivutbildning: Fullstack-utvecklare (Next.js)",
+        "period": "2026",
         "content": null
       },
       {
         "institution": "Mittuniversitetet",
-        "degree": "Webbutveckling",
-        "period": "2020 – 2024",
-        "content": null
-      },
-      {
-        "institution": "Realgymnasiet Norrköping",
-        "degree": "Teknikprogrammet (Informations- och medieteknik)",
-        "period": "2017 – 2020",
+        "degree": "Högskoleexamen: Webbutveckling",
+        "period": "2024",
         "content": null
       }
     ],
