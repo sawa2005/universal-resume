@@ -158,6 +158,45 @@ function buildEditableHtml(templatePath, headerHtml, content) {
         });
         msg.textContent = "Saved! Press Enter in terminal.";
 
+        const counter = document.createElement("div");
+        Object.assign(counter.style, {
+          position: "fixed", top: "16px", right: "240px", zIndex: "9999",
+          padding: "8px 16px", background: "#f3f4f6", color: "#374151", borderRadius: "8px",
+          fontSize: "13px", fontWeight: "bold", fontFamily: "monospace"
+        });
+
+        const warning = document.createElement("div");
+        Object.assign(warning.style, {
+          position: "fixed", top: "46px", right: "240px", zIndex: "9999",
+          padding: "6px 14px", background: "#FEE2E2", color: "#DC2626", borderRadius: "8px",
+          fontSize: "12px", fontWeight: "bold", opacity: "0", transition: "opacity 0.3s"
+        });
+        warning.textContent = "May exceed one page";
+
+        const THRESHOLD = 1350;
+
+        function updateCount() {
+          const contentDiv = document.querySelector("[contenteditable]");
+          if (!contentDiv) return;
+          const text = contentDiv.innerText || "";
+          const len = text.length;
+          counter.textContent = len + " / " + THRESHOLD + " chars";
+
+          if (len > THRESHOLD) {
+            warning.style.opacity = "1";
+            counter.style.background = "#FEE2E2";
+            counter.style.color = "#DC2626";
+          } else {
+            warning.style.opacity = "0";
+            counter.style.background = "#f3f4f6";
+            counter.style.color = "#374151";
+          }
+        }
+
+        document.addEventListener("input", updateCount);
+        document.addEventListener("paste", () => setTimeout(updateCount, 0));
+        setTimeout(updateCount, 100);
+
         btn.onclick = async () => {
           const contentDiv = document.querySelector("[contenteditable]");
           if (!contentDiv) return;
@@ -179,7 +218,7 @@ function buildEditableHtml(templatePath, headerHtml, content) {
           }
         };
 
-        document.body.prepend(btn, msg);
+        document.body.prepend(btn, msg, counter, warning);
       });
     <\/script>`;
 
