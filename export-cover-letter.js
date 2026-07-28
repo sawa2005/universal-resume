@@ -34,7 +34,10 @@ async function askUser(questionText) {
 }
 
 function displayCoverLetterPreview(htmlContent, companyName) {
-  const lines = htmlContent.split("<br>").map((line) => line.trim()).filter(Boolean);
+  const lines = htmlContent
+    .split("<br>")
+    .map((line) => line.trim())
+    .filter(Boolean);
   console.log("\n--- Cover Letter Preview ---");
   if (companyName && companyName !== "Company") {
     console.log(`To: ${companyName}\n`);
@@ -80,21 +83,25 @@ async function openInBrowser(htmlContent) {
 
           if (!serverClosed) {
             serverClosed = true;
-            // Destroy all connections immediately to prevent hanging process
-            server.close(() => {});
-            server.destroy();
-            resolve();
+            setTimeout(() => {
+              server.close();
+              resolve();
+            }, 500);
           }
         } catch (e) {
-          res.writeHead(400, { "Content-Type": "application/json" });
-          res.end(JSON.stringify({ ok: false, error: e.message }));
+          if (!res.headersSent) {
+            res.writeHead(400, { "Content-Type": "application/json" });
+            res.end(JSON.stringify({ ok: false, error: e.message }));
+          }
         }
       } else if (req.url === "/" || req.url === "/index.html") {
         res.writeHead(200, { "Content-Type": "text/html" });
         res.end(htmlContent);
       } else {
-        res.writeHead(404);
-        res.end("Not found");
+        if (!res.headersSent) {
+          res.writeHead(404);
+          res.end("Not found");
+        }
       }
     });
 
@@ -119,8 +126,7 @@ async function openInBrowser(htmlContent) {
       if (!serverClosed) {
         serverClosed = true;
         console.log("\nTimeout waiting for save. Using original content.");
-        server.close(() => {});
-        server.destroy();
+        server.close();
         resolve();
       }
     }, 300000);
@@ -339,24 +345,21 @@ async function main() {
   // Review step - ask user what to do with the generated content
   let finalContent = cleanContent;
   const skipReview = args.includes("--skip-review");
-  
+
   if (!skipReview) {
     displayCoverLetterPreview(cleanContent, companyName);
-    
+
     console.log("1. Generate PDF now");
     console.log("2. Save draft to file");
     console.log("3. Open in browser for editing\n");
-    
+
     const choice = await createPrompt();
-    
+
     if (choice === "2") {
       const templatePath = path.join(process.cwd(), "docs", "cover_letter_template.html");
       let templateHtml = fs.readFileSync(templatePath, "utf8");
       const headerHtml = `
         <header class="flex items-center mb-8 md:mb-11">
-            <div class="initials-container mr-5 w-12 h-12 flex items-center justify-center text-xl leading-none text-gray-700 bg-gray-250 font-mono font-light shadow-inner rounded-lg print:bg-transparent print:border print:border-gray-300">
-                <div class="text-center">${langData.initials}</div>
-            </div>
             <h1 class="text-2xl font-semibold text-gray-750 pb-px">${langData.name}</h1>
         </header>
         <div class="mb-8 space-y-1">
@@ -372,9 +375,6 @@ async function main() {
       let templateHtml = fs.readFileSync(templatePath, "utf8");
       const headerHtml = `
         <header class="flex items-center mb-8 md:mb-11">
-            <div class="initials-container mr-5 w-12 h-12 flex items-center justify-center text-xl leading-none text-gray-700 bg-gray-250 font-mono font-light shadow-inner rounded-lg print:bg-transparent print:border print:border-gray-300">
-                <div class="text-center">${langData.initials}</div>
-            </div>
             <h1 class="text-2xl font-semibold text-gray-750 pb-px">${langData.name}</h1>
         </header>
         <div class="mb-8 space-y-1">
@@ -390,7 +390,7 @@ async function main() {
         const contentMatch = editedHtml.match(/contenteditable="true">([\s\S]*?)<\/div>/);
         if (contentMatch) {
           finalContent = contentMatch[1];
-          console.log("Edited content captured. Generating PDF...");
+          console.log("Edited content captured.");
         } else {
           console.log("No edits detected, using original generated content.");
         }
@@ -417,9 +417,6 @@ async function main() {
   // Replicate Header from Resume (Tailwind styles)
   const headerHtml = `
         <header class="flex items-center mb-8 md:mb-11">
-            <div class="initials-container mr-5 w-12 h-12 flex items-center justify-center text-xl leading-none text-gray-700 bg-gray-250 font-mono font-light shadow-inner rounded-lg print:bg-transparent print:border print:border-gray-300">
-                <div class="text-center">${langData.initials}</div>
-            </div>
             <h1 class="text-2xl font-semibold text-gray-750 pb-px">${langData.name}</h1>
         </header>
         <div class="mb-8 space-y-1">
