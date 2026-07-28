@@ -80,7 +80,10 @@ async function openInBrowser(htmlContent) {
 
           if (!serverClosed) {
             serverClosed = true;
-            server.close(() => resolve());
+            // Destroy all connections immediately to prevent hanging process
+            server.close(() => {});
+            server.destroy();
+            resolve();
           }
         } catch (e) {
           res.writeHead(400, { "Content-Type": "application/json" });
@@ -116,7 +119,9 @@ async function openInBrowser(htmlContent) {
       if (!serverClosed) {
         serverClosed = true;
         console.log("\nTimeout waiting for save. Using original content.");
-        server.close(() => resolve());
+        server.close(() => {});
+        server.destroy();
+        resolve();
       }
     }, 300000);
   });
@@ -389,6 +394,11 @@ async function main() {
         } else {
           console.log("No edits detected, using original generated content.");
         }
+
+        // Force close stdin to prevent process from hanging after browser editing
+        if (process.stdin.isTTY) {
+          process.stdin.pause();
+        }
       } catch (err) {
         console.error("Error opening browser:", err.message);
         finalContent = cleanContent;
@@ -513,6 +523,7 @@ async function main() {
   fs.unlinkSync(tempHtmlPath);
 
   console.log(`Cover letter generated successfully: ${outputPath}`);
+  process.exit(0);
 }
 
 main().catch((error) => {
