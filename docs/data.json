@@ -120,77 +120,77 @@
         "url": "https://beegleton.com/",
         "period": "2026",
         "tags": ["WordPress", "React", "TypeScript", "PHP"],
-        "description": "During my internship my main task was rebuilding their website from scratch using the native React.js Gutenberg block structure and the result was this website. It was great to be able to use my React experience within WordPress as well as having a good local development experience and GitHub version control which normally isn't easy with CMS development."
+        "description": "Rebuilt a company website from scratch, gaining valuable experience integrating modern component-based development practices into a traditional CMS environment."
       },
       {
         "name": "chat-app – Real-time chat application",
         "url": "https://github.com/sawa2005/chat-app",
         "period": "2025",
         "tags": ["TypeScript", "Next.js", "React"],
-        "description": "Modern chat app with many features: GIF, emoji, image upload, group conversations, user authentication etc. Written in TypeScript with Next.js, Supabase, Prisma, shadcn/ui & TailwindCSS."
+        "description": "Built a real-time messaging application with rich media support and user management, strengthening my skills in building interactive web experiences."
       },
       {
         "name": "books & quotes – Client Website & REST API",
         "url": "https://bookquotes.onrender.com/",
         "period": "2025",
         "tags": ["ASP.NET", "REST API", "SQLite"],
-        "description": "Web service where users can save books and quotes they like. API built with ASP.NET Core 8, JWT authentication and SQLite database. Client built with Angular 18, the entire application published via Render."
+        "description": "Developed a full-stack book and quote management platform, learning to connect an Angular frontend with a secure REST API backend."
       },
       {
         "name": "Devpendent – Freelance Platform for Developers",
         "url": "https://github.com/sawa2005/Devpendent",
         "period": "2024",
         "tags": ["C#", "ASP.NET"],
-        "description": "Web application where developers can advertise their freelance services. Built with ASP.NET MVC, SQL Server and Azure publishing. CSHTML, Sass, C# and JS/jQuery."
+        "description": "Created a freelance services marketplace platform, gaining hands-on experience building server-side web applications with database integration."
       },
       {
         "name": "mpthree – Client Website & REST API",
         "url": "https://slw-mpthree.netlify.app/",
         "period": "2024",
         "tags": ["React", "REST API", "HTML", "CSS"],
-        "description": "Web service for uploading .mp3 files. API built with Node.js, MongoDB with Mongoose schemas as database. Client built with React, HTML, CSS and JS/JSX."
+        "description": "Built a music file sharing platform with separate client and server components, strengthening my understanding of full-stack architecture."
       },
       {
         "name": "Team PGZ - Website",
         "url": "https://teampgz.com/",
         "period": "2023",
         "tags": ["HTML", "CSS"],
-        "description": "Website created during freelance work presenting Team PGZ. Built with HTML, CSS and JavaScript. The focus was to create a simple 'single page' website that looks modern."
+        "description": "Designed and developed a modern single-page portfolio site for a racing team, focusing on clean design and user experience."
       },
       {
         "name": "My Portfolio Website",
         "url": "https://samuelward.dev/",
         "period": "2023",
         "tags": ["REST API", "TypeScript", "PHP", "HTML"],
-        "description": "Portfolio website presenting my education, previous projects and design style. The information shown is fetched from a REST API created with PHP. Built with HTML, TypeScript, Sass and Gulp for automated workflow."
+        "description": "Created a dynamic portfolio site that fetches content from a custom REST API, learning to automate development workflows."
       },
       {
         "name": "Setup shop – Web Business Concept",
         "url": "https://github.com/sawa2005/setup-shop",
         "period": "2023",
         "tags": ["ASP.NET", "SQLite", "C#", "HTML", "CSS"],
-        "description": "Web business concept built with ASP.NET MVC. ASP.NET Identity for user accounts and SQLite as database. C# for backend and HTML, CSS, JS/jQuery for frontend."
+        "description": "Developed an e-commerce web application concept with user authentication and database management, building both server-side logic and frontend interfaces."
       },
       {
         "name": "Gotlands Vandrarhem – WordPress Website & Theme",
         "url": "https://samuelwarduppgifter.one/gotland/",
         "period": "2022",
         "tags": ["WordPress", "HTML", "CSS", "PHP"],
-        "description": "Website built with WordPress CMS presenting a fictional hostel. Based on a custom created theme specific for the website. HTML, CSS, JS and PHP."
+        "description": "Built a custom WordPress theme from scratch for a hospitality site, gaining hands-on experience with CMS development and theming."
       },
       {
         "name": "Song API – Web API",
         "url": "https://github.com/sawa2005/song-api",
         "period": "2022",
         "tags": ["ASP.NET", "SQLite", "C#"],
-        "description": "ASP.NET Core API handling songs with different properties. Stores these songs in a SQLite database with Entity Framework. Built entirely within C#."
+        "description": "Designed and implemented a RESTful API for managing music data, learning to work with ORM frameworks and relational databases."
       },
       {
         "name": "PostHouse – Simple Blog Service",
         "url": "https://posthouse.one/",
         "period": "2021",
         "tags": ["PHP", "HTML", "CSS"],
-        "description": "Blog/social media service similar to Twitter/X. Built entirely within PHP with a MySQL database for storing posts and user accounts. HTML, CSS, JS for frontend."
+        "description": "Created a social media platform with user accounts and post management, learning to build complete web applications from scratch using server-side scripting."
       }
     ],
     "skills": [
@@ -307,77 +307,77 @@
         "url": "https://beegleton.com/",
         "period": "2026",
         "tags": ["WordPress", "React", "TypeScript", "PHP"],
-        "description": "Under min praktik var min huvudsakliga uppgift att bygga om deras webbplats från grunden med hjälp av den inbyggda React.js-baserade Gutenberg-blockstrukturen. Resultatet blev denna webbplats. Det var väldigt givande att kunna använda mina React-kunskaper även i WordPress, samtidigt som jag fick en smidig lokal utvecklingsmiljö och versionshantering med GitHub, något som annars ofta är svårt att uppnå vid CMS-utveckling."
+        "description": "Återbyggde en företagswebbplats från grunden och fick värdefull erfarenhet av att integrera moderna komponentbaserade utvecklingsmetoder i en traditionell CMS-miljö."
       },
       {
         "name": "chat-app – Real-time chatt applikation",
         "url": "https://github.com/sawa2005/chat-app",
         "period": "2025",
         "tags": ["TypeScript", "Next.js", "React"],
-        "description": "Modern chatt app med många funktioner: GIF, emoji, bild-uppladdning, gruppkonversationer, användarautentisering etc. Skriven i TypeScript med Next.js, Supabase, Prisma, shadcn/ui & TailwindCSS."
+        "description": "Byggde en realtidschattapplikation med stöd för media och användarhantering, vilket stärkte mina färdigheter inom interaktiva webbupplevelser."
       },
       {
         "name": "books & quotes – Klientwebbsida & REST API",
         "url": "https://bookquotes.onrender.com/",
         "period": "2025",
         "tags": ["ASP.NET", "REST API", "SQLite"],
-        "description": "Webbtjänst där användare kan spara böcker och citat de gillar. API byggd med ASP.NET Core 8, JWT-autentisering och SQLite databas. Klient byggd med Angular 18, hela applikationen publicerades via Render."
+        "description": "Utvecklade en fullstack-plattform för att hantera böcker och citat, där jag lärde mig att koppla ihop ett Angular frontend med ett säkert REST API backend."
       },
       {
         "name": "Devpendent – Frilansplattform för utvecklare",
         "url": "https://github.com/sawa2005/Devpendent",
         "period": "2024",
         "tags": ["C#", "ASP.NET"],
-        "description": "Webbapplikation där utvecklare kan annonsera sina frilanstjänster. Byggd med ASP.NET MVC, SQL Server och Azure-publicering. CSHTML, Sass, C# och JS/jQuery."
+        "description": "Skapade en frilansplattform för marknadsföring av tjänster, med värdefull erfarenhet av att bygga server-sida webbapplikationer med databasintegration."
       },
       {
         "name": "mpthree – Klientwebbsida & REST API",
         "url": "https://slw-mpthree.netlify.app/",
         "period": "2024",
         "tags": ["React", "REST API", "HTML", "CSS"],
-        "description": "Webbtjänst för uppladdning av .mp3 filer. API byggd med Node.js, MongoDB med Mongoose-scheman som databas. Klient byggd med React, HTML, CSS och JS/JSX."
+        "description": "Byggde en musikdelningsplattform med separata klient- och serverkomponenter, vilket stärkte min förståelse för fullstacksarkitektur."
       },
       {
         "name": "Team PGZ - Webbplats",
         "url": "https://teampgz.com/",
         "period": "2023",
         "tags": ["HTML", "CSS"],
-        "description": "Webbplats skapad under frilansarbete som presenterar Team PGZ. Byggd med HTML, CSS och JavaScript. Fokuset var att skapa en simpel ”single page” webbsida som ser modern ut."
+        "description": "Designade och utvecklade en modern single-page-portfoliosida för ett racing team med fokus på ren design och användarupplevelse."
       },
       {
         "name": "Min portfoliowebbsida",
         "url": "https://samuelward.dev/",
         "period": "2023",
         "tags": ["REST API", "TypeScript", "PHP", "HTML"],
-        "description": "Portfoliowebbsida som presenterar min utbildning, tidigare projekt och designstil. Informationen som visas hämtas från ett REST API som skapades med PHP. Byggd med HTML, TypeScript, Sass och Gulp för automatiserat arbetsflöde."
+        "description": "Skapade en dynamisk portfoliowebbplats som hämtar innehåll från ett eget REST API, och lärde mig att automatisera utvecklingsarbetsflöden."
       },
       {
         "name": "Setup shop – Webbaffärskoncept",
         "url": "https://github.com/sawa2005/setup-shop",
         "period": "2023",
         "tags": ["ASP.NET", "SQLite", "C#", "HTML", "CSS"],
-        "description": "Webbaffärskoncept byggt med ASP.NET MVC. ASP.NET Identity för användarkonton och SQLite som databas. C# för backend och HTML, CSS, JS/jQuery för frontend."
+        "description": "Utvecklade ett e-handelskoncept med användarautentisering och databashantering, där jag byggde både backend-logik och frontend-gränssnitt."
       },
       {
         "name": "Gotlands Vandrarhem – WordPress webbsida & tema",
         "url": "https://samuelwarduppgifter.one/gotland/",
         "period": "2022",
         "tags": ["HTML", "CSS", "PHP"],
-        "description": "Webbsida byggd med WordPress CMS som presenterar ett fiktivt vandrarhem. Baserat på ett eget skapat tema specifikt för webbsidan. HTML, CSS, JS och PHP."
+        "description": "Byggde ett anpassat WordPress-tema från grunden för en hotellwebbplats, med värdefull erfarenhet av CMS-utveckling och temabygge."
       },
       {
         "name": "Song API – Webb-API",
         "url": "https://github.com/sawa2005/song-api",
         "period": "2022",
         "tags": ["ASP.NET", "SQLite", "C#"],
-        "description": "ASP.NET Core API som hanterar låtar med olika egenskaper. Lagrar dessa låtar i en SQLite-databas med Entity Framework. Byggd helt inom C#."
+        "description": "Designade och implementerade ett RESTful API för hantering av musikdata, där jag lärde mig arbeta med ORM-ramverk och relationsdatabaser."
       },
       {
         "name": "PostHouse – Simpel bloggtjänst",
         "url": "https://posthouse.one/",
         "period": "2021",
         "tags": ["PHP", "HTML", "CSS"],
-        "description": "Blogg/social mediatjänst liknande till Twitter/X. Byggt helt inom PHP med en MySQL-databas för lagring av poster och användarkonton. HTML, CSS, JS för frontend."
+        "description": "Skapade en social plattform med användarkonton och inläggshantering, där jag lärde mig att bygga kompletta webbapplikationer från grunden."
       }
     ],
     "skills": [
