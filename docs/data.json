@@ -195,34 +195,28 @@
     ],
     "skills": [
       {
-        "name": "Programming Languages",
+        "name": "Frontend",
         "level": null,
         "description": null,
-        "tags": ["HTML5", "CSS & SCSS", "JavaScript & TypeScript", "PHP", "C#", "SQL"]
+        "tags": ["HTML5", "CSS & SCSS", "JavaScript & TypeScript", "React", "Angular", "Next.js", "Tailwind"]
       },
       {
-        "name": "Technologies",
+        "name": "Backend",
         "level": null,
         "description": null,
-        "tags": ["Node.js", "ASP.NET", "Git", "React", "Angular", "Next.js", "MySQL", "PostgreSQL"]
+        "tags": ["PHP", "C#", "ASP.NET", "Node.js", "WordPress", "SQL", "MySQL", "PostgreSQL", "REST API"]
       },
       {
         "name": "Tools",
         "level": null,
         "description": null,
-        "tags": ["Visual Studio & VSCode", "Adobe Xd", "Figma", "GitHub", "Azure", "AWS S3", "Supabase", "Tailwind"]
+        "tags": ["Git", "Azure", "AWS S3", "Stripe", "Supabase", "Figma"]
       },
       {
-        "name": "Languages",
+        "name": "Other",
         "level": null,
         "description": null,
-        "tags": ["Swedish (Native)", "English (Native)"]
-      },
-      {
-        "name": "Driving License",
-        "level": null,
-        "description": null,
-        "tags": ["Category B License"]
+        "tags": ["Swedish", "English", "Driver's License"]
       }
     ],
     "contact": [
@@ -382,34 +376,28 @@
     ],
     "skills": [
       {
-        "name": "Programmeringsspråk",
+        "name": "Frontend",
         "level": null,
         "description": null,
-        "tags": ["HTML5", "CSS & SCSS", "JavaScript & TypeScript", "PHP", "C#", "SQL"]
+        "tags": ["HTML5", "CSS & SCSS", "JavaScript & TypeScript", "React", "Angular", "Next.js", "Tailwind"]
       },
       {
-        "name": "Teknologier",
+        "name": "Backend",
         "level": null,
         "description": null,
-        "tags": ["Node.js", "ASP.NET", "Git", "React", "Angular", "Next.js", "MySQL", "PostgreSQL", "WordPress"]
+        "tags": ["PHP", "C#", "ASP.NET", "Node.js", "WordPress", "SQL", "MySQL", "PostgreSQL", "REST API"]
       },
       {
         "name": "Verktyg",
         "level": null,
         "description": null,
-        "tags": ["Visual Studio & VSCode", "Adobe Xd", "Figma", "GitHub", "Azure", "AWS S3", "Supabase", "Tailwind"]
+        "tags": ["Git", "Azure", "AWS S3", "Stripe", "Supabase", "Figma"]
       },
       {
-        "name": "Språk",
+        "name": "Övrigt",
         "level": null,
         "description": null,
-        "tags": ["Svenska (modersmål)", "Engelska (modersmål)"]
-      },
-      {
-        "name": "Körkort",
-        "level": null,
-        "description": null,
-        "tags": ["B-körkort"]
+        "tags": ["Svenska", "Engelska", "B-körkort"]
       }
     ],
     "contact": [
