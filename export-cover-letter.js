@@ -317,7 +317,7 @@ async function main() {
     as I’ve been interning at a company building a React web application for the past few
     months as a fullstack-developer. I also have experience in C# and .NET through my
     education so all in all I have a broad range of expertise within web development.
-    
+
     As a person, I am diplomatic and non-confrontational, so I have never had difficulty
     working in groups. I am also half-american and speak both English and Swedish fluently.
     Since I’ve been studying remote for a while now I can work effectively from home and
@@ -327,7 +327,7 @@ async function main() {
 
     I am sure that my experiences from my education and projects I have done will be able to
     be used in this internship and I sincerely hope that I will get to hear from you soon!
-    
+
     Sincerely,
     Samuel Ward
   `;
@@ -343,22 +343,28 @@ async function main() {
   const cvContext = JSON.stringify(langData);
   const fullPrompt = `
         You are writing a professional cover letter for ${langData.name}.
-        Language: ${lang === "sv" ? "Swedish" : "English"}. 
-        
+        Language: ${lang === "sv" ? "Swedish" : "English"}.
+
         Resume Data:
         ${cvContext}
-        
+
         Job Description / User Request:
         ${promptText}
-        
+
         Instructions:
         - Identify the name of the company this cover letter is for.
         - Write a professional and engaging cover letter tailored to the job description/request.
         - The content should be less than 250 words, fitting on a single A4 page.
         - Use HTML format for the body content (use <p> for paragraphs, <br> for line breaks).
-        - Do NOT include the header (Name, Address) or closing signature block (Sincerely, Name) as these will be added by the template.
-        - Focus on the body paragraphs.
-        
+        - Do NOT include the header (Name, Address) as these will be added by the template unless otherwise instructed.
+        - Do include the greeting and closing signature block exactly as it is from the reference letter.
+        - Avoid the mathematical patterns generally found in AI-generated cover letters.
+        - Avoid anything traditionally detected as AI-generated (e.g., mathematical patterns, repetitive language).
+        - After writing the body content, filter it a second time to remove any AI-generated patterns.
+        - Mix sentence lengths: Combine short sentences and split long, robotic ones.
+        - Add personal voice: Include my own stories, unique opinions, or real examples.
+        - Use natural flaws: Change rigid paragraphs, use active voice, and avoid repeating the same introductory transition words.
+
         When writing the cover letter, you can use this as a reference for writing style (do NOT copy content, only style):
         ${referenceLetter}
 
