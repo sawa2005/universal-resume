@@ -20,6 +20,7 @@
     "export:cover-letter": "node export-cover-letter.js"
   },
   "dependencies": {
+    "@chris_m/genius-humanizer": "^1.0.2",
     "@fullhuman/postcss-purgecss": "^7.0.2",
     "@google/generative-ai": "^0.24.1",
     "@tailwindcss/postcss": "^4.1.17",

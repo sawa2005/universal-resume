@@ -1,6 +1,7 @@
 let allData = {};
 let currentLang = "en";
 let currentProjectFilter = new Set(["All"]);
+let projectsPerTagLimit = null;
 
 // Helper to render lists or paragraphs
 const renderContent = (content, type) => {
@@ -28,9 +29,28 @@ const renderProjects = (projects) => {
   const containers = document.querySelectorAll('[data-section="projects"]');
   if (containers.length === 0) return;
 
-  const filteredProjects = currentProjectFilter.has("All")
-    ? projects
-    : projects.filter((p) => p.tags && Array.from(currentProjectFilter).some((tag) => p.tags.includes(tag)));
+  let filteredProjects;
+  if (currentProjectFilter.has("All") || !projectsPerTagLimit) {
+    filteredProjects = projects;
+  } else {
+    const selectedTags = Array.from(currentProjectFilter);
+    const seen = new Set();
+    filteredProjects = [];
+    for (const tag of selectedTags) {
+      let count = 0;
+      for (const proj of projects) {
+        if (count >= projectsPerTagLimit) break;
+        if (proj.tags && proj.tags.includes(tag)) {
+          const key = `${proj.name}-${proj.url}`;
+          if (!seen.has(key)) {
+            seen.add(key);
+            filteredProjects.push(proj);
+            count++;
+          }
+        }
+      }
+    }
+  }
 
   const projectsHTML = filteredProjects
     .map(
@@ -116,6 +136,16 @@ window.setProjectFilter = (tag) => {
   render(currentLang); // Re-render to update projects and active button state
 };
 
+// Global function to set per-tag project limit for PDF export
+window.setProjectsPerTagLimit = (limit) => {
+  if (typeof limit === "number" && limit > 0) {
+    projectsPerTagLimit = limit;
+  } else {
+    projectsPerTagLimit = null;
+  }
+  render(currentLang);
+};
+
 const render = (lang) => {
   const data = allData[lang];
   if (!data) return;
@@ -197,7 +227,7 @@ const render = (lang) => {
   const skillsHTML = data.skills
     .map(
       (skill) => `
-    <section class="mb-4.5">
+    <section>
       <header class="break-after-avoid">
         <h3 class="text-lg font-semibold text-gray-700 leading-snugish">
           ${skill.name}

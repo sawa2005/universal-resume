@@ -44,6 +44,7 @@ async function main() {
   const tags = tagsStr ? tagsStr.split(",") : [];
   const theme = getArgValue("--theme") || "default";
   const output = getArgValue("--output");
+  const projectsPerTag = parseInt(getArgValue("--projects-per-tag"), 10) || null;
 
   // Determine output path
   let outputPath;
@@ -79,6 +80,7 @@ async function main() {
   console.log(`Generating PDF with:
     Language: ${lang}
     Tags: ${tags.length ? tags.join(", ") : "All"}
+    Projects per tag: ${projectsPerTag || "None (show all)"}
     Theme: ${theme}
     Data source: docs/${jsonPath}
     Output: ${outputPath}
@@ -157,6 +159,13 @@ async function main() {
         window.setProjectFilter(tag);
       });
     }, tags);
+  }
+
+  // Apply Projects Per Tag Limit
+  if (projectsPerTag) {
+    await page.evaluate((limit) => {
+      window.setProjectsPerTagLimit(limit);
+    }, projectsPerTag);
   }
 
   // Wait a bit for any transitions

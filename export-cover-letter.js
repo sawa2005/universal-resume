@@ -365,7 +365,7 @@ async function main() {
         - Add personal voice: Include my own stories, unique opinions, or real examples.
         - Use natural flaws: Change rigid paragraphs, use active voice, and avoid repeating the same introductory transition words.
 
-        When writing the cover letter, you can use this as a reference for writing style (do NOT copy content, only style):
+        When writing the cover letter, you can use this as a reference for writing style and examples of the patterns that are 0% AI-generated (do NOT copy content, only style):
         ${referenceLetter}
 
         IMPORTANT: Your response MUST be a JSON object with the following structure:
