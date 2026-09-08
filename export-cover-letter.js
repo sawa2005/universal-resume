@@ -51,24 +51,63 @@ function displayCoverLetterPreview(htmlContent, companyName) {
   console.log("---------------------------\n");
 }
 
-function saveDraft(htmlContent, companyName, lang) {
+function saveDraft(htmlContent, companyName, lang, nonDev = false) {
   const date = new Date().toISOString().split("T")[0];
   const companySlug = companyName
-    .replace(/[^a-zA-Z0-9 ]/g, "")
-    .trim()
-    .replace(/\s+/g, "_")
-    .substring(0, 30);
-  const draftPath = path.join(process.cwd(), "exports", `draft-cover-letter-${date}-${lang}-${companySlug}.html`);
+    ? companyName
+        .replace(/[^a-zA-Z0-9 ]/g, "")
+        .trim()
+        .replace(/\s+/g, "_")
+        .substring(0, 30)
+    : "";
+  const slugPart = companySlug ? `-${companySlug}` : "";
+  const nonDevPart = nonDev ? "-nondev" : "";
+  const draftPath = path.join(process.cwd(), "exports", `draft-cover-letter-${date}-${lang}${slugPart}${nonDevPart}.html`);
   fs.writeFileSync(draftPath, htmlContent, "utf8");
   console.log(`Draft saved to: ${draftPath}`);
 }
 
-async function openInBrowser(htmlContent) {
+function getSampleContent(lang, name, companyName, nonDev = false) {
+  const company = companyName || (lang === "sv" ? "[Företagsnamn]" : "[Company Name]");
+  if (nonDev) {
+    if (lang === "sv") {
+      return `<p>Hej!</p>
+<p>Med stort intresse ansöker jag härmed till tjänsten hos ${company}. Med mitt starka driv, min serviceinriktade inställning och praktiska problemlösningsförmåga är jag mycket intresserad av att bli en del av ert team.</p>
+<p>Genom mina tidigare erfarenheter har jag utvecklat god samarbetsförmåga, ett noggrant arbetssätt och vana vid att arbeta strukturerat och ta eget ansvar. Jag trivs med nya utmaningar och sätter mig snabbt in i nya uppgifter och system.</p>
+<p>Tack för att ni tar er tid att läsa min ansökan. Jag ser fram emot möjligheten att berätta mer om mig själv och hur jag kan bidra till er verksamhet.</p>
+<p>Med vänliga hälsningar,<br>${name}</p>`;
+    }
+
+    return `<p>Dear Hiring Team,</p>
+<p>I am writing to express my interest in the position at ${company}. With my service-minded approach, strong work ethic, and practical problem-solving experience, I am excited about the opportunity to contribute to your team.</p>
+<p>Through my previous experiences, I have developed strong communication skills, an eye for detail, and the ability to thrive both independently and in collaborative environments. I enjoy taking on new challenges and quickly adapting to new systems and tools.</p>
+<p>Thank you for considering my application. I look forward to the possibility of discussing how my skills and experiences align with your needs.</p>
+<p>Sincerely,<br>${name}</p>`;
+  }
+
+  if (lang === "sv") {
+    return `<p>Hej!</p>
+<p>Med stort intresse ansöker jag härmed till tjänsten hos ${company}. Med min bakgrund inom webbutveckling och erfarenhet av moderna teknologier är jag mycket intresserad av att bli en del av ert team.</p>
+<p>Under mina tidigare projekt och erfarenheter har jag utvecklat goda kunskaper inom både frontend och backend, och jag trivs med att lösa komplexa problem och bygga användarvänliga lösningar.</p>
+<p>Som person är jag engagerad, noggrann och trivs bra med att samarbeta i team såväl som att arbeta självständigt. Jag ser fram emot möjligheten att diskutera hur mina erfarenheter och kompetenser kan bidra till er verksamhet.</p>
+<p>Med vänliga hälsningar,<br>${name}</p>`;
+  }
+
+  return `<p>Dear Hiring Team,</p>
+<p>I am writing to express my interest in the position at ${company}. With my background in web development and experience working with modern technologies, I am excited about the opportunity to contribute to your team.</p>
+<p>Through my previous projects and internships, I have developed strong skills across both frontend and backend development. I am passionate about creating efficient, user-friendly solutions and thrive in collaborative environments.</p>
+<p>Thank you for considering my application. I look forward to the possibility of discussing how my skills and experiences align with your needs.</p>
+<p>Sincerely,<br>${name}</p>`;
+}
+
+async function openInBrowser(htmlContent, timeoutMs = 0) {
   return new Promise((resolve, reject) => {
     const tempHtmlPath = path.join(process.cwd(), "docs", "temp_cover_letter.html");
     fs.writeFileSync(tempHtmlPath, htmlContent, "utf8");
 
     let serverClosed = false;
+    let savedContent = null;
+    let timeoutTimer = null;
 
     const server = http.createServer(async (req, res) => {
       if (req.method === "POST" && req.url === "/save") {
@@ -76,16 +115,17 @@ async function openInBrowser(htmlContent) {
         for await (const chunk of req) body += chunk;
         try {
           const data = JSON.parse(body);
-          fs.writeFileSync(tempHtmlPath, data.html, "utf8");
+          savedContent = data.html;
           res.writeHead(200, { "Content-Type": "application/json" });
           res.end(JSON.stringify({ ok: true }));
           console.log("Edited content saved to disk.");
 
           if (!serverClosed) {
             serverClosed = true;
+            if (timeoutTimer) clearTimeout(timeoutTimer);
             setTimeout(() => {
               server.close();
-              resolve();
+              resolve(savedContent);
             }, 500);
           }
         } catch (e) {
@@ -95,10 +135,27 @@ async function openInBrowser(htmlContent) {
           }
         }
       } else if (req.url === "/" || req.url === "/index.html") {
-        res.writeHead(200, { "Content-Type": "text/html" });
+        res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
         res.end(htmlContent);
       } else {
-        if (!res.headersSent) {
+        const cleanUrl = req.url.split("?")[0].replace(/^\/+/, "");
+        const filePath = path.join(process.cwd(), "docs", cleanUrl);
+        if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+          const ext = path.extname(filePath).toLowerCase();
+          const mimeTypes = {
+            ".css": "text/css; charset=utf-8",
+            ".js": "application/javascript; charset=utf-8",
+            ".woff2": "font/woff2",
+            ".woff": "font/woff",
+            ".ttf": "font/ttf",
+            ".otf": "font/otf",
+            ".svg": "image/svg+xml",
+            ".png": "image/png",
+            ".jpg": "image/jpeg",
+          };
+          res.writeHead(200, { "Content-Type": mimeTypes[ext] || "application/octet-stream" });
+          fs.createReadStream(filePath).pipe(res);
+        } else if (!res.headersSent) {
           res.writeHead(404);
           res.end("Not found");
         }
@@ -108,7 +165,7 @@ async function openInBrowser(htmlContent) {
     server.listen(0, "127.0.0.1", () => {
       const port = server.address().port;
       const url = `http://127.0.0.1:${port}`;
-      console.log(`\nOpening cover letter in browser... Click Save when done.`);
+      console.log(`\nOpening cover letter in browser (${url})... Click Save when done.`);
 
       const crossPlatformOpen =
         process.platform === "win32" ? `start ""` : process.platform === "darwin" ? "open" : "xdg-open";
@@ -118,23 +175,37 @@ async function openInBrowser(htmlContent) {
     server.on("error", (err) => {
       if (!serverClosed) {
         serverClosed = true;
+        if (timeoutTimer) clearTimeout(timeoutTimer);
         reject(err);
       }
     });
 
-    setTimeout(() => {
-      if (!serverClosed) {
-        serverClosed = true;
-        console.log("\nTimeout waiting for save. Using original content.");
-        server.close();
-        resolve();
-      }
-    }, 300000);
+    if (timeoutMs > 0) {
+      timeoutTimer = setTimeout(() => {
+        if (!serverClosed) {
+          serverClosed = true;
+          console.log("\nTimeout waiting for save. Using original content.");
+          server.close();
+          resolve(null);
+        }
+      }, timeoutMs);
+    }
   });
 }
 
-function buildEditableHtml(templatePath, headerHtml, content) {
+function buildEditableHtml(templatePath, headerHtml, content, themeConfig = null) {
   let templateHtml = fs.readFileSync(templatePath, "utf8");
+
+  if (themeConfig) {
+    const vars = Object.entries(themeConfig)
+      .map(([k, v]) => `        ${k}: ${v};`)
+      .join("\n");
+    const bodyBg = themeConfig["--color-page-background"]
+      ? `\n        body { background-color: ${themeConfig["--color-page-background"]}; }`
+      : "";
+    const themeStyle = `\n    <style>\n      :root {\n${vars}\n      }${bodyBg}\n    </style>`;
+    templateHtml = templateHtml.replace("</head>", `${themeStyle}\n</head>`);
+  }
 
   const saveScript = `
     <script>
@@ -156,7 +227,7 @@ function buildEditableHtml(templatePath, headerHtml, content) {
           padding: "8px 16px", background: "#10B981", color: "#fff", borderRadius: "8px",
           fontSize: "13px", fontWeight: "bold", opacity: "0", transition: "opacity 0.3s"
         });
-        msg.textContent = "Saved! Press Enter in terminal.";
+        msg.textContent = "Saved! Generating PDF...";
 
         const counter = document.createElement("div");
         Object.assign(counter.style, {
@@ -200,20 +271,25 @@ function buildEditableHtml(templatePath, headerHtml, content) {
         btn.onclick = async () => {
           const contentDiv = document.querySelector("[contenteditable]");
           if (!contentDiv) return;
+          btn.disabled = true;
+          btn.textContent = "Saving...";
           try {
             const res = await fetch("/save", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ html: contentDiv.outerHTML })
+              body: JSON.stringify({ html: contentDiv.innerHTML })
             });
             const result = await res.json();
             if (result.ok) {
               msg.style.opacity = "1";
-              setTimeout(() => (msg.style.opacity = "0"), 2500);
             } else {
+              btn.disabled = false;
+              btn.textContent = "Save";
               alert("Save failed: " + result.error);
             }
           } catch (e) {
+            btn.disabled = false;
+            btn.textContent = "Save";
             alert("Save failed: " + e.message);
           }
         };
@@ -232,75 +308,122 @@ function buildEditableHtml(templatePath, headerHtml, content) {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const API_KEY = process.env.GEMINI_API_KEY;
+function getGeminiModel() {
+  const API_KEY = process.env.GEMINI_API_KEY;
 
-if (!API_KEY) {
-  console.error("Error: GEMINI_API_KEY environment variable not found. Please add it to your .env file.");
-  process.exit(1);
+  if (!API_KEY) {
+    console.error("Error: GEMINI_API_KEY environment variable not found. Please add it to your .env file.");
+    process.exit(1);
+  }
+
+  const genAI = new GoogleGenerativeAI(API_KEY);
+  return genAI.getGenerativeModel({
+    model: "gemini-2.5-flash",
+    generationConfig: { responseMimeType: "application/json" },
+  });
 }
-
-const genAI = new GoogleGenerativeAI(API_KEY);
-const model = genAI.getGenerativeModel({
-  model: "gemini-2.5-flash",
-  generationConfig: { responseMimeType: "application/json" },
-});
 
 async function main() {
   const args = process.argv.slice(2);
-  const promptArg = args.find((arg) => arg.startsWith("--prompt="));
-  const urlArg = args.find((arg) => arg.startsWith("--url="));
-  const langArg = args.find((arg) => arg.startsWith("--lang="));
-  const themeArg = args.find((arg) => arg.startsWith("--theme="));
-  const outputArg = args.find((arg) => arg.startsWith("--output="));
 
-  if (!promptArg && !urlArg) {
-    console.error(
-      'Error: Either --prompt or --url flag is required. Usage: npm run export:cover-letter -- --prompt="Job description..." --url="https://..."',
-    );
-    process.exit(1);
+  if (args.includes("--help") || args.includes("-h")) {
+    console.log(`
+Cover Letter Generator
+
+Usage:
+  Default (skips AI, opens browser with sample text for editing):
+    npm run export:cover-letter [options]
+
+  AI Generation (generates cover letter with Gemini):
+    npm run export:cover-letter:ai -- --prompt="Job description..." [options]
+    npm run export:cover-letter -- --ai --prompt="Job description..." [options]
+
+Options:
+  --lang=<en|sv>        Language to use (default: en)
+  --company=<name>      Target company name
+  --theme=<name>        Theme: default, warm, cold, dark (default: default)
+  --output=<path>       Custom output file path for the PDF
+  --prompt=<text>       Job description or instructions (triggers AI mode)
+  --url=<url>           URL to scrape job description from (triggers AI mode)
+  --ai                  Explicitly enable AI generation mode
+  --no-ai / --skip-ai   Force skip AI generation even if prompt is given
+  --no-browser          Skip opening browser (generates PDF directly)
+  --skip-review         Skip CLI review prompt in AI mode and generate PDF directly
+  --non-dev / --nondev  Non-dev mode: uses data-nondev.json and removes GitHub link from header
+`);
+    process.exit(0);
   }
 
-  let promptText = "";
-
-  if (urlArg) {
-    const url = urlArg.split("=")[1];
-    console.log(`Fetching job description from ${url}...`);
-    try {
-      const scrapeBrowser = await puppeteer.launch();
-      const page = await scrapeBrowser.newPage();
-      // Set User-Agent to mimic a real browser
-      await page.setUserAgent(
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-      );
-      await page.goto(url, { waitUntil: "networkidle2" });
-      const text = await page.evaluate(() => document.body.innerText);
-      await scrapeBrowser.close();
-      promptText += `\n\nJob Description from URL (${url}):\n${text}\n\n`;
-    } catch (err) {
-      console.error("Warning: Failed to fetch URL content:", err.message);
-      if (!promptArg) {
-        console.error("Exiting because URL fetch failed and no prompt was provided.");
-        process.exit(1);
-      }
+  const getArgValue = (flag) => {
+    const index = args.findIndex((arg) => arg === flag);
+    if (index !== -1 && args[index + 1] && !args[index + 1].startsWith("--")) {
+      return args[index + 1];
     }
-  }
+    const startsWithArg = args.find((arg) => arg.startsWith(`${flag}=`));
+    if (startsWithArg) return startsWithArg.slice(flag.length + 1);
+    return null;
+  };
 
-  if (promptArg) {
-    const pText = promptArg.split("=")[1];
-    promptText = pText + promptText;
-  }
+  const promptValue = getArgValue("--prompt");
+  const urlValue = getArgValue("--url");
+  const langValue = getArgValue("--lang");
+  const themeValue = getArgValue("--theme");
+  const outputValue = getArgValue("--output");
+  const companyValue = getArgValue("--company");
 
-  const lang = langArg ? langArg.split("=")[1] : "en";
-  const theme = themeArg ? themeArg.split("=")[1] : "default";
+  const nonDev = args.includes("--non-dev") || args.includes("--nondev");
+  const jsonPath = nonDev ? "data-nondev.json" : "data.json";
+
+  const explicitAi = args.includes("--ai");
+  const explicitNoAi = args.includes("--no-ai") || args.includes("--skip-ai");
+  const hasPromptOrUrl = Boolean(promptValue || urlValue);
+  const useAi = !explicitNoAi && (explicitAi || hasPromptOrUrl);
 
   // Read Data
-  const dataPath = path.join(process.cwd(), "docs", "data.json");
+  const dataPath = path.join(process.cwd(), "docs", jsonPath);
   if (!fs.existsSync(dataPath)) {
-    console.error("Error: docs/data.json not found.");
+    console.error(`Error: docs/${jsonPath} not found.`);
     process.exit(1);
   }
   const resumeData = JSON.parse(fs.readFileSync(dataPath, "utf8"));
+  const availableLanguages = Object.keys(resumeData).filter((key) => key !== "config");
+
+  let lang = langValue;
+  if (!lang) {
+    lang = args.find((arg) => availableLanguages.includes(arg));
+  }
+  lang = lang || (availableLanguages.includes("en") ? "en" : availableLanguages[0]);
+
   const langData = resumeData[lang];
+  if (!langData) {
+    console.error(`Error: Language '${lang}' not found in ${jsonPath}.`);
+    process.exit(1);
+  }
+
+  const theme = themeValue || "default";
+  const themeConfig = resumeData.config?.themes?.[theme] || resumeData.config?.themes?.default || null;
+
+  const templatePath = path.join(process.cwd(), "docs", "cover_letter_template.html");
+  if (!fs.existsSync(templatePath)) {
+    console.error("Error: docs/cover_letter_template.html not found.");
+    process.exit(1);
+  }
+
+  const contactList = nonDev
+    ? langData.contact.filter(
+        (c) => !c.text.toLowerCase().includes("github") && !(c.url && c.url.toLowerCase().includes("github")),
+      )
+    : langData.contact;
+
+  const headerHtml = `
+        <header class="flex items-center mb-8 md:mb-11">
+            <h1 class="text-2xl font-semibold text-gray-750 pb-px">${langData.name}</h1>
+        </header>
+        <div class="mb-8 space-y-1">
+            ${contactList.map((c) => `<div class="text-gray-600 text-sm">${c.text}</div>`).join("")}
+        </div>
+        <hr class="mb-8 border-gray-200" />
+  `;
 
   // Enter a reference letter (preferably written by you) as a reference for writing style
   const referenceLetter = `
@@ -332,16 +455,49 @@ async function main() {
     Samuel Ward
   `;
 
-  if (!langData) {
-    console.error(`Error: Language '${lang}' not found in data.json.`);
-    process.exit(1);
-  }
+  let cleanContent = "";
+  let companyName = companyValue || "";
+  let finalContent = "";
 
-  // Generate Content
-  console.log(`Generating cover letter for ${langData.name} (${lang})...
-`);
-  const cvContext = JSON.stringify(langData);
-  const fullPrompt = `
+  if (useAi) {
+    if (!promptValue && !urlValue) {
+      console.error(
+        'Error: Either --prompt or --url flag is required when using AI generation. Usage: npm run export:cover-letter:ai -- --prompt="Job description..."',
+      );
+      process.exit(1);
+    }
+
+    let promptText = "";
+
+    if (urlValue) {
+      console.log(`Fetching job description from ${urlValue}...`);
+      try {
+        const scrapeBrowser = await puppeteer.launch();
+        const page = await scrapeBrowser.newPage();
+        // Set User-Agent to mimic a real browser
+        await page.setUserAgent(
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+        );
+        await page.goto(urlValue, { waitUntil: "networkidle2" });
+        const text = await page.evaluate(() => document.body.innerText);
+        await scrapeBrowser.close();
+        promptText += `\n\nJob Description from URL (${urlValue}):\n${text}\n\n`;
+      } catch (err) {
+        console.error("Warning: Failed to fetch URL content:", err.message);
+        if (!promptValue) {
+          console.error("Exiting because URL fetch failed and no prompt was provided.");
+          process.exit(1);
+        }
+      }
+    }
+
+    if (promptValue) {
+      promptText = promptValue + promptText;
+    }
+
+    console.log(`Generating cover letter for ${langData.name} (${lang}) with Gemini AI...\n`);
+    const cvContext = JSON.stringify(langData);
+    const fullPrompt = `
         You are writing a professional cover letter for ${langData.name}.
         Language: ${lang === "sv" ? "Swedish" : "English"}.
 
@@ -375,72 +531,74 @@ async function main() {
         }
     `;
 
-  let cleanContent;
-  let companyName = "Company";
-  try {
-    const result = await model.generateContent(fullPrompt);
-    const response = JSON.parse(result.response.text());
-    cleanContent = response.htmlContent;
-    companyName = response.companyName;
-  } catch (error) {
-    console.error("Error generating content with Gemini:", error);
-    process.exit(1);
-  }
+    const model = getGeminiModel();
+    try {
+      const result = await model.generateContent(fullPrompt);
+      const response = JSON.parse(result.response.text());
+      cleanContent = response.htmlContent;
+      if (!companyName) {
+        companyName = response.companyName || "";
+      }
+    } catch (error) {
+      console.error("Error generating content with Gemini:", error);
+      process.exit(1);
+    }
 
-  // Review step - ask user what to do with the generated content
-  let finalContent = cleanContent;
-  const skipReview = args.includes("--skip-review");
+    finalContent = cleanContent;
+    const skipReview = args.includes("--skip-review");
 
-  if (!skipReview) {
-    displayCoverLetterPreview(cleanContent, companyName);
+    if (!skipReview) {
+      displayCoverLetterPreview(cleanContent, companyName);
 
-    console.log("1. Generate PDF now");
-    console.log("2. Save draft to file");
-    console.log("3. Open in browser for editing\n");
+      console.log("1. Generate PDF now");
+      console.log("2. Save draft to file");
+      console.log("3. Open in browser for editing\n");
 
-    const choice = await createPrompt();
+      const choice = await createPrompt();
 
-    if (choice === "2") {
-      const templatePath = path.join(process.cwd(), "docs", "cover_letter_template.html");
-      let templateHtml = fs.readFileSync(templatePath, "utf8");
-      const headerHtml = `
-        <header class="flex items-center mb-8 md:mb-11">
-            <h1 class="text-2xl font-semibold text-gray-750 pb-px">${langData.name}</h1>
-        </header>
-        <div class="mb-8 space-y-1">
-            ${langData.contact.map((c) => `<div class="text-gray-600 text-sm">${c.text}</div>`).join("")}
-        </div>
-        <hr class="mb-8 border-gray-200" />
-      `;
-      const fullHtml = buildEditableHtml(templatePath, headerHtml, cleanContent);
-      saveDraft(fullHtml, companyName, lang);
-      process.exit(0);
-    } else if (choice === "3") {
-      const templatePath = path.join(process.cwd(), "docs", "cover_letter_template.html");
-      let templateHtml = fs.readFileSync(templatePath, "utf8");
-      const headerHtml = `
-        <header class="flex items-center mb-8 md:mb-11">
-            <h1 class="text-2xl font-semibold text-gray-750 pb-px">${langData.name}</h1>
-        </header>
-        <div class="mb-8 space-y-1">
-            ${langData.contact.map((c) => `<div class="text-gray-600 text-sm">${c.text}</div>`).join("")}
-        </div>
-        <hr class="mb-8 border-gray-200" />
-      `;
-      const editableHtml = buildEditableHtml(templatePath, headerHtml, cleanContent);
+      if (choice === "2") {
+        const fullHtml = buildEditableHtml(templatePath, headerHtml, cleanContent, themeConfig);
+        saveDraft(fullHtml, companyName, lang, nonDev);
+        process.exit(0);
+      } else if (choice === "3") {
+        const editableHtml = buildEditableHtml(templatePath, headerHtml, cleanContent, themeConfig);
+        try {
+          const edited = await openInBrowser(editableHtml, 300000);
+          if (edited) {
+            finalContent = edited;
+            console.log("Edited content captured.");
+          } else {
+            console.log("No edits detected, using original generated content.");
+          }
 
+          if (process.stdin.isTTY) {
+            process.stdin.pause();
+          }
+        } catch (err) {
+          console.error("Error opening browser:", err.message);
+          finalContent = cleanContent;
+        }
+      }
+    }
+  } else {
+    // Default mode: skip AI generation, load sample text, immediately open browser
+    console.log(`Loading sample cover letter for ${langData.name} (${lang})...`);
+    cleanContent = getSampleContent(lang, langData.name, companyValue, nonDev);
+    finalContent = cleanContent;
+
+    const noBrowser = args.includes("--no-browser");
+    if (!noBrowser) {
+      const editableHtml = buildEditableHtml(templatePath, headerHtml, cleanContent, themeConfig);
       try {
-        await openInBrowser(editableHtml);
-        const editedHtml = fs.readFileSync(path.join(process.cwd(), "docs", "temp_cover_letter.html"), "utf8");
-        const contentMatch = editedHtml.match(/contenteditable="true">([\s\S]*?)<\/div>/);
-        if (contentMatch) {
-          finalContent = contentMatch[1];
+        // No timeout for non-AI mode: user can spend as much time editing manually as needed
+        const edited = await openInBrowser(editableHtml, 0);
+        if (edited) {
+          finalContent = edited;
           console.log("Edited content captured.");
         } else {
-          console.log("No edits detected, using original generated content.");
+          console.log("No edits detected, using sample content.");
         }
 
-        // Force close stdin to prevent process from hanging after browser editing
         if (process.stdin.isTTY) {
           process.stdin.pause();
         }
@@ -451,24 +609,18 @@ async function main() {
     }
   }
 
-  // Prepare HTML
-  const templatePath = path.join(process.cwd(), "docs", "cover_letter_template.html");
-  if (!fs.existsSync(templatePath)) {
-    console.error("Error: docs/cover_letter_template.html not found.");
-    process.exit(1);
-  }
+  // Prepare final HTML for PDF export
   let templateHtml = fs.readFileSync(templatePath, "utf8");
-
-  // Replicate Header from Resume (Tailwind styles)
-  const headerHtml = `
-        <header class="flex items-center mb-8 md:mb-11">
-            <h1 class="text-2xl font-semibold text-gray-750 pb-px">${langData.name}</h1>
-        </header>
-        <div class="mb-8 space-y-1">
-            ${langData.contact.map((c) => `<div class="text-gray-600 text-sm">${c.text}</div>`).join("")}
-        </div>
-        <hr class="mb-8 border-gray-200" />
-    `;
+  if (themeConfig) {
+    const vars = Object.entries(themeConfig)
+      .map(([k, v]) => `        ${k}: ${v};`)
+      .join("\n");
+    const bodyBg = themeConfig["--color-page-background"]
+      ? `\n        body { background-color: ${themeConfig["--color-page-background"]}; }`
+      : "";
+    const themeStyle = `\n    <style>\n      :root {\n${vars}\n      }${bodyBg}\n    </style>`;
+    templateHtml = templateHtml.replace("</head>", `${themeStyle}\n</head>`);
+  }
 
   const finalHtml = templateHtml.replace(
     "<!-- Content will be injected here by the script -->",
@@ -476,28 +628,29 @@ async function main() {
   );
 
   const tempHtmlPath = path.join(process.cwd(), "docs", "temp_cover_letter.html");
-  fs.writeFileSync(tempHtmlPath, finalHtml);
+  fs.writeFileSync(tempHtmlPath, finalHtml, "utf8");
 
-  // Generate PDF
-  console.log("Generating PDF...");
-
+  // Determine output path
   let outputPath;
-  if (outputArg) {
-    outputPath = outputArg.split("=")[1];
+  if (outputValue) {
+    outputPath = outputValue;
   } else {
     const date = new Date().toISOString().split("T")[0];
-    // Create a readable slug from the company name
     const companySlug = companyName
-      .replace(/[^a-zA-Z0-9 ]/g, "") // Remove non-alphanumeric chars except spaces
-      .trim()
-      .replace(/\s+/g, "_") // Replace spaces with underscores
-      .substring(0, 30); // Truncate to 30 chars
-    outputPath = path.join(process.cwd(), "exports", `cover-letter-${date}-${lang}-${companySlug}.pdf`);
+      ? companyName
+          .replace(/[^a-zA-Z0-9 ]/g, "")
+          .trim()
+          .replace(/\s+/g, "_")
+          .substring(0, 30)
+      : "";
+    const slugSuffix = companySlug && companySlug.toLowerCase() !== "company" ? `-${companySlug}` : "";
+    const nonDevSuffix = nonDev ? "-nondev" : "";
+    outputPath = path.join(process.cwd(), "exports", `cover-letter-${date}-${lang}${slugSuffix}${nonDevSuffix}.pdf`);
   }
 
   const exportsDir = path.join(process.cwd(), "exports");
   if (!fs.existsSync(exportsDir)) {
-    fs.mkdirSync(exportsDir);
+    fs.mkdirSync(exportsDir, { recursive: true });
   }
 
   // Delete existing file if it exists (overwrite)
@@ -510,6 +663,8 @@ async function main() {
     }
   }
 
+  // Generate PDF
+  console.log("Generating PDF...");
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
@@ -538,20 +693,17 @@ async function main() {
   await page.goto(`file://${tempHtmlPath}`, { waitUntil: "networkidle0" });
 
   // Apply Theme
-  if (resumeData.config && resumeData.config.themes) {
-    const themeConfig = resumeData.config.themes[theme] || resumeData.config.themes.default;
-    if (themeConfig) {
-      await page.evaluate((config) => {
-        const root = document.documentElement;
-        for (const [key, value] of Object.entries(config)) {
-          root.style.setProperty(key, value);
-        }
-        // Ensure body bg matches page bg if defined
-        if (config["--color-page-background"]) {
-          document.body.style.backgroundColor = config["--color-page-background"];
-        }
-      }, themeConfig);
-    }
+  if (themeConfig) {
+    await page.evaluate((config) => {
+      const root = document.documentElement;
+      for (const [key, value] of Object.entries(config)) {
+        root.style.setProperty(key, value);
+      }
+      // Ensure body bg matches page bg if defined
+      if (config["--color-page-background"]) {
+        document.body.style.backgroundColor = config["--color-page-background"];
+      }
+    }, themeConfig);
   }
 
   await page.pdf({
@@ -562,7 +714,9 @@ async function main() {
   });
 
   await browser.close();
-  fs.unlinkSync(tempHtmlPath);
+  if (fs.existsSync(tempHtmlPath)) {
+    fs.unlinkSync(tempHtmlPath);
+  }
 
   console.log(`Cover letter generated successfully: ${outputPath}`);
   process.exit(0);

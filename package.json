@@ -17,7 +17,8 @@
     "serve": "concurrently \"postcss ./tailwind.css -o docs/build.css --watch\"  \"live-server ./docs \"",
     "build": "cross-env NODE_ENV=build postcss ./tailwind.css -o ./docs/build.css",
     "export": "node export-pdf.js",
-    "export:cover-letter": "node export-cover-letter.js"
+    "export:cover-letter": "node export-cover-letter.js",
+    "export:cover-letter:ai": "node export-cover-letter.js --ai"
   },
   "dependencies": {
     "@chris_m/genius-humanizer": "^1.0.2",

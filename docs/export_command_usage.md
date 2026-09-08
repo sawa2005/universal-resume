@@ -84,37 +84,60 @@ By default, all generated PDFs are saved in the `exports/` directory at the root
 
 ## Cover Letter Generation
 
-You can also generate a personalized cover letter using AI (Gemini) based on your resume data.
+You can generate a cover letter based on your resume data. By default, running the cover letter command skips AI generation and opens your browser immediately with sample text ready for editing. When you click **Save** in the browser, the PDF is generated and saved to `exports/`. You can also optionally generate cover letters with AI (Gemini).
 
-### Command
+### Commands
+
+#### 1. Default (Manual Editing with Sample Text)
+
+Skips AI generation, loads sample text tailored to the selected language (`en` or `sv`), and opens the browser for editing:
 
 ```bash
-npm run export:cover-letter -- --prompt="<Job Description/Instructions>" [options]
+npm run export:cover-letter
+```
+
+With options:
+
+```bash
+npm run export:cover-letter -- [options]
+```
+
+#### 2. AI Generation (Optional)
+
+Generate a personalized cover letter using Google Gemini based on your resume data and a job description:
+
+```bash
+npm run export:cover-letter:ai -- --prompt="<Job Description/Instructions>" [options]
 ```
 
 **or:**
 
 ```bash
-npm run export:cover-letter -- --url="https://www.job-description.com/" [options]
+npm run export:cover-letter -- --ai --prompt="<Job Description/Instructions>" [options]
 ```
 
-**Note:** You must create a `.env` file in the project root with your Gemini API key:
+**or scrape from URL:**
 
+```bash
+npm run export:cover-letter:ai -- --url="https://www.job-description.com/" [options]
 ```
-GEMINI_API_KEY=your_api_key_here
-```
+
+> **Note:** For AI generation, you must have a `.env` file in the project root with your Gemini API key:
+> ```
+> GEMINI_API_KEY=your_api_key_here
+> ```
 
 ### Options
-
-- **`--prompt=<text>`** (Required)
-  - The job description or specific instructions for the cover letter. Enclose in quotes.
-  - **Example:** `--prompt="Software Engineer at Google, focusing on cloud infrastructure."`
 
 - **`--lang=<language>`**
   - Specifies the language of the cover letter.
   - **Accepted values:** `en` (English), `sv` (Swedish).
   - **Default:** `en`
   - **Example:** `--lang=sv`
+
+- **`--company=<name>`**
+  - Specifies the company name. Used in the sample text and in the exported PDF filename.
+  - **Example:** `--company="Spotify"`
 
 - **`--theme=<theme_name>`**
   - Applies a specific theme (colors/fonts) to match your resume.
@@ -124,17 +147,39 @@ GEMINI_API_KEY=your_api_key_here
 
 - **`--output=<filename.pdf>`**
   - Specifies the output filename.
-  - **Default:** `exports/cover-letter-<date>-<lang>-<company_name>.pdf`
+  - **Default:** `exports/cover-letter-<date>-<lang>[-<company_name>].pdf`
+  - **Example:** `--output=exports/my-cover-letter.pdf`
+
+- **`--prompt=<text>`** (AI mode)
+  - The job description or instructions for the cover letter. Triggers AI mode.
+  - **Example:** `--prompt="Software Engineer at Google, focusing on cloud infrastructure."`
+
+- **`--url=<url>`** (AI mode)
+  - URL to scrape job description from. Triggers AI mode.
+
+- **`--no-browser`**
+  - Generates the PDF directly without opening the browser.
+
+- **`--non-dev`** (or **`--nondev`**)
+  - Non-dev mode: uses `docs/data-nondev.json` profile and removes the GitHub link from the header.
+  - **Example:** `npm run export:cover-letter -- --non-dev`
 
 ### Examples
 
-- **Generate a standard English cover letter:**
+- **Open English cover letter with sample text in browser (default):**
 
   ```bash
-  npm run export:cover-letter -- --prompt="Front-end developer role at startup X. Focus on React experience."
+  npm run export:cover-letter
   ```
 
-- **Generate a Swedish cover letter with the 'dark' theme:**
+- **Open Swedish cover letter with company name and 'warm' theme:**
+
   ```bash
-  npm run export:cover-letter -- --lang=sv --theme=dark --prompt="Fullstack-utvecklare på Ericsson. Betona erfarenhet av .NET och Azure."
+  npm run export:cover-letter -- --lang=sv --company="Volvo" --theme=warm
+  ```
+
+- **Generate an AI cover letter in Swedish with 'dark' theme:**
+
+  ```bash
+  npm run export:cover-letter:ai -- --lang=sv --theme=dark --prompt="Fullstack-utvecklare på Ericsson. Betona erfarenhet av .NET och Azure."
   ```
