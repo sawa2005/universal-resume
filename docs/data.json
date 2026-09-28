@@ -147,7 +147,7 @@
         "name": "mpthree – Client Website & REST API",
         "url": "https://slw-mpthree.netlify.app/",
         "period": "2024",
-        "tags": ["React", "REST API", "HTML", "CSS"],
+        "tags": ["React", "REST API", "HTML", "CSS", "MongoDB"],
         "description": "Built a music file sharing platform with separate client and server components, strengthening my understanding of full-stack architecture."
       },
       {
@@ -204,7 +204,7 @@
         "name": "Backend",
         "level": null,
         "description": null,
-        "tags": ["PHP", "C#", "ASP.NET", "Node.js", "WordPress", "SQL", "MySQL", "PostgreSQL", "REST API"]
+        "tags": ["PHP", "C#", "ASP.NET", "Node.js", "WordPress", "SQL", "MySQL", "PostgreSQL", "REST API", "MongoDB"]
       },
       {
         "name": "Tools",
@@ -328,7 +328,7 @@
         "name": "mpthree – Klientwebbsida & REST API",
         "url": "https://slw-mpthree.netlify.app/",
         "period": "2024",
-        "tags": ["React", "REST API", "HTML", "CSS"],
+        "tags": ["React", "REST API", "HTML", "CSS", "MongoDB"],
         "description": "Byggde en musikdelningsplattform med separata klient- och serverkomponenter, vilket stärkte min förståelse för fullstacksarkitektur."
       },
       {
@@ -385,7 +385,7 @@
         "name": "Backend",
         "level": null,
         "description": null,
-        "tags": ["PHP", "C#", "ASP.NET", "Node.js", "WordPress", "SQL", "MySQL", "PostgreSQL", "REST API"]
+        "tags": ["PHP", "C#", "ASP.NET", "Node.js", "WordPress", "SQL", "MySQL", "PostgreSQL", "REST API", "MongoDB"]
       },
       {
         "name": "Verktyg",
