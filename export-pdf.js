@@ -16,8 +16,8 @@ async function main() {
     return null;
   };
 
-  // --nondev is a boolean switch (no value follows it), so check for its presence directly
-  const nonDev = args.includes("--nondev");
+  // --nondev / --non-dev is a boolean switch (no value follows it), so check for its presence directly
+  const nonDev = args.includes("--nondev") || args.includes("--non-dev");
   const jsonPath = nonDev ? "data-nondev.json" : "data.json";
 
   // Load data.json to validate languages and get config
@@ -166,6 +166,26 @@ async function main() {
     await page.evaluate((limit) => {
       window.setProjectsPerTagLimit(limit);
     }, projectsPerTag);
+  }
+
+  // Hide projects header in nondev export
+  if (nonDev) {
+    await page.evaluate(() => {
+      document.querySelectorAll('[data-label="projects"]').forEach((el) => {
+        el.classList.add("hidden");
+        el.style.display = "none";
+      });
+      const sideWrapper = document.getElementById("projects-side-wrapper");
+      if (sideWrapper) {
+        sideWrapper.classList.add("hidden");
+        sideWrapper.style.display = "none";
+      }
+      const bottomWrapper = document.getElementById("projects-bottom-wrapper");
+      if (bottomWrapper) {
+        bottomWrapper.classList.add("hidden");
+        bottomWrapper.style.display = "none";
+      }
+    });
   }
 
   // Wait a bit for any transitions
