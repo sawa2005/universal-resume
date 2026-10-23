@@ -61,19 +61,28 @@
       {
         "title": "",
         "period": "",
-        "description": "Service-minded and self-driven, with hands-on experience working directly with clients in fast-paced environments. A car enthusiast since childhood — I maintain my own car, compete at a high level in motorsport simulation for Team PGZ, and build technical setups for other drivers, giving me a practical understanding of vehicle dynamics. Comfortable adapting quickly to new tools and systems."
+        "description": "Technically minded 24-year-old with a genuine interest for cars and motorsport. Through my university background in IT I've learnt how to be methodical and pay attention to the details. In my free time I work on my own car and compete in sim racing, through which I won a silver medal at SM-veckan 2023. I'm now looking to follow my lifelong passion and build a career in the automotive industry."
       }
     ],
 
     "experience": [
+      {
+        "company": "P1Doks.com",
+        "role": "Coach & Setup Builder",
+        "period": "May 2025 – Present",
+        "content": [
+          "Developing optimal car setups for iRacing's GT3 cars focusing on small details that are worth tenths.",
+          "Coaching drivers in driving technique and analyzing telemetry data to find faster laptimes."
+        ],
+        "type": "list"
+      },
       {
         "company": "Team PGZ",
         "role": "Driver & Web Developer",
         "period": "October 2022 – Present",
         "content": [
           "Active competitive driver for the team in motorsport simulation, building a deeper practical understanding of vehicle performance and handling.",
-          "Built and maintain the team's public identity and website from scratch, presenting the team to over 2k visitors per month.",
-          "Took full ownership of the project independently, from concept to ongoing upkeep."
+          "Built and maintain the team's public identity and website from scratch, presenting the team to over 2k visitors per month."
         ],
         "type": "list"
       },
@@ -82,9 +91,8 @@
         "role": "Web Developer (Internship)",
         "period": "February 2026 – May 2026",
         "content": [
-          "Worked closely with the company's clients on tailored requests — from new features to content and style updates on existing sites.",
-          "Fast-paced environment with a lot of individual responsibility, while collaborating closely with the team across projects.",
-          "Built the company's new website from scratch based on a new graphic profile, from design through to launch."
+          "Built the company's new website from scratch based on a new graphic profile, from design through to launch.",
+          "Fast-paced environment with a lot of individual responsibility, while collaborating closely with the team across projects."
         ],
         "type": "list"
       },
@@ -93,9 +101,8 @@
         "role": "Fullstack Developer (Internship)",
         "period": "September 2024 – January 2025",
         "content": [
-          "Designed and led a 4-day training session to teach the team how to use a new tool I had implemented — full ownership of planning and delivery.",
-          "Collaborated closely with the team via GitHub with structured handling of changes across branches.",
-          "Developed a Progressive Web Application (PWA) with a focus on user experience."
+          "Designed and led a 4-day training session to teach the team how to use a new workflow I had implemented with full ownership of planning and delivery.",
+          "Collaborated closely with the team in weekly sprints, making sure everyone's on the same page."
         ],
         "type": "list"
       }
@@ -170,18 +177,27 @@
       {
         "title": "",
         "period": "",
-        "description": "Serviceinriktad och självgående, med erfarenhet av att arbeta direkt med kunder i högt tempo. Bilintresserad sedan barnsben – jag sköter service och underhåll på min egen bil, tävlar på hög nivå inom simulerad motorsport för Team PGZ, och bygger tekniska setups åt andra förare, vilket gett mig praktisk förståelse för bilars köregenskaper. Van vid att snabbt sätta mig in i nya verktyg och system."
+        "description": "Tekniskt lagd 24-åring med ett genuint intresse för bilar och motorsport. Genom min högskoleutbildning inom IT har jag lärt mig att arbeta metodiskt och vara noggrann med detaljer. På fritiden mekar jag med min egen bil och tävlar i simracing, där jag tog silver på SM-veckan 2023 i Skövde. Nu vill jag följa min livslånga passion och bygga en karriär inom bilindustrin."
       }
     ],
     "experience": [
+      {
+        "company": "P1Doks.com",
+        "role": "Coach & Setupbyggare",
+        "period": "Maj 2025 – Pågående",
+        "content": [
+          "Tar fram optimala bilinställningar för iRacing's GT3 bilar med fokus på små detaljer som är värda tiondelar.",
+          "Coachar förare i körteknik och analyserar telemetridata för att hitta snabbare varvtider."
+        ],
+        "type": "list"
+      },
       {
         "company": "Team PGZ",
         "role": "Förare & Webbutvecklare",
         "period": "Oktober 2022 – Pågående",
         "content": [
           "Aktiv tävlingsförare för teamet inom simulerad motorsport, vilket gett en djupare praktisk förståelse för bilars prestanda och köregenskaper.",
-          "Byggt upp och driver teamets identitet och webbplats från grunden – presenterar teamet för över 2 000 besökare i månaden.",
-          "Tog fullt ägandeskap för projektet på egen hand, från idé till löpande underhåll."
+          "Byggt upp och driver teamets identitet och webbplats från grunden. Webbsidan presenterar teamet för över 2 000 besökare i månaden."
         ],
         "type": "list"
       },
@@ -190,9 +206,8 @@
         "role": "Webbutvecklare (Praktik)",
         "period": "Februari 2026 – Maj 2026",
         "content": [
-          "Arbetade nära företagets kunder och arbetade med allt från nya funktioner till innehålls- och stiluppdateringar på befintliga webbplatser.",
-          "Högt tempo med stort eget ansvar, samtidigt som jag samarbetade tätt med teamet i olika projekt.",
-          "Byggde företagets nya webbplats från grunden baserat på en ny grafisk profil, från design till lansering."
+          "Byggde företagets nya webbplats från grunden baserat på en ny grafisk profil, från design till lansering.",
+          "Högt tempo med stort eget ansvar, samtidigt som jag samarbetade tätt med teamet i olika projekt."
         ],
         "type": "list"
       },
@@ -202,8 +217,7 @@
         "period": "September 2024 – Januari 2025",
         "content": [
           "Höll i en fyra dagar lång utbildning för att lära teamet ett nytt verktyg jag implementerat med fullt ansvar för både upplägg och genomförande.",
-          "Samarbetade tätt med teamet under hela praktiken med dagliga möten som såg till att alla var på samma sida.",
-          "Utvecklade en Progressive Web Application (PWA) med fokus på användarupplevelse."
+          "Samarbetade tätt med teamet under hela praktiken med dagliga möten som såg till att alla var på samma sida."
         ],
         "type": "list"
       }
